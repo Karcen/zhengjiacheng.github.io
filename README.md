@@ -1,14 +1,1 @@
-# Minimal Theme
-
-[Demo the Theme](https://orderedlist.com/minimal/)
-
-This is the raw HTML and styles that are used for the *minimal* theme on [GitHub Pages](http://pages.github.com/).
-
-Syntax highlighting is provided on GitHub Pages by [Pygments](http://pygments.org).
-
-# License
-
-This work is licensed under a [Creative Commons Attribution-ShareAlike 3.0 Unported License](http://creativecommons.org/licenses/by-sa/3.0/).
-
-
-
+I am Jiacheng Zheng, currently an undergraduate student majoring in Bioengineering at Shandong University. I am passionate about data science research and have served as a research assistant at various prestigious institutions including Shandong University, University College London and The Hong Kong University of Science and Technology, focusing on economic modeling, climate change analysis, and AI alignment research.
