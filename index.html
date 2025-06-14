@@ -6,7 +6,7 @@
 	<meta name="description" content="Jiacheng Zheng's personal portfolio. A bioengineering student and data science researcher showcasing publications, research experience, skills, and achievements.">
 	<title>Jiacheng Zheng | 郑嘉诚</title>
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-	<link rel= "shortcut icon" href= "logo.ico" type= "image/x-icon"> 
+	<link rel="shortcut icon" href="logo.ico" type="image/x-icon">
 	<style>
 		.profile-image img {
 		    width: 100px;
@@ -50,6 +50,86 @@
 		    grid-template-columns: 350px 1fr;
 		    min-height: 100vh;
 		}
+		
+		/* Dark Mode */
+		.dark-mode {
+			--primary-color: #3b82f6;            
+			--text-dark: #d1d5db;               
+			--text-light: #9ca3af;               
+			--bg-light: #1f2937;                 
+			--border-light: #374151;            
+			--shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
+			--shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.7);
+			background-color: var(--bg-light);
+			color: var(--text-dark);
+		}
+		
+		.dark-mode body {
+			background-color: var(--bg-light);
+			color: var(--text-dark);
+		}
+		
+		.dark-mode .sidebar {
+			background-color: var(--bg-light);
+			border-right: 1px solid var(--border-light);
+		}
+		
+		.dark-mode .card,
+		.dark-mode .skill-category,
+		.dark-mode .award-item {
+			background-color: #111827;
+			border: 1px solid var(--border-light);
+			box-shadow: var(--shadow-lg);
+			color: var(--text-dark);
+		}
+		
+		.dark-mode .nav-link:hover,
+		.dark-mode .nav-link.active {
+			background-color: var(--primary-color);
+			color: white;
+		}
+		
+		.dark-mode .contact-item:hover {
+			background-color: #374151;
+		}
+		
+		/* 其他需要暗模式适配的元素 */
+		.dark-mode .hero-section {
+			background: linear-gradient(135deg, #111827 0%, #1f2937 100%);
+		}
+		
+		.dark-mode .filter-tab {
+			background: #374151;
+			color: var(--text-light);
+		}
+		
+		.dark-mode .filter-tab.active,
+		.dark-mode .filter-tab:hover {
+			background: var(--primary-color);
+			color: white;
+		}
+		
+		/* Chrome, Edge, Safari */
+		::-webkit-scrollbar {
+		    width: 8px;
+		    height: 8px;
+		}
+		
+		::-webkit-scrollbar-track {
+		    background: transparent; 
+		}
+		
+		::-webkit-scrollbar-thumb {
+		    background-color: #3b82f6;
+		    border-radius: 4px;
+		    border: 2px solid transparent; 
+		    background-clip: content-box;
+		}
+		
+		::-webkit-scrollbar-thumb:hover {
+		    background-color: #2563eb; 
+		}
+		
 		
 		/* Utility Classes */
 		.mb-1 { margin-bottom: 1rem; }
@@ -158,6 +238,7 @@
 		.card-subtitle,a { color: var(--primary-color); font-weight: 500; margin-bottom: 0.5rem; }
 		.card-meta { color: var(--text-light); font-size: 0.9rem; margin-bottom: 1rem; }
 		
+		
 		/* Tags */
 		.tag {
 		    display: inline-block; background-color: var(--bg-light); color: var(--text-dark);
@@ -201,15 +282,88 @@
 		.stat-card:hover { transform: translateY(-2px); }
 		.stat-number { font-size: 2rem; font-weight: 700; color: var(--primary-color); display: block; }
 		.stat-label { color: var(--text-light); font-size: 0.9rem; margin-top: 0.5rem; }
-		
+		/* Dark mode 统计卡片样式 */
+		.dark-mode .stat-card {
+			background: #1f2937;          
+			border-color: #374151;        
+			box-shadow: 0 4px 6px rgba(0, 0, 0, 0.6); 
+		}
+		.dark-mode .stat-number {
+			color: #3b82f6;           
+		}
+		.dark-mode .stat-label {
+			color: #9ca3af;               
+		}
 		/* Filters & Search */
-		.filter-tabs { display: flex; gap: 0.5rem; margin-bottom: 2rem; flex-wrap: wrap; }
-		.filter-tab { padding: 0.5rem 1rem; background: var(--bg-light); border: none; border-radius: 20px; cursor: pointer; transition: all 0.2s ease; font-weight: 500; }
-		.filter-tab.active, .filter-tab:hover { background: var(--primary-color); color: white; }
-		.search-box { position: relative; margin-bottom: 2rem; }
-		.search-box input { width: 100%; padding: 0.75rem 1rem; border: 1px solid var(--border-light); border-radius: 8px; font-size: 1rem; transition: border-color 0.2s ease; }
-		.search-box input:focus { outline: none; border-color: var(--primary-color); }
-		.search-box i { position: absolute; right: 1rem; top: 50%; transform: translateY(-50%); color: var(--text-light); }
+		.filter-tabs {
+		    display: flex;
+		    gap: 0.5rem;
+		    margin-bottom: 2rem;
+		    flex-wrap: wrap;
+		}
+		.filter-tab {
+		    padding: 0.5rem 1rem;
+		    background: var(--bg-light);          
+		    border: none;
+		    border-radius: 20px;
+		    cursor: pointer;
+		    transition: all 0.2s ease;
+		    font-weight: 500;
+		    color: var(--text-dark);
+		}
+		.filter-tab.active,
+		.filter-tab:hover {
+		    background: var(--primary-color);
+		    color: white;
+		}
+		.search-box {
+		    position: relative;
+		    margin-bottom: 2rem;
+		}
+		.search-box input {
+		    width: 100%;
+		    padding: 0.75rem 1rem;
+		    border: 1px solid var(--border-light);
+		    border-radius: 8px;
+		    font-size: 1rem;
+		    transition: border-color 0.2s ease, background-color 0.3s ease, color 0.3s ease;
+		    background-color: white;
+		    color: var(--text-dark);
+		}
+		.search-box input:focus {
+		    outline: none;
+		    border-color: var(--primary-color);
+		}
+		.search-box i {
+		    position: absolute;
+		    right: 1rem;
+		    top: 50%;
+		    transform: translateY(-50%);
+		    color: var(--text-light);
+		}
+		
+		/* Filters & Search - Dark Mode */
+		.dark-mode .filter-tab {
+		    background: #374151;                  
+		    color: #d1d5db;                       
+		}
+		.dark-mode .filter-tab.active,
+		.dark-mode .filter-tab:hover {
+		    background: #3b82f6;                 
+		    color: white;
+		}
+		.dark-mode .search-box input {
+		    background-color: #1f2937;             
+		    border-color: #4b5563;                
+		    color: #d1d5db;                        
+		}
+		.dark-mode .search-box input:focus {
+		    border-color: #3b82f6;                 
+		}
+		.dark-mode .search-box i {
+		    color: #9ca3af;                        
+		}
+		
 		
 		/* Publications, Awards, etc. */
 		.publication-item { margin-bottom: 1rem; }
@@ -327,7 +481,8 @@
 				<h1 id="hero-title" class="hero-title">I Say Hello World in 2001</h1>
 				<p class="hero-subtitle">Consilium praecedit, technologia sequitur.</p>
 				<p class="hero-description"> I am Jiacheng Zheng, currently an undergraduate student majoring in Bioengineering at Shandong University. I am passionate about data science research and have served as a research assistant at various prestigious institutions including Shandong
-					University, University College London and The Hong Kong University of Science and Technology, focusing on economic modeling, climate change analysis, and AI alignment research. When I am free, I would love to share my notes and other interesting thoughts on <a href="https://www.zhihu.com/people/karcenzheng" target="_blank">Zhihu</a>, now I have written more than 1 million words.</p>
+					University, University College London and The Hong Kong University of Science and Technology, focusing on economic modeling, climate change analysis, and AI alignment research. When I am free, I would love to share my notes and other interesting thoughts on <a
+						href="https://www.zhihu.com/people/karcenzheng" target="_blank">Zhihu</a>, now I have written more than 1 million words.</p>
 			</section>
 			<div class="stats-grid" aria-label="Quick Statistics">
 				<div class="stat-card">
@@ -944,6 +1099,28 @@
 		        }
 		    }, { passive: true });
 		});
+	</script>
+	<button id="theme-toggle" class="floating-action" style="bottom: 7rem; right: 2rem;" title="theme-change">
+		<i class="fas fa-moon" id="theme-icon"></i>
+	</button>
+	<button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="floating-action" aria-label="Scroll to top">
+		<i class="fas fa-arrow-up" aria-hidden="true"></i>
+	</button>
+	<script>
+		const toggleButton = document.getElementById('theme-toggle');
+		const themeIcon = document.getElementById('theme-icon');
+		
+		toggleButton.addEventListener('click', () => {
+		    document.documentElement.classList.toggle('dark-mode');
+		    if (document.documentElement.classList.contains('dark-mode')) {
+		        themeIcon.classList.remove('fa-moon');
+		        themeIcon.classList.add('fa-sun');
+		    } else {
+		        themeIcon.classList.remove('fa-sun');
+		        themeIcon.classList.add('fa-moon');
+		    }
+		});
+		
 	</script>
 </body>
 </html>
