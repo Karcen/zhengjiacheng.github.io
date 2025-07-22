@@ -48,10 +48,6 @@
   *InterMT: Multi-Turn Interleaved Preference Alignment with Human Feedback*  
   🔗 Submitted to *NeurIPS 2025*. [🌐 Project Website](https://pku-intermt.github.io)
 
-- **Zheng, J., Khan, J., & Alam, Z.**  
-  *Agglomeration economies and regional inequalities: Theory and evidence from provincial China*  
-  📝 *Journal of Chinese Economic and Business Studies*
-
 - **Xiao, X., Khan, J., & Zheng, J.**  
   *Structural changes and sectoral linkages: Unveiling the ICT sector’s role in China and India*  
   📝 Submitted to *Telecommunication Policy*
@@ -65,6 +61,10 @@
   📝 Submitted to *One Earth*  
 
 ### ✅ Published
+
+- **Zheng, J., Khan, J., & Alam, Z.** (2025).  
+  *Agglomeration economies and regional inequalities: Theory and evidence from provincial China*  
+  📝 *Journal of Chinese Economic and Business Studies*
 
 - **Khan, J., Li, Y., & Mahsud, Q. J.**  
   *Linkages and structural changes in the Chinese financial sector, 1996–2018: A network and input–output approach*  
