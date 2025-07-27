@@ -8,7 +8,6 @@
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 	<link rel="shortcut icon" href="logo.ico" type="image/x-icon">
 	<style>
-		/* 滑动图片画廊样式 */
 		.gallery-slider-container {
 		  position: relative;
 		  margin-top: 2rem;
@@ -40,8 +39,7 @@
 		.gallery-image:hover {
 		  transform: scale(1.02);
 		}
-		
-		/* 控制按钮 */
+
 		.gallery-prev, .gallery-next {
 		  position: absolute;
 		  top: 50%;
@@ -72,7 +70,7 @@
 		  background-color: rgba(0, 0, 0, 0.8);
 		}
 		
-		/* 指示器 */
+		
 		.gallery-dots {
 		  display: flex;
 		  justify-content: center;
@@ -93,7 +91,6 @@
 		  background-color: #3b82f6;
 		}
 		
-		/* 图片查看器模态框 */
 		.modal {
 		  display: none;
 		  position: fixed;
@@ -143,7 +140,7 @@
 		  cursor: pointer;
 		}
 		
-		/* 查看器控制按钮 */
+		
 		.viewer-prev, .viewer-next {
 		  position: absolute;
 		  top: 50%;
@@ -175,13 +172,13 @@
 		  background-color: rgba(0, 0, 0, 0.8);
 		}
 		
-		/* 动画效果 */
+		
 		@keyframes zoom {
 		  from {transform:scale(0.9)}
 		  to {transform:scale(1)}
 		}
 		
-		/* 深色模式适配 */
+		
 		.dark-mode .gallery-image {
 		  box-shadow: 0 4px 6px -1px rgba(255, 255, 255, 0.05);
 		}
@@ -194,8 +191,6 @@
 		  background-color: #3b82f6;
 		}
 		
-		
-		/* Modal Styles */
 		.modal {
 		    display: none;
 		    position: fixed;
@@ -248,7 +243,7 @@
 		    padding: 10px 0;
 		    font-size: 1.2rem;
 		}
-		/* Dark Mode Gallery Styles */
+		
 		.dark-mode .gallery-item {
 		    background: #1f2937;
 		    border-color: #374151;
@@ -269,7 +264,7 @@
 		    object-fit: cover; 
 		}
 		
-		/* General Styles */
+		
 		:root {
 		    --primary-color: #2563eb;
 		    --text-dark: #1f2937;
@@ -305,7 +300,6 @@
 		    min-height: 100vh;
 		}
 		
-		/* Dark Mode */
 		.dark-mode {
 			--primary-color: #3b82f6;            
 			--text-dark: #d1d5db;               
@@ -347,7 +341,7 @@
 			background-color: #374151;
 		}
 		
-		/* 其他需要暗模式适配的元素 */
+		
 		.dark-mode .hero-section {
 			background: linear-gradient(135deg, #111827 0%, #1f2937 100%);
 		}
@@ -363,7 +357,7 @@
 			color: white;
 		}
 		
-		/* Chrome, Edge, Safari */
+		
 		::-webkit-scrollbar {
 		    width: 8px;
 		    height: 8px;
@@ -385,12 +379,12 @@
 		}
 		
 		
-		/* Utility Classes */
+		
 		.mb-1 { margin-bottom: 1rem; }
 		.mt-1 { margin-top: 1rem; }
 		.mt-half { margin-top: 0.5rem; }
 		
-		/* Sidebar */
+		
 		.sidebar {
 		    position: sticky; 
 		    top: 0;           
@@ -440,7 +434,7 @@
 		.nav-link:hover, .nav-link.active { background-color: var(--primary-color); color: white; transform: translateX(4px); }
 		.nav-link i { margin-right: 0.75rem; width: 20px; text-align: center; }
 		
-		/* Main Content */
+		
 		.main-content {
 		    padding: 2rem;
 		}
@@ -469,7 +463,7 @@
 		    background: linear-gradient(90deg, var(--primary-color), #3b82f6); border-radius: 2px;
 		}
 		
-		/* Hero Section */
+		
 		.hero-section {
 		    background: linear-gradient(135deg, #f8fafc 0%, #e5e7eb 100%);
 		    padding: 3rem; border-radius: 16px; margin-bottom: 3rem; text-align: center;
@@ -482,7 +476,7 @@
 		.hero-subtitle { font-size: 1.25rem; color: var(--text-light); margin-bottom: 2rem; }
 		.hero-description { font-size: 1.1rem; line-height: 1.8; color: var(--text-dark); max-width: 800px; margin: 0 auto; }
 		
-		/* Cards */
+		
 		.card {
 		    background: white; border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem;
 		    border: 1px solid var(--border-light); transition: all 0.3s ease; box-shadow: var(--shadow);
@@ -493,7 +487,7 @@
 		.card-meta { color: var(--text-light); font-size: 0.9rem; margin-bottom: 1rem; }
 		
 		
-		/* Tags */
+		
 		.tag {
 		    display: inline-block; background-color: var(--bg-light); color: var(--text-dark);
 		    padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;
@@ -501,17 +495,17 @@
 		}
 		.tag.primary { background-color: var(--primary-color); color: white; }
 		
-		/* Grid Layout */
+		
 		.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
 		
-		/* Skills */
+		
 		.skill-category { background: white; padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border-light); box-shadow: var(--shadow); }
 		.skill-category h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 1rem; color: var(--text-dark); display: flex; align-items: center; }
 		.skill-category h3 i { margin-right: 0.5rem; color: var(--primary-color); }
 		.progress-bar { background-color: var(--bg-light); height: 8px; border-radius: 4px; margin: 0.5rem 0; overflow: hidden; }
 		.progress-fill { height: 100%; background: linear-gradient(90deg, var(--primary-color), #3b82f6); border-radius: 4px; transition: width 1s ease; }
 		
-		/* Floating Action Button */
+		
 		.floating-action {
 		    position: fixed; bottom: 2rem; right: 2rem; width: 60px; height: 60px;
 		    background: var(--primary-color); border-radius: 50%; display: flex; align-items: center; justify-content: center;
@@ -520,7 +514,7 @@
 		}
 		.floating-action:hover { transform: scale(1.1); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1); }
 		
-		/* Timeline */
+		
 		.timeline { position: relative; padding-left: 2rem; }
 		.timeline::before { content: ''; position: absolute; left: 0.75rem; top: 0; bottom: 0; width: 2px; background: var(--border-light); }
 		.timeline-item { position: relative; margin-bottom: 2rem; padding-left: 2rem; }
@@ -530,13 +524,13 @@
 		    border-radius: 50%; background: var(--primary-color); border: 3px solid white; box-shadow: 0 0 0 3px var(--primary-color);
 		}
 		
-		/* Stats */
+		
 		.stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 2rem; }
 		.stat-card { background: white; padding: 1.5rem; border-radius: 12px; text-align: center; border: 1px solid var(--border-light); box-shadow: var(--shadow); transition: transform 0.2s ease; }
 		.stat-card:hover { transform: translateY(-2px); }
 		.stat-number { font-size: 2rem; font-weight: 700; color: var(--primary-color); display: block; }
 		.stat-label { color: var(--text-light); font-size: 0.9rem; margin-top: 0.5rem; }
-		/* Dark mode 统计卡片样式 */
+		
 		.dark-mode .stat-card {
 			background: #1f2937;          
 			border-color: #374151;        
@@ -548,7 +542,7 @@
 		.dark-mode .stat-label {
 			color: #9ca3af;               
 		}
-		/* Filters & Search */
+		
 		.filter-tabs {
 		    display: flex;
 		    gap: 0.5rem;
@@ -596,7 +590,7 @@
 		    color: var(--text-light);
 		}
 		
-		/* Filters & Search - Dark Mode */
+		
 		.dark-mode .filter-tab {
 		    background: #374151;                  
 		    color: #d1d5db;                       
@@ -619,7 +613,7 @@
 		}
 		
 		
-		/* Publications, Awards, etc. */
+		
 		.publication-item { margin-bottom: 1rem; }
 		.publication-authors { font-style: italic; color: var(--text-light); margin-bottom: 0.5rem; }
 		.publication-journal { font-weight: 500; color: var(--primary-color); }
@@ -639,7 +633,7 @@
 		.leadership-role .organization { color: var(--primary-color); font-weight: 500; }
 		.leadership-role .period { color: var(--text-light); font-size: 0.9rem; }
 		
-		/* Responsive Design */
+		
 		@media (max-width: 768px) {
 		    .container { grid-template-columns: 1fr; }
 		    .sidebar { position: relative; width: 100%; height: auto; }
