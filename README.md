@@ -64,7 +64,7 @@
 
 - **Zheng, J., Khan, J., & Alam, Z.** (2025).  
   *Agglomeration economies and regional inequalities: Theory and evidence from provincial China*  
-  📝 *Journal of Chinese Economic and Business Studies*
+  📝 *Journal of Chinese Economic and Business Studies (Forthcoming)*
 
 - **Khan, J., Li, Y., & Mahsud, Q. J.**  
   *Linkages and structural changes in the Chinese financial sector, 1996–2018: A network and input–output approach*  
