@@ -22,7 +22,6 @@
 - 📊 Data Science & Machine Learning
 - 🧠 Large Language Models (LLMs)
 - 🌏 Climate Change Economics
-- 🔗 Global Value Chains (GVCs)
 
 ---
 
