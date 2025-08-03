@@ -6,11 +6,11 @@
 
 🎓 I am currently an undergraduate student majoring in **Bioengineering** at the Marine College of Shandong University. Prior to this, I studied **Chemical Engineering** at Dalian University of Technology (2019–2021).  
 
-💻 I have engaged in data science research as a research assistant at the *Institute of International Studies*, Shandong University, under the mentorship of [Dr. Jamal Khan](https://iis.wh.sdu.edu.cn/info/1216/2395.htm) and [Prof. Yuan Li](https://esnea.wh.sdu.edu.cn/info/1024/1208.htm).  
+💻 I have engaged in data science research as a research assistant at the *Institute of International Studies*, Shandong University, under the mentorship of [Dr. Jamal Khan](https://iis.wh.sdu.edu.cn/info/1216/2395.htm) and [Prof. Yuan Li](https://esnea.wh.sdu.edu.cn/info/1024/1208.htm) (March 2023 - March 2025).  
 
 🌱 From May to August 2024, I joined the *Climate Change Economics and Low Carbon Transition* team at *University College London*, supervised by [Prof. Zhifu Mi](https://www.ucl.ac.uk/bartlett/construction/people/dr-zhifu-mi) and [Dr. Haoran Zhang](https://orcid.org/0000-0002-8751-5407), contributing to the development of the **IPCC database**.  
 
-🤖 Additionally, I worked as a Research Intern in the *Hong Kong General AI (HKGAI)* project at *The Hong Kong University of Science and Technology*, helping deploy the HKGAI large model for the Hong Kong government in collaboration with [Jiaming Ji](https://jijiaming.com/) and [Boyuan Chen](https://cby-pku.github.io/).  
+🤖 Additionally, I worked as a Research Intern in the *Hong Kong General AI (HKGAI)* project at *The Hong Kong University of Science and Technology*, helping deploy the HKGAI large model for the Hong Kong government in collaboration with [Jiaming Ji](https://jijiaming.com/) and [Boyuan Chen](https://cby-pku.github.io/) (Feb. 2025 - May 2025).  
 
 📫 **Contact**: [karcenzheng17@gmail.com](mailto:karcenzheng17@gmail.com)
 
@@ -18,6 +18,7 @@
 
 ## 🔬 Research Interests
 
+- 🪙 Input-Output Analysis & Global Value Chains
 - 📊 Data Science & Machine Learning
 - 🧠 Large Language Models (LLMs)
 - 🌏 Climate Change Economics
