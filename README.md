@@ -19,7 +19,7 @@ Previously, I studied **Chemical Engineering** at [Dalian University of Technolo
   Supervised by [Prof. Zhifu Mi](https://www.ucl.ac.uk/bartlett/construction/people/dr-zhifu-mi) & [Dr. Haoran Zhang](https://orcid.org/0000-0002-8751-5407)  
   Contribution: **Analyzing citation patterns of the Intergovernmental Panel on Climate Change Assessment Reports**.
 
-- **Research Intern**, *HKGAI Project*, [The Hong Kong University of Science and Technology](https://hkust.edu.hk) (2025)  
+- **Research Intern**, *HKGAI*, [The Hong Kong University of Science and Technology](https://hkust.edu.hk) (2025)  
   Role: Contributed to deploying the HKGAI large model for the Hong Kong government. Collaborated with [Jiaming Ji](https://jijiaming.com/) and [Boyuan Chen](https://cby-pku.github.io/) on data alignment for multi-modal LLM systems, submitted one paper to NeurIPS 2025.
 
 ---
@@ -67,46 +67,46 @@ Previously, I studied **Chemical Engineering** at [Dalian University of Technolo
 
 ### 📝 Under Review
 
-- **Chen, B., Hong, D., Ji, J., **Zheng, J.**, et al.**  
-  *InterMT: Multi-Turn Interleaved Preference Alignment with Human Feedback*.  
-  Submitted to **NeurIPS 2025**. [Project Website](https://pku-intermt.github.io)
-
-- **Khan, J., Li, Y., & Girardin, E.**  
+- Khan, J., Li, Y., & Girardin, E.
   *The Effectiveness of Unilateral vs. Multilateral Carbon Adjustment Mechanisms under WTO and Climate Rules*.  
   Submitted to *One Earth*.  
   *(Contributed to data analysis, modeling, and visualization.)*
 
-- **Khan, J., Li, Y., & **Zheng, J.****  
+- Khan, J., Li, Y., & **Zheng, J.** 
   *Sectoral Growth Dynamics and GVC Movement in Pakistan: A Multi-Regional Input–Output Approach*.  
   Submitted to *Review of Development Economics*.
 
-- **Xiao, X., Khan, J., & **Zheng, J.****  
+- Xiao, X., Khan, J., & **Zheng, J.**
   *Structural Shifts and ICT Sector Linkages in China and India*.  
   Submitted to *Telecommunication Policy*.
 
 ### ✅ Published
+- Chen, B., Hong, D., Ji, J., **Zheng, J.**, et al.
+  *InterMT: Multi-Turn Interleaved Preference Alignment with Human Feedback*.  
+  **NeurIPS 2025(Spotlight)**. [Project Website](https://pku-intermt.github.io)
 
-- **Khan, J., **Zheng, J.**, Ahmad, M., & Khan, Z. A. (2025).** (2025).  
+
+- Khan, J., **Zheng, J.**, Ahmad, M., & Khan, Z. A. (2025).
   *Agglomeration Economies and Inequalities in China: Theory and Evidence*.  
   *Journal of Chinese Economic and Business Studies*.
 
-- **Khan, J., & Li, Y.** (2024).  
+- Khan, J., & Li, Y. (2024).  
   *Linkages and Structural Changes in the Chinese Financial Sector (1996–2018): A Network and Input–Output Approach*.  
   *Structural Change and Economic Dynamics*.  
-  *(Acknowledged contributor. _Initially listed me as a co-author but later removed my name during the second review due to the journal’s undergraduate authorship policy_)*
+  *(**Acknowledged contributor.** _Initially listed me as a co-author but later removed my name during the second review due to the journal’s undergraduate authorship policy_)*
 
 > This study highlights the financial sector's pivotal role in post-crisis transformation and downstream industrial linkages.
 
 ### 📚 Book Contributions
 
 - **Crespo, R., & Rodríguez-Pose, A.** (2024).  
-  *Innovation and Regional Growth in Europe* (**Chapter 3 translated**).  
+  *Innovation and Regional Growth in Europe(Chinese Edition)* (**Chapter 3 translated**).  
   Beijing: Economic Management Press.  
   > This book examines social filter theory, cross-sector collaboration, and European-Chinese contrasts in innovation and regional policy.
 
 ### 🏗️ In Progress
 
-- **Li, Y., & Khan, J.**  
+- Li, Y., & Khan, J. 
   *Wind from the East: How the Belt and Road Initiative Connects Continents*.  
   Peter Lang. *(Acknowledged contributor)*
 
@@ -114,15 +114,15 @@ Previously, I studied **Chemical Engineering** at [Dalian University of Technolo
 
 ## 🏆 Awards & Honors
 
-**Exchange rate applied: 1 USD = 7.20 RMB**  
+**Exchange rate applied: 1 USD = 7.20 CNY**  
 
-- **IIOA Travel Grant** (RMB 21,600 ≈ USD 3,000.00), 2025 *(Award initially confirmed via COMPASS, later withdrawn due to budget limits)*  
-- **National Encouragement Scholarship** (RMB 5,000 ≈ USD 694.44), 2023  
-- **Tertiary Scholarship of Distinction** (RMB 1,000 ≈ USD 138.89), 2023  
-- **PwC Open Day Participant**, via Golden Education Elite Challenge (RMB 450 ≈ USD 62.50), 2023  
-- **Secondary Scholarship** (RMB 500 ≈ USD 69.44), 2020  
-- **Scholarship for Excellence in Character & Civic Spirit** (RMB 400 ≈ USD 55.56), 2020  
-- **National Scholarship** (RMB 8,000 ≈ USD 1,111.11), 2020  
+- **IIOA Travel Grant** (CNY 21,600 ≈ USD 3,000.00), 2025 *(Award initially confirmed via COMPASS, later withdrawn due to budget limits)*  
+- **National Encouragement Scholarship** (CNY 5,000 ≈ USD 694.44), 2023  
+- **Tertiary Scholarship of Distinction** (CNY 1,000 ≈ USD 138.89), 2023  
+- **PwC Open Day Participant**, via Golden Education Elite Challenge (CNY 450 ≈ USD 62.50), 2023  
+- **Secondary Scholarship** (CNY 500 ≈ USD 69.44), 2020  
+- **Scholarship for Excellence in Character & Civic Spirit** (CNY 400 ≈ USD 55.56), 2020  
+- **National Scholarship** (CNY 8,000 ≈ USD 1,111.11), 2020  
 
 ---
 
