@@ -642,6 +642,30 @@
 		    .hero-title { font-size: 2.5rem; }
 		    .floating-action { bottom: 1rem; right: 1rem; }
 		}
+		
+		    footer {
+		        width: 100% !important;
+		        display: block !important;
+		    }
+		    
+		    footer > div {
+		        max-width: 800px !important;
+		        margin-left: auto !important;
+		        margin-right: auto !important;
+		        text-align: center !important;
+		    }
+		    
+		    /* 确保flex容器正确工作 */
+		    .flex {
+		        display: flex !important;
+		        justify-content: center !important;
+		    }
+		    
+		    /* 移除可能的默认边距 */
+		    body, html {
+		        margin: 0 !important;
+		        padding: 0 !important;
+		    }
 	</style>
 </head>
 <body>
@@ -1432,30 +1456,27 @@
 				<button class="viewer-next" onclick="nextImage()"><i class="fa fa-chevron-right"></i></button>
 			</div>
 			<section>
-			<footer class="py-16 bg-gradient-to-br from-gray-100 to-gray-200">
-				<!-- mx-auto 确保整个容器水平居中 -->
-				<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-					<!-- text-center 确保文本内容居中 -->
-					<h3 class="text-2xl font-semibold text-primary mb-4">Jiacheng Zheng</h3>
-					<p class="text-lg text-secondary mb-6">Interdisciplinary Student | Data Science Researcher</p>
-					<!-- justify-center 确保图标在 flex 容器中居中 -->
-					<div class="flex justify-center space-x-8 mb-8">
-						<a href="mailto:karcenzheng@yeah.net" class="text-secondary hover:text-primary transition-smooth">
-							<i class="fa fa-envelope text-2xl"></i>
-						</a>
-						<a href="https://www.zhihu.com/people/karcenzheng" target="_blank" class="text-secondary hover:text-primary transition-smooth">
-							<i class="fa fa-globe text-2xl"></i>
-						</a>
+				<footer class="py-16 bg-gradient-to-br from-gray-100 to-gray-200">
+					<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+						<h3 class="text-2xl font-semibold text-primary mb-4">Jiacheng Zheng</h3>
+						<p class="text-lg text-secondary mb-6">Interdisciplinary Student | Data Science Researcher</p>
+						<div class="flex justify-center space-x-8 mb-8">
+							<a href="mailto:karcenzheng@yeah.net" class="text-secondary hover:text-primary transition-smooth">
+								<i class="fa fa-envelope text-2xl"></i>
+							</a>
+							<a href="https://www.zhihu.com/people/karcenzheng" target="_blank" class="text-secondary hover:text-primary transition-smooth">
+								<i class="fa fa-globe text-2xl"></i>
+							</a>
+						</div>
+						<div class="text-sm text-accent space-y-2">
+							<p>Veritatem sequi! | I Say Hello World in 2001.</p>
+							<p>References available upon request.</p>
+						</div>
+						<div class="mt-8 pt-8 border-t border-gray-300 text-xs text-accent">
+							<p>© 2025 Jiacheng Zheng. All rights reserved.</p>
+						</div>
 					</div>
-					<div class="text-sm text-accent space-y-2">
-						<p>Veritatem sequi! | I Say Hello World in 2001.</p>
-						<p>References available upon request.</p>
-					</div>
-					<div class="mt-8 pt-8 border-t border-gray-300 text-xs text-accent">
-						<p>© 2025 Jiacheng Zheng. All rights reserved.</p>
-					</div>
-				</div>
-			</footer>
+				</footer>
 			</section>
 			<script>
 				// 画廊滑动功能
