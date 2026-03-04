@@ -8,6 +8,37 @@
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 	<link rel="shortcut icon" href="logo.ico" type="image/x-icon">
 	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+	<script src="https://cdn.tailwindcss.com"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+	<style>
+		.card-hover:hover {
+		    transform: translateY(-5px);
+		    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+		    transition: all 0.3s ease;
+		}
+		.animate-slide-up {
+		    animation: slideUp 0.8s ease forwards;
+		    opacity: 0;
+		    transform: translateY(20px);
+		}
+		@keyframes slideUp {
+		    to {
+		        opacity: 1;
+		        transform: translateY(0);
+		    }
+		}
+		/* 兜底：如果Tailwind失效，手动写双列布局 */
+		.custom-grid {
+		    display: grid;
+		    grid-template-columns: 1fr;
+		    gap: 1.5rem;
+		}
+		@media (min-width: 768px) {
+		    .custom-grid {
+		        grid-template-columns: repeat(2, 1fr);
+		    }
+		}
+	</style>
 	<style>
 		.gallery-slider-container {
 		  position: relative;
@@ -921,7 +952,8 @@
 			<section id="Summer_Camps" class="section" aria-labelledby="Summer_Camps-title">
 				<div class="animate-slide-up" style="animation-delay: 0.2s;">
 					<h2 id="Summer_Camps-title" class="section-title text-2xl font-bold text-gray-800 mb-8"> Summer Camps & Pre-admission Experiences </h2>
-					<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+					<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+						<!-- 天津大学 -->
 						<article class="bg-white rounded-xl p-5 shadow-lg card-hover transition-all duration-300">
 							<div class="flex items-start">
 								<div class="w-12 h-12 bg-gradient-to-r from-green-500 to-teal-400 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
@@ -935,6 +967,7 @@
 								</div>
 							</div>
 						</article>
+						<!-- 山东大学 -->
 						<article class="bg-white rounded-xl p-5 shadow-lg card-hover transition-all duration-300">
 							<div class="flex items-start">
 								<div class="w-12 h-12 bg-gradient-to-r from-amber-500 to-orange-400 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
@@ -948,6 +981,7 @@
 								</div>
 							</div>
 						</article>
+						<!-- 中南大学 -->
 						<article class="bg-white rounded-xl p-5 shadow-lg card-hover transition-all duration-300">
 							<div class="flex items-start">
 								<div class="w-12 h-12 bg-gradient-to-r from-amber-500 to-orange-400 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
@@ -961,6 +995,7 @@
 								</div>
 							</div>
 						</article>
+						<!-- 上海财经大学 -->
 						<article class="bg-white rounded-xl p-5 shadow-lg card-hover transition-all duration-300">
 							<div class="flex items-start">
 								<div class="w-12 h-12 bg-gradient-to-r from-amber-500 to-orange-400 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
@@ -973,6 +1008,7 @@
 								</div>
 							</div>
 						</article>
+						<!-- 中国人民大学 -->
 						<article class="bg-white rounded-xl p-5 shadow-lg card-hover transition-all duration-300">
 							<div class="flex items-start">
 								<div class="w-12 h-12 bg-gradient-to-r from-amber-500 to-orange-400 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
@@ -985,6 +1021,7 @@
 								</div>
 							</div>
 						</article>
+						<!-- 厦门大学 -->
 						<article class="bg-white rounded-xl p-5 shadow-lg card-hover transition-all duration-300">
 							<div class="flex items-start">
 								<div class="w-12 h-12 bg-gradient-to-r from-amber-500 to-orange-400 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
@@ -999,6 +1036,7 @@
 								</div>
 							</div>
 						</article>
+						<!-- 香港中文大学（深圳） -->
 						<article class="bg-white rounded-xl p-5 shadow-lg card-hover transition-all duration-300">
 							<div class="flex items-start">
 								<div class="w-12 h-12 bg-gradient-to-r from-red-500 to-rose-400 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
@@ -1013,6 +1051,7 @@
 								</div>
 							</div>
 						</article>
+						<!-- 北京大学新结构经济学研究院 -->
 						<article class="bg-white rounded-xl p-5 shadow-lg card-hover transition-all duration-300">
 							<div class="flex items-start">
 								<div class="w-12 h-12 bg-gradient-to-r from-red-500 to-rose-400 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
@@ -1029,103 +1068,119 @@
 						</article>
 					</div>
 				</div>
-				<!-- ===== 海外/境外 PhD Offers ===== -->
-				<article class="bg-white rounded-xl p-5 shadow-lg card-hover transition-all duration-300">
-					<div class="flex items-start">
-						<div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-indigo-400 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
-							<i class="fas fa-star text-white text-xl"></i>
-						</div>
-						<div>
-							<h3 class="card-title font-semibold text-gray-800 text-lg mb-2">HKUST — School of Business and Management</h3>
-							<div class="card-meta text-gray-600 mb-3"> PhD in Economics (Climate Change Economics) | <strong style="color: #2563eb;">Full Scholarship Offer</strong>
+				<!-- ===== 海外/境外 PhD Offers (双列布局) ===== -->
+				<div class="mt-8">
+					<h3 class="text-xl font-bold text-gray-800 mb-6 flex items-center">
+						<i class="fas fa-globe-americas text-blue-500 mr-2"></i> Overseas/Offshore PhD Offers
+					</h3>
+					<!-- 改为和国内部分一致的双列网格布局 -->
+					<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+						<!-- 香港科技大学 -->
+						<article class="bg-white rounded-xl p-5 shadow-lg card-hover transition-all duration-300">
+							<div class="flex items-start">
+								<div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-indigo-400 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+									<i class="fas fa-star text-white text-xl"></i>
+								</div>
+								<div>
+									<h3 class="card-title font-semibold text-gray-800 text-lg mb-2">HKUST — School of Business and Management</h3>
+									<div class="card-meta text-gray-600 mb-3"> PhD in Economics (Climate Change Economics) | <strong style="color: #2563eb;">Full Scholarship Opportunity</strong>
+									</div>
+								</div>
 							</div>
-						</div>
-					</div>
-				</article>
-				<article class="bg-white rounded-xl p-5 shadow-lg card-hover transition-all duration-300">
-					<div class="flex items-start">
-						<div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-indigo-400 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
-							<i class="fas fa-star text-white text-xl"></i>
-						</div>
-						<div>
-							<h3 class="card-title font-semibold text-gray-800 text-lg mb-2">Ohio State University (OSU)</h3>
-							<div class="card-meta text-gray-600 mb-3"> PhD in Economics | Verbal Offer from Emeritus Professor (Top 10% Global Economist) | <strong style="color: #2563eb;">Full Scholarship Offer</strong>
+						</article>
+						<!-- 俄亥俄州立大学 -->
+						<article class="bg-white rounded-xl p-5 shadow-lg card-hover transition-all duration-300">
+							<div class="flex items-start">
+								<div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-indigo-400 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+									<i class="fas fa-star text-white text-xl"></i>
+								</div>
+								<div>
+									<h3 class="card-title font-semibold text-gray-800 text-lg mb-2">Ohio State University (OSU)</h3>
+									<div class="card-meta text-gray-600 mb-3"> PhD in Economics | Verbal Offer from Emeritus Professor (Top 10% Global Economist) | <strong style="color: #2563eb;">Full Scholarship Opportunity</strong>
+									</div>
+								</div>
 							</div>
-						</div>
-					</div>
-				</article>
-				<article class="bg-white rounded-xl p-5 shadow-lg card-hover transition-all duration-300">
-					<div class="flex items-start">
-						<div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-indigo-400 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
-							<i class="fas fa-star text-white text-xl"></i>
-						</div>
-						<div>
-							<h3 class="card-title font-semibold text-gray-800 text-lg mb-2">Singapore Management University (SMU)</h3>
-							<div class="card-meta text-gray-600 mb-3"> PhD in Economics | Passed Professor Interview | <strong style="color: #2563eb;">Singapore Government Scholarship</strong>
+						</article>
+						<!-- 新加坡管理大学 -->
+						<article class="bg-white rounded-xl p-5 shadow-lg card-hover transition-all duration-300">
+							<div class="flex items-start">
+								<div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-indigo-400 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+									<i class="fas fa-star text-white text-xl"></i>
+								</div>
+								<div>
+									<h3 class="card-title font-semibold text-gray-800 text-lg mb-2">Singapore Management University (SMU)</h3>
+									<div class="card-meta text-gray-600 mb-3"> PhD in Economics | Passed Professor Interview | <strong style="color: #2563eb;">Singapore Government Scholarship</strong>
+									</div>
+								</div>
 							</div>
-						</div>
-					</div>
-				</article>
-				<article class="bg-white rounded-xl p-5 shadow-lg card-hover transition-all duration-300">
-					<div class="flex items-start">
-						<div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-indigo-400 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
-							<i class="fas fa-star text-white text-xl"></i>
-						</div>
-						<div>
-							<h3 class="card-title font-semibold text-gray-800 text-lg mb-2">The Hong Kong Polytechnic University (PolyU)</h3>
-							<div class="card-meta text-gray-600 mb-3"> PhD in Economics | Arranged by Department Head | <strong style="color: #2563eb;">Full Scholarship Offer</strong>
+						</article>
+						<!-- 香港理工大学 -->
+						<article class="bg-white rounded-xl p-5 shadow-lg card-hover transition-all duration-300">
+							<div class="flex items-start">
+								<div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-indigo-400 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+									<i class="fas fa-star text-white text-xl"></i>
+								</div>
+								<div>
+									<h3 class="card-title font-semibold text-gray-800 text-lg mb-2">The Hong Kong Polytechnic University (PolyU)</h3>
+									<div class="card-meta text-gray-600 mb-3"> PhD in Economics | Arranged by Department Head | <strong style="color: #2563eb;">Full Scholarship Opportunity</strong>
+									</div>
+								</div>
 							</div>
-						</div>
-					</div>
-				</article>
-				<article class="bg-white rounded-xl p-5 shadow-lg card-hover transition-all duration-300">
-					<div class="flex items-start">
-						<div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-indigo-400 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
-							<i class="fas fa-star text-white text-xl"></i>
-						</div>
-						<div>
-							<h3 class="card-title font-semibold text-gray-800 text-lg mb-2">City University of Hong Kong (CityU)</h3>
-							<div class="card-meta text-gray-600 mb-3"> PhD in Economics | <strong style="color: #2563eb;">Full Scholarship Offer</strong>
+						</article>
+						<!-- 香港城市大学 -->
+						<article class="bg-white rounded-xl p-5 shadow-lg card-hover transition-all duration-300">
+							<div class="flex items-start">
+								<div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-indigo-400 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+									<i class="fas fa-star text-white text-xl"></i>
+								</div>
+								<div>
+									<h3 class="card-title font-semibold text-gray-800 text-lg mb-2">City University of Hong Kong (CityU)</h3>
+									<div class="card-meta text-gray-600 mb-3"> PhD in Economics | <strong style="color: #2563eb;">Full Scholarship Opportunity</strong>
+									</div>
+								</div>
 							</div>
-						</div>
-					</div>
-				</article>
-				<article class="bg-white rounded-xl p-5 shadow-lg card-hover transition-all duration-300">
-					<div class="flex items-start">
-						<div class="w-12 h-12 bg-gradient-to-r from-violet-500 to-purple-400 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
-							<i class="fas fa-door-open text-white text-xl"></i>
-						</div>
-						<div>
-							<h3 class="card-title font-semibold text-gray-800 text-lg mb-2">University College London (UCL) — Bartlett School of Sustainable Construction</h3>
-							<div class="card-meta text-gray-600 mb-3"> PhD in Climate Change Economics | <strong style="color: #7c3aed;">Unfunded Opportunity</strong>
+						</article>
+						<!-- 伦敦大学学院 -->
+						<article class="bg-white rounded-xl p-5 shadow-lg card-hover transition-all duration-300">
+							<div class="flex items-start">
+								<div class="w-12 h-12 bg-gradient-to-r from-violet-500 to-purple-400 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+									<i class="fas fa-door-open text-white text-xl"></i>
+								</div>
+								<div>
+									<h3 class="card-title font-semibold text-gray-800 text-lg mb-2">University College London (UCL) — Bartlett School of Sustainable Construction</h3>
+									<div class="card-meta text-gray-600 mb-3"> PhD in Climate Change Economics | <strong style="color: #7c3aed;">Unfunded Opportunity</strong>
+									</div>
+								</div>
 							</div>
-						</div>
-					</div>
-				</article>
-				<article class="bg-white rounded-xl p-5 shadow-lg card-hover transition-all duration-300">
-					<div class="flex items-start">
-						<div class="w-12 h-12 bg-gradient-to-r from-violet-500 to-purple-400 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
-							<i class="fas fa-door-open text-white text-xl"></i>
-						</div>
-						<div>
-							<h3 class="card-title font-semibold text-gray-800 text-lg mb-2">University of Oxford</h3>
-							<div class="card-meta text-gray-600 mb-3"> PhD in Economics | <strong style="color: #7c3aed;">Professor Interview Opportunity</strong>
+						</article>
+						<!-- 牛津大学 -->
+						<article class="bg-white rounded-xl p-5 shadow-lg card-hover transition-all duration-300">
+							<div class="flex items-start">
+								<div class="w-12 h-12 bg-gradient-to-r from-violet-500 to-purple-400 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+									<i class="fas fa-door-open text-white text-xl"></i>
+								</div>
+								<div>
+									<h3 class="card-title font-semibold text-gray-800 text-lg mb-2">University of Oxford</h3>
+									<div class="card-meta text-gray-600 mb-3"> PhD in Economics | <strong style="color: #7c3aed;">Professor Interview Opportunity</strong>
+									</div>
+								</div>
 							</div>
-						</div>
-					</div>
-				</article>
-				<article class="bg-white rounded-xl p-5 shadow-lg card-hover transition-all duration-300">
-					<div class="flex items-start">
-						<div class="w-12 h-12 bg-gradient-to-r from-violet-500 to-purple-400 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
-							<i class="fas fa-door-open text-white text-xl"></i>
-						</div>
-						<div>
-							<h3 class="card-title font-semibold text-gray-800 text-lg mb-2">The Chinese University of Hong Kong (CUHK)</h3>
-							<div class="card-meta text-gray-600 mb-3"> MPhil in Artificial Intelligence | <strong style="color: #7c3aed;">Opportunity</strong>
+						</article>
+						<!-- 香港中文大学 -->
+						<article class="bg-white rounded-xl p-5 shadow-lg card-hover transition-all duration-300">
+							<div class="flex items-start">
+								<div class="w-12 h-12 bg-gradient-to-r from-violet-500 to-purple-400 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+									<i class="fas fa-door-open text-white text-xl"></i>
+								</div>
+								<div>
+									<h3 class="card-title font-semibold text-gray-800 text-lg mb-2">The Chinese University of Hong Kong,Shenzhen (CUHK-Shenzhen)</h3>
+									<div class="card-meta text-gray-600 mb-3"> MPhil in Artificial Intelligence | <strong style="color: #7c3aed;">Opportunity</strong>
+									</div>
+								</div>
 							</div>
-						</div>
+						</article>
 					</div>
-				</article>
+				</div>
 			</section>
 			<section id="publications" class="section" aria-labelledby="publications-title">
 				<h2 id="publications-title" class="section-title">Publications & Papers</h2>
