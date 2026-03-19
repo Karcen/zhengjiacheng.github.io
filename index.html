@@ -11,692 +11,12 @@
 	<!-- <script src="https://cdn.tailwindcss.com"></script> -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 	<style>
-		.card-hover:hover {
-		    transform: translateY(-5px);
-		    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
-		    transition: all 0.3s ease;
-		}
-		.animate-slide-up {
-		    animation: slideUp 0.8s ease forwards;
-		    opacity: 0;
-		    transform: translateY(20px);
-		}
-		@keyframes slideUp {
-		    to {
-		        opacity: 1;
-		        transform: translateY(0);
-		    }
-		}
-		/* 兜底：如果Tailwind失效，手动写双列布局 */
-		.custom-grid {
-		    display: grid;
-		    grid-template-columns: 1fr;
-		    gap: 1.5rem;
-		}
-		@media (min-width: 768px) {
-		    .custom-grid {
-		        grid-template-columns: repeat(2, 1fr);
-		    }
-		}
+		.card-hover:hover { transform: translateY(-5px); box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1); transition: all 0.3s ease; } .animate-slide-up { animation: slideUp 0.8s ease forwards; opacity: 0; transform: translateY(20px); } @keyframes slideUp { to { opacity: 1; transform: translateY(0); } } /* 兜底：如果Tailwind失效，手动写双列布局 */ .custom-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; } @media (min-width: 768px) { .custom-grid { grid-template-columns: repeat(2, 1fr); } }
 	</style>
 	<style>
-		.gallery-slider-container {
-		  position: relative;
-		  margin-top: 2rem;
-		  max-width: 100%;
-		  overflow: hidden;
-		}
-		
-		.gallery-slider {
-		  display: flex;
-		  transition: transform 0.5s ease;
-		}
-		
-		.slide {
-		  min-width: 100%;
-		  display: flex;
-		  justify-content: center;
-		}
-		
-		.gallery-image {
-		  max-width: 90%;
-		  max-height: 400px;
-		  object-fit: contain;
-		  border-radius: 8px;
-		  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-		  cursor: pointer;
-		  transition: transform 0.2s ease;
-		}
-		
-		.gallery-image:hover {
-		  transform: scale(1.02);
-		}
-		
-		.gallery-prev, .gallery-next {
-		  position: absolute;
-		  top: 50%;
-		  transform: translateY(-50%);
-		  background-color: rgba(0, 0, 0, 0.5);
-		  color: white;
-		  border: none;
-		  width: 40px;
-		  height: 40px;
-		  border-radius: 50%;
-		  display: flex;
-		  align-items: center;
-		  justify-content: center;
-		  cursor: pointer;
-		  z-index: 10;
-		  transition: background-color 0.2s ease;
-		}
-		
-		.gallery-prev {
-		  left: 1rem;
-		}
-		
-		.gallery-next {
-		  right: 1rem;
-		}
-		
-		.gallery-prev:hover, .gallery-next:hover {
-		  background-color: rgba(0, 0, 0, 0.8);
-		}
-		
-		
-		.gallery-dots {
-		  display: flex;
-		  justify-content: center;
-		  margin-top: 1rem;
-		  gap: 0.5rem;
-		}
-		
-		.dot {
-		  width: 10px;
-		  height: 10px;
-		  border-radius: 50%;
-		  background-color: #ddd;
-		  cursor: pointer;
-		  transition: background-color 0.2s ease;
-		}
-		
-		.dot.active {
-		  background-color: #3b82f6;
-		}
-		
-		.modal {
-		  display: none;
-		  position: fixed;
-		  z-index: 100;
-		  left: 0;
-		  top: 0;
-		  width: 100%;
-		  height: 100%;
-		  overflow: auto;
-		  background-color: rgba(0, 0, 0, 0.9);
-		}
-		
-		.modal-content {
-		  margin: auto;
-		  display: block;
-		  max-width: 90%;
-		  max-height: 90vh;
-		  margin-top: 5vh;
-		  object-fit: contain;
-		  animation-name: zoom;
-		  animation-duration: 0.3s;
-		}
-		
-		.modal-caption {
-		  margin: auto;
-		  display: block;
-		  width: 80%;
-		  text-align: center;
-		  color: #f1f1f1;
-		  padding: 10px 0;
-		  height: 50px;
-		}
-		
-		.close-btn {
-		  position: absolute;
-		  top: 15px;
-		  right: 35px;
-		  color: #f1f1f1;
-		  font-size: 40px;
-		  font-weight: bold;
-		  transition: 0.3s;
-		}
-		
-		.close-btn:hover, .close-btn:focus {
-		  color: #bbb;
-		  text-decoration: none;
-		  cursor: pointer;
-		}
-		
-		
-		.viewer-prev, .viewer-next {
-		  position: absolute;
-		  top: 50%;
-		  transform: translateY(-50%);
-		  background-color: rgba(0, 0, 0, 0.5);
-		  color: white;
-		  border: none;
-		  width: 50px;
-		  height: 50px;
-		  border-radius: 50%;
-		  display: flex;
-		  align-items: center;
-		  justify-content: center;
-		  cursor: pointer;
-		  z-index: 100;
-		  transition: background-color 0.2s ease;
-		  font-size: 20px;
-		}
-		
-		.viewer-prev {
-		  left: 2rem;
-		}
-		
-		.viewer-next {
-		  right: 2rem;
-		}
-		
-		.viewer-prev:hover, .viewer-next:hover {
-		  background-color: rgba(0, 0, 0, 0.8);
-		}
-		
-		
-		@keyframes zoom {
-		  from {transform:scale(0.9)}
-		  to {transform:scale(1)}
-		}
-		
-		
-		.dark-mode .gallery-image {
-		  box-shadow: 0 4px 6px -1px rgba(255, 255, 255, 0.05);
-		}
-		
-		.dark-mode .dot {
-		  background-color: #4a5568;
-		}
-		
-		.dark-mode .dot.active {
-		  background-color: #3b82f6;
-		}
-		
-		.modal {
-		    display: none;
-		    position: fixed;
-		    z-index: 1000;
-		    left: 0;
-		    top: 0;
-		    width: 100%;
-		    height: 100%;
-		    overflow: auto;
-		    background-color: rgba(0,0,0,0.9);
-		    animation: fadeIn 0.3s;
-		}
-		@keyframes fadeIn {
-		    from {opacity: 0}
-		    to {opacity: 1}
-		}
-		.close-modal {
-		    position: absolute;
-		    top: 20px;
-		    right: 30px;
-		    color: #f1f1f1;
-		    font-size: 40px;
-		    font-weight: bold;
-		    transition: 0.3s;
-		    z-index: 1001;
-		}
-		.close-modal:hover, .close-modal:focus {
-		    color: #bbb;
-		    text-decoration: none;
-		    cursor: pointer;
-		}
-		.modal-image {
-		    margin: auto;
-		    display: block;
-		    max-width: 80%;
-		    max-height: 80%;
-		    border-radius: 8px;
-		    animation: zoomIn 0.3s;
-		}
-		@keyframes zoomIn {
-		    from {transform: scale(0.5)}
-		    to {transform: scale(1)}
-		}
-		.modal-caption {
-		    margin: auto;
-		    display: block;
-		    width: 80%;
-		    text-align: center;
-		    color: #ccc;
-		    padding: 10px 0;
-		    font-size: 1.2rem;
-		}
-		
-		.dark-mode .gallery-item {
-		    background: #1f2937;
-		    border-color: #374151;
-		}
-		.dark-mode .gallery-overlay {
-		    background: linear-gradient(to bottom, transparent, rgba(31, 41, 55, 0.9));
-		}
-		.dark-mode .gallery-title {
-		    color: #d1d5db;
-		}
-		.dark-mode .gallery-category {
-		    color: #9ca3af;
-		}
-		.profile-image img {
-		    width: 100px;
-		    height: 100px;
-		    border-radius: 50%; 
-		    object-fit: cover; 
-		}
-		
-		
-		:root {
-		    --primary-color: #2563eb;
-		    --text-dark: #1f2937;
-		    --text-light: #6b7280;
-		    --bg-light: #f8fafc;
-		    --border-light: #e5e7eb;
-		    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-		    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-		}
-		
-		* {
-		    margin: 0;
-		    padding: 0;
-		    box-sizing: border-box;
-		}
-		
-		html {
-		    scroll-behavior: smooth;
-		}
-		
-		body {
-		    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-		    line-height: 1.6;
-		    color: var(--text-dark);
-		    background: white;
-		}
-		
-		.container {
-		    max-width: 1400px;
-		    margin: 0 auto;
-		    display: grid;
-		    grid-template-columns: 350px 1fr;
-		    min-height: 100vh;
-		}
-		
-		.dark-mode {
-			--primary-color: #3b82f6;            
-			--text-dark: #d1d5db;               
-			--text-light: #9ca3af;               
-			--bg-light: #1f2937;                 
-			--border-light: #374151;            
-			--shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
-			--shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.7);
-			background-color: var(--bg-light);
-			color: var(--text-dark);
-		}
-		
-		.dark-mode body {
-			background-color: var(--bg-light);
-			color: var(--text-dark);
-		}
-		
-		.dark-mode .sidebar {
-			background-color: var(--bg-light);
-			border-right: 1px solid var(--border-light);
-		}
-		
-		.dark-mode .card,
-		.dark-mode .skill-category,
-		.dark-mode .award-item {
-			background-color: #111827;
-			border: 1px solid var(--border-light);
-			box-shadow: var(--shadow-lg);
-			color: var(--text-dark);
-		}
-		
-		.dark-mode .nav-link:hover,
-		.dark-mode .nav-link.active {
-			background-color: var(--primary-color);
-			color: white;
-		}
-		
-		.dark-mode .contact-item:hover {
-			background-color: #374151;
-		}
-		
-		
-		.dark-mode .hero-section {
-			background: linear-gradient(135deg, #111827 0%, #1f2937 100%);
-		}
-		
-		.dark-mode .filter-tab {
-			background: #374151;
-			color: var(--text-light);
-		}
-		
-		.dark-mode .filter-tab.active,
-		.dark-mode .filter-tab:hover {
-			background: var(--primary-color);
-			color: white;
-		}
-		
-		
-		::-webkit-scrollbar {
-		    width: 8px;
-		    height: 8px;
-		}
-		
-		::-webkit-scrollbar-track {
-		    background: transparent; 
-		}
-		
-		::-webkit-scrollbar-thumb {
-		    background-color: #3b82f6;
-		    border-radius: 4px;
-		    border: 2px solid transparent; 
-		    background-clip: content-box;
-		}
-		
-		::-webkit-scrollbar-thumb:hover {
-		    background-color: #2563eb; 
-		}
-		
-		
-		
-		.mb-1 { margin-bottom: 1rem; }
-		.mt-1 { margin-top: 1rem; }
-		.mt-half { margin-top: 0.5rem; }
-		
-		
-		.sidebar {
-		    position: sticky; 
-		    top: 0;           
-		    width: 350px;
-		    height: 100vh;
-		    background: white;
-		    border-right: 1px solid var(--border-light);
-		    padding: 2rem;
-		    overflow-y: auto;
-		    z-index: 1000;
-		}
-		
-		
-		.profile-section {
-		    text-align: center;
-		    margin-bottom: 2rem;
-		}
-		
-		.profile-image {
-		    width: 120px;
-		    height: 120px;
-		    border-radius: 50%;
-		    margin: 0 auto 1rem;
-		    background: linear-gradient(135deg, var(--primary-color), #3b82f6);
-		    display: flex;
-		    align-items: center;
-		    justify-content: center;
-		    font-size: 2.5rem;
-		    color: white;
-		    font-weight: bold;
-		    box-shadow: var(--shadow-lg);
-		    transition: transform 0.3s ease;
-		}
-		.profile-image:hover { transform: scale(1.05); }
-		.profile-name { font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--text-dark); }
-		.profile-title { color: var(--text-light); font-size: 0.95rem; margin-bottom: 1rem; }
-		
-		.contact-info { margin-bottom: 2rem; }
-		.contact-item { display: flex; align-items: center; margin-bottom: 0.75rem; padding: 0.5rem; border-radius: 8px; transition: background-color 0.2s ease; }
-		.contact-item:hover { background-color: var(--bg-light); }
-		.contact-item i { width: 20px; color: var(--primary-color); margin-right: 0.75rem; text-align: center; }
-		.contact-item a { color: var(--text-dark); text-decoration: none; font-size: 0.9rem; }
-		
-		.nav-menu { list-style: none; }
-		.nav-item { margin-bottom: 0.5rem; }
-		.nav-link { display: flex; align-items: center; padding: 0.75rem 1rem; color: var(--text-dark); text-decoration: none; border-radius: 8px; transition: all 0.2s ease; font-weight: 500; }
-		.nav-link:hover, .nav-link.active { background-color: var(--primary-color); color: white; transform: translateX(4px); }
-		.nav-link i { margin-right: 0.75rem; width: 20px; text-align: center; }
-		
-		
-		.main-content {
-		    padding: 2rem;
-		}
-		
-		.section {
-		    margin-bottom: 3rem;
-		    opacity: 0;
-		    transform: translateY(20px);
-		    animation: fadeInUp 0.6s ease forwards;
-		}
-		.section:nth-child(2) { animation-delay: 0.1s; }
-		.section:nth-child(3) { animation-delay: 0.2s; }
-		.section:nth-child(4) { animation-delay: 0.3s; }
-		@keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
-		
-		.section-title {
-		    font-size: 2rem;
-		    font-weight: 700;
-		    margin-bottom: 1.5rem;
-		    color: var(--text-dark);
-		    position: relative;
-		    padding-bottom: 0.5rem;
-		}
-		.section-title::after {
-		    content: ''; position: absolute; bottom: 0; left: 0; width: 60px; height: 3px;
-		    background: linear-gradient(90deg, var(--primary-color), #3b82f6); border-radius: 2px;
-		}
-		
-		
-		.hero-section {
-		    background: linear-gradient(135deg, #f8fafc 0%, #e5e7eb 100%);
-		    padding: 3rem; border-radius: 16px; margin-bottom: 3rem; text-align: center;
-		}
-		.hero-title {
-		    font-size: 3rem; font-weight: 800; margin-bottom: 1rem;
-		    background: linear-gradient(135deg, var(--primary-color), #3b82f6);
-		    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-		}
-		.hero-subtitle { font-size: 1.25rem; color: var(--text-light); margin-bottom: 2rem; }
-		.hero-description { font-size: 1.1rem; line-height: 1.8; color: var(--text-dark); max-width: 800px; margin: 0 auto; }
-		
-		
-		.card {
-		    background: white; border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem;
-		    border: 1px solid var(--border-light); transition: all 0.3s ease; box-shadow: var(--shadow);
-		}
-		.card:hover { box-shadow: var(--shadow-lg); transform: translateY(-2px); }
-		.card-title { font-size: 1.25rem; font-weight: 600; margin-bottom: 0.5rem; color: var(--text-dark); }
-		.card-subtitle,a { color: var(--primary-color); font-weight: 500; margin-bottom: 0.5rem; }
-		.card-meta { color: var(--text-light); font-size: 0.9rem; margin-bottom: 1rem; }
-		
-		
-		
-		.tag {
-		    display: inline-block; background-color: var(--bg-light); color: var(--text-dark);
-		    padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;
-		    margin: 0.25rem 0.25rem 0.25rem 0; font-weight: 500;
-		}
-		.tag.primary { background-color: var(--primary-color); color: white; }
-		
-		
-		.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
-		
-		
-		.skill-category { background: white; padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border-light); box-shadow: var(--shadow); }
-		.skill-category h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 1rem; color: var(--text-dark); display: flex; align-items: center; }
-		.skill-category h3 i { margin-right: 0.5rem; color: var(--primary-color); }
-		.progress-bar { background-color: var(--bg-light); height: 8px; border-radius: 4px; margin: 0.5rem 0; overflow: hidden; }
-		.progress-fill { height: 100%; background: linear-gradient(90deg, var(--primary-color), #3b82f6); border-radius: 4px; transition: width 1s ease; }
-		
-		
-		.floating-action {
-		    position: fixed; bottom: 2rem; right: 2rem; width: 60px; height: 60px;
-		    background: var(--primary-color); border-radius: 50%; display: flex; align-items: center; justify-content: center;
-		    color: white; font-size: 1.5rem; cursor: pointer; box-shadow: var(--shadow-lg);
-		    transition: all 0.3s ease; z-index: 1000; border: none;
-		}
-		.floating-action:hover { transform: scale(1.1); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1); }
-		
-		
-		.timeline { position: relative; padding-left: 2rem; }
-		.timeline::before { content: ''; position: absolute; left: 0.75rem; top: 0; bottom: 0; width: 2px; background: var(--border-light); }
-		.timeline-item { position: relative; margin-bottom: 2rem; padding-left: 2rem; }
-		.timeline-item:last-child { margin-bottom: 0; }
-		.timeline-item::before {
-		    content: ''; position: absolute; left: -2.25rem; top: 0.5rem; width: 12px; height: 12px;
-		    border-radius: 50%; background: var(--primary-color); border: 3px solid white; box-shadow: 0 0 0 3px var(--primary-color);
-		}
-		
-		
-		.stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 2rem; }
-		.stat-card { background: white; padding: 1.5rem; border-radius: 12px; text-align: center; border: 1px solid var(--border-light); box-shadow: var(--shadow); transition: transform 0.2s ease; }
-		.stat-card:hover { transform: translateY(-2px); }
-		.stat-number { font-size: 2rem; font-weight: 700; color: var(--primary-color); display: block; }
-		.stat-label { color: var(--text-light); font-size: 0.9rem; margin-top: 0.5rem; }
-		
-		.dark-mode .stat-card {
-			background: #1f2937;          
-			border-color: #374151;        
-			box-shadow: 0 4px 6px rgba(0, 0, 0, 0.6); 
-		}
-		.dark-mode .stat-number {
-			color: #3b82f6;           
-		}
-		.dark-mode .stat-label {
-			color: #9ca3af;               
-		}
-		
-		.filter-tabs {
-		    display: flex;
-		    gap: 0.5rem;
-		    margin-bottom: 2rem;
-		    flex-wrap: wrap;
-		}
-		.filter-tab {
-		    padding: 0.5rem 1rem;
-		    background: var(--bg-light);          
-		    border: none;
-		    border-radius: 20px;
-		    cursor: pointer;
-		    transition: all 0.2s ease;
-		    font-weight: 500;
-		    color: var(--text-dark);
-		}
-		.filter-tab.active,
-		.filter-tab:hover {
-		    background: var(--primary-color);
-		    color: white;
-		}
-		.search-box {
-		    position: relative;
-		    margin-bottom: 2rem;
-		}
-		.search-box input {
-		    width: 100%;
-		    padding: 0.75rem 1rem;
-		    border: 1px solid var(--border-light);
-		    border-radius: 8px;
-		    font-size: 1rem;
-		    transition: border-color 0.2s ease, background-color 0.3s ease, color 0.3s ease;
-		    background-color: white;
-		    color: var(--text-dark);
-		}
-		.search-box input:focus {
-		    outline: none;
-		    border-color: var(--primary-color);
-		}
-		.search-box i {
-		    position: absolute;
-		    right: 1rem;
-		    top: 50%;
-		    transform: translateY(-50%);
-		    color: var(--text-light);
-		}
-		
-		
-		.dark-mode .filter-tab {
-		    background: #374151;                  
-		    color: #d1d5db;                       
-		}
-		.dark-mode .filter-tab.active,
-		.dark-mode .filter-tab:hover {
-		    background: #3b82f6;                 
-		    color: white;
-		}
-		.dark-mode .search-box input {
-		    background-color: #1f2937;             
-		    border-color: #4b5563;                
-		    color: #d1d5db;                        
-		}
-		.dark-mode .search-box input:focus {
-		    border-color: #3b82f6;                 
-		}
-		.dark-mode .search-box i {
-		    color: #9ca3af;                        
-		}
-		
-		
-		
-		.publication-item { margin-bottom: 1rem; }
-		.publication-authors { font-style: italic; color: var(--text-light); margin-bottom: 0.5rem; }
-		.publication-journal { font-weight: 500; color: var(--primary-color); }
-		.publication-description { margin-top: 0.5rem; font-size: 0.9rem; line-height: 1.5; }
-		.pdf-link { display: inline-flex; align-items: center; color: var(--primary-color); text-decoration: none; font-weight: 500; margin-top: 0.5rem; }
-		.pdf-link i { margin-right: 0.25rem; }
-		.pdf-link:hover { text-decoration: underline; }
-		
-		.award-item { display: flex; align-items: center; justify-content: space-between; padding: 1rem; background: white; border: 1px solid var(--border-light); border-radius: 8px; margin-bottom: 1rem; transition: all 0.2s ease; }
-		.award-item:hover { box-shadow: var(--shadow); transform: translateY(-1px); }
-		.award-info h4 { font-weight: 600; margin-bottom: 0.25rem; }
-		.award-info p { color: var(--text-light); font-size: 0.9rem; }
-		.award-amount { font-weight: 700; color: var(--primary-color); font-size: 1.1rem; }
-		
-		.leadership-role { background: var(--bg-light); padding: 1rem; border-radius: 8px; margin-bottom: 1rem; border-left: 4px solid var(--primary-color); }
-		.leadership-role h4 { font-weight: 600; margin-bottom: 0.5rem; }
-		.leadership-role .organization { color: var(--primary-color); font-weight: 500; }
-		.leadership-role .period { color: var(--text-light); font-size: 0.9rem; }
-		
-		
-		@media (max-width: 768px) {
-		    .container { grid-template-columns: 1fr; }
-		    .sidebar { position: relative; width: 100%; height: auto; }
-		    .main-content { margin-left: 0; padding: 1rem; }
-		    .hero-title { font-size: 2.5rem; }
-		    .floating-action { bottom: 1rem; right: 1rem; }
-		}
-		
-		    footer {
-		        width: 100% !important;
-		        display: block !important;
-		    }
-		    
-		    footer > div {
-		        max-width: 800px !important;
-		        margin-left: auto !important;
-		        margin-right: auto !important;
-		        text-align: center !important;
-		    }
-		    
-		    /* 确保flex容器正确工作 */
-		    .flex {
-		        display: flex !important;
-		        justify-content: center !important;
-		    }
-		    
-		    /* 移除可能的默认边距 */
-		    body, html {
-		        margin: 0 !important;
-		        padding: 0 !important;
-		    }
+		.gallery-slider-container { position: relative; margin-top: 2rem; max-width: 100%; overflow: hidden; } .gallery-slider { display: flex; transition: transform 0.5s ease; } .slide { min-width: 100%; display: flex; justify-content: center; } .gallery-image { max-width: 90%; max-height: 400px; object-fit: contain; border-radius: 8px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); cursor: pointer; transition: transform 0.2s ease; } .gallery-image:hover { transform: scale(1.02); } .gallery-prev, .gallery-next { position: absolute; top: 50%; transform: translateY(-50%); background-color: rgba(0, 0, 0, 0.5); color: white; border: none; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 10; transition: background-color 0.2s ease; } .gallery-prev { left: 1rem; } .gallery-next { right: 1rem; } .gallery-prev:hover, .gallery-next:hover { background-color: rgba(0, 0, 0, 0.8); } .gallery-dots { display: flex; justify-content: center; margin-top: 1rem; gap: 0.5rem; } .dot { width: 10px; height: 10px; border-radius: 50%; background-color: #ddd; cursor: pointer; transition: background-color 0.2s ease; } .dot.active { background-color: #3b82f6; } .modal { display: none; position: fixed; z-index: 100; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0, 0, 0, 0.9); } .modal-content { margin: auto; display: block; max-width: 90%; max-height: 90vh; margin-top: 5vh; object-fit: contain; animation-name: zoom; animation-duration: 0.3s; } .modal-caption { margin: auto; display: block; width: 80%; text-align: center; color: #f1f1f1; padding: 10px 0; height: 50px; } .close-btn { position: absolute; top: 15px; right: 35px; color: #f1f1f1; font-size: 40px; font-weight: bold; transition: 0.3s; } .close-btn:hover, .close-btn:focus { color: #bbb; text-decoration: none; cursor: pointer; } .viewer-prev, .viewer-next { position: absolute; top: 50%; transform: translateY(-50%); background-color: rgba(0, 0, 0, 0.5); color: white; border: none; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 100; transition: background-color 0.2s ease; font-size: 20px; } .viewer-prev { left: 2rem; } .viewer-next { right: 2rem; } .viewer-prev:hover, .viewer-next:hover { background-color: rgba(0, 0, 0, 0.8); } @keyframes zoom { from {transform:scale(0.9)} to {transform:scale(1)} } .dark-mode .gallery-image { box-shadow: 0 4px 6px -1px rgba(255, 255, 255, 0.05); } .dark-mode .dot { background-color: #4a5568; } .dark-mode .dot.active { background-color: #3b82f6; } .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.9); animation: fadeIn 0.3s; } @keyframes fadeIn { from {opacity: 0} to {opacity: 1} } .close-modal { position: absolute; top: 20px; right: 30px; color: #f1f1f1; font-size: 40px; font-weight: bold; transition: 0.3s; z-index: 1001; } .close-modal:hover, .close-modal:focus { color: #bbb; text-decoration: none; cursor: pointer; } .modal-image { margin: auto; display: block; max-width: 80%; max-height: 80%; border-radius: 8px; animation: zoomIn 0.3s; } @keyframes zoomIn { from {transform: scale(0.5)} to {transform: scale(1)} } .modal-caption { margin: auto; display: block; width: 80%; text-align: center; color: #ccc; padding: 10px 0; font-size: 1.2rem; } .dark-mode .gallery-item { background: #1f2937; border-color: #374151; } .dark-mode .gallery-overlay { background: linear-gradient(to bottom, transparent, rgba(31, 41, 55, 0.9)); } .dark-mode .gallery-title { color: #d1d5db; } .dark-mode .gallery-category { color: #9ca3af; } .profile-image img { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; } :root { --primary-color: #2563eb; --text-dark: #1f2937; --text-light: #6b7280; --bg-light: #f8fafc; --border-light: #e5e7eb; --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1); } * { margin: 0; padding: 0; box-sizing: border-box; } html { scroll-behavior: smooth; } body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: var(--text-dark); background: white; } .container { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: 350px 1fr; min-height: 100vh; } .dark-mode { --primary-color: #3b82f6; --text-dark: #d1d5db; --text-light: #9ca3af; --bg-light: #1f2937; --border-light: #374151; --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5); --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.7); background-color: var(--bg-light); color: var(--text-dark); } .dark-mode body { background-color: var(--bg-light); color: var(--text-dark); } .dark-mode .sidebar { background-color: var(--bg-light); border-right: 1px solid var(--border-light); } .dark-mode .card, .dark-mode .skill-category, .dark-mode .award-item { background-color: #111827; border: 1px solid var(--border-light); box-shadow: var(--shadow-lg); color: var(--text-dark); } .dark-mode .nav-link:hover, .dark-mode .nav-link.active { background-color: var(--primary-color); color: white; } .dark-mode .contact-item:hover { background-color: #374151; } .dark-mode .hero-section { background: linear-gradient(135deg, #111827 0%, #1f2937 100%); } .dark-mode .filter-tab { background: #374151; color: var(--text-light); } .dark-mode .filter-tab.active, .dark-mode .filter-tab:hover { background: var(--primary-color); color: white; } ::-webkit-scrollbar { width: 8px; height: 8px; } ::-webkit-scrollbar-track { background: transparent; } ::-webkit-scrollbar-thumb { background-color: #3b82f6; border-radius: 4px; border: 2px solid transparent; background-clip: content-box; } ::-webkit-scrollbar-thumb:hover { background-color: #2563eb; } .mb-1 { margin-bottom: 1rem; } .mt-1 { margin-top: 1rem; } .mt-half { margin-top: 0.5rem; } .sidebar { position: sticky; top: 0; width: 350px; height: 100vh; background: white; border-right: 1px solid var(--border-light); padding: 2rem; overflow-y: auto; z-index: 1000; } .profile-section { text-align: center; margin-bottom: 2rem; } .profile-image { width: 120px; height: 120px; border-radius: 50%; margin: 0 auto 1rem; background: linear-gradient(135deg, var(--primary-color), #3b82f6); display: flex; align-items: center; justify-content: center; font-size: 2.5rem; color: white; font-weight: bold; box-shadow: var(--shadow-lg); transition: transform 0.3s ease; } .profile-image:hover { transform: scale(1.05); } .profile-name { font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--text-dark); } .profile-title { color: var(--text-light); font-size: 0.95rem; margin-bottom: 1rem; } .contact-info { margin-bottom: 2rem; } .contact-item { display: flex; align-items: center; margin-bottom: 0.75rem; padding: 0.5rem; border-radius: 8px; transition: background-color 0.2s ease; } .contact-item:hover { background-color: var(--bg-light); } .contact-item i {
+		      width: 20px; color: var(--primary-color); margin-right: 0.75rem; text-align: center; } .contact-item a { color: var(--text-dark); text-decoration: none; font-size: 0.9rem; } .nav-menu { list-style: none; } .nav-item { margin-bottom: 0.5rem; } .nav-link { display: flex; align-items: center; padding: 0.75rem 1rem; color: var(--text-dark); text-decoration: none; border-radius: 8px; transition: all 0.2s ease; font-weight: 500; } .nav-link:hover, .nav-link.active { background-color: var(--primary-color); color: white; transform: translateX(4px); } .nav-link i { margin-right: 0.75rem; width: 20px; text-align: center; } .main-content { padding: 2rem; } .section { margin-bottom: 3rem; opacity: 0; transform: translateY(20px); animation: fadeInUp 0.6s ease forwards; } .section:nth-child(2) { animation-delay: 0.1s; } .section:nth-child(3) { animation-delay: 0.2s; } .section:nth-child(4) { animation-delay: 0.3s; } @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } } .section-title { font-size: 2rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--text-dark); position: relative; padding-bottom: 0.5rem; } .section-title::after { content: ''; position: absolute; bottom: 0; left: 0; width: 60px; height: 3px; background: linear-gradient(90deg, var(--primary-color), #3b82f6); border-radius: 2px; } .hero-section { background: linear-gradient(135deg, #f8fafc 0%, #e5e7eb 100%); padding: 3rem; border-radius: 16px; margin-bottom: 3rem; text-align: center; } .hero-title { font-size: 3rem; font-weight: 800; margin-bottom: 1rem; background: linear-gradient(135deg, var(--primary-color), #3b82f6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; } .hero-subtitle { font-size: 1.25rem; color: var(--text-light); margin-bottom: 2rem; } .hero-description { font-size: 1.1rem; line-height: 1.8; color: var(--text-dark); max-width: 800px; margin: 0 auto; } .card { background: white; border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem; border: 1px solid var(--border-light); transition: all 0.3s ease; box-shadow: var(--shadow); } .card:hover { box-shadow: var(--shadow-lg); transform: translateY(-2px); } .card-title { font-size: 1.25rem; font-weight: 600; margin-bottom: 0.5rem; color: var(--text-dark); } .card-subtitle,a { color: var(--primary-color); font-weight: 500; margin-bottom: 0.5rem; } .card-meta { color: var(--text-light); font-size: 0.9rem; margin-bottom: 1rem; } .tag { display: inline-block; background-color: var(--bg-light); color: var(--text-dark); padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem; margin: 0.25rem 0.25rem 0.25rem 0; font-weight: 500; } .tag.primary { background-color: var(--primary-color); color: white; } .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; } .skill-category { background: white; padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border-light); box-shadow: var(--shadow); } .skill-category h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 1rem; color: var(--text-dark); display: flex; align-items: center; } .skill-category h3 i { margin-right: 0.5rem; color: var(--primary-color); } .progress-bar { background-color: var(--bg-light); height: 8px; border-radius: 4px; margin: 0.5rem 0; overflow: hidden; } .progress-fill { height: 100%; background: linear-gradient(90deg, var(--primary-color), #3b82f6); border-radius: 4px; transition: width 1s ease; } .floating-action { position: fixed; bottom: 2rem; right: 2rem; width: 60px; height: 60px; background: var(--primary-color); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; cursor: pointer; box-shadow: var(--shadow-lg); transition: all 0.3s ease; z-index: 1000; border: none; } .floating-action:hover { transform: scale(1.1); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1); } .timeline { position: relative; padding-left: 2rem; } .timeline::before { content: ''; position: absolute; left: 0.75rem; top: 0; bottom: 0; width: 2px; background: var(--border-light); } .timeline-item { position: relative; margin-bottom: 2rem; padding-left: 2rem; } .timeline-item:last-child { margin-bottom: 0; } .timeline-item::before { content: ''; position: absolute; left: -2.25rem; top: 0.5rem; width: 12px; height: 12px; border-radius: 50%; background: var(--primary-color); border: 3px solid white; box-shadow: 0 0 0 3px var(--primary-color); } .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 2rem; } .stat-card { background: white; padding: 1.5rem; border-radius: 12px; text-align: center; border: 1px solid var(--border-light); box-shadow: var(--shadow); transition: transform 0.2s ease; } .stat-card:hover { transform: translateY(-2px); } .stat-number { font-size: 2rem; font-weight: 700; color: var(--primary-color); display: block; } .stat-label { color: var(--text-light); font-size: 0.9rem; margin-top: 0.5rem; } .dark-mode .stat-card { background: #1f2937; border-color: #374151; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.6); } .dark-mode .stat-number { color: #3b82f6; } .dark-mode .stat-label { color: #9ca3af; } .filter-tabs { display: flex; gap: 0.5rem; margin-bottom: 2rem; flex-wrap: wrap; } .filter-tab { padding: 0.5rem 1rem; background: var(--bg-light); border: none; border-radius: 20px; cursor: pointer; transition: all 0.2s ease; font-weight: 500; color: var(--text-dark); } .filter-tab.active, .filter-tab:hover { background: var(--primary-color); color: white; } .search-box { position: relative; margin-bottom: 2rem; } .search-box input { width: 100%; padding: 0.75rem 1rem; border: 1px solid var(--border-light); border-radius: 8px; font-size: 1rem; transition: border-color 0.2s ease, background-color 0.3s ease, color 0.3s ease; background-color: white; color: var(--text-dark); } .search-box input:focus { outline: none; border-color: var(--primary-color); } .search-box i { position: absolute; right: 1rem; top: 50%; transform: translateY(-50%); color: var(--text-light); } .dark-mode .filter-tab { background: #374151; color: #d1d5db; } .dark-mode .filter-tab.active, .dark-mode .filter-tab:hover { background: #3b82f6; color: white; } .dark-mode .search-box input { background-color: #1f2937; border-color: #4b5563; color: #d1d5db; } .dark-mode .search-box input:focus { border-color: #3b82f6; } .dark-mode .search-box i { color: #9ca3af; } .publication-item { margin-bottom: 1rem; } .publication-authors { font-style: italic; color: var(--text-light); margin-bottom: 0.5rem; } .publication-journal { font-weight: 500; color: var(--primary-color); } .publication-description { margin-top: 0.5rem; font-size: 0.9rem; line-height: 1.5; } .pdf-link { display: inline-flex; align-items: center; color: var(--primary-color); text-decoration: none; font-weight: 500; margin-top: 0.5rem; } .pdf-link i { margin-right: 0.25rem; } .pdf-link:hover { text-decoration: underline; } .award-item { display: flex;
+		      align-items: center; justify-content: space-between; padding: 1rem; background: white; border: 1px solid var(--border-light); border-radius: 8px; margin-bottom: 1rem; transition: all 0.2s ease; } .award-item:hover { box-shadow: var(--shadow); transform: translateY(-1px); } .award-info h4 { font-weight: 600; margin-bottom: 0.25rem; } .award-info p { color: var(--text-light); font-size: 0.9rem; } .award-amount { font-weight: 700; color: var(--primary-color); font-size: 1.1rem; } .leadership-role { background: var(--bg-light); padding: 1rem; border-radius: 8px; margin-bottom: 1rem; border-left: 4px solid var(--primary-color); } .leadership-role h4 { font-weight: 600; margin-bottom: 0.5rem; } .leadership-role .organization { color: var(--primary-color); font-weight: 500; } .leadership-role .period { color: var(--text-light); font-size: 0.9rem; } @media (max-width: 768px) { .container { grid-template-columns: 1fr; } .sidebar { position: relative; width: 100%; height: auto; } .main-content { margin-left: 0; padding: 1rem; } .hero-title { font-size: 2.5rem; } .floating-action { bottom: 1rem; right: 1rem; } } footer { width: 100% !important; display: block !important; } footer > div { max-width: 800px !important; margin-left: auto !important; margin-right: auto !important; text-align: center !important; } /* 确保flex容器正确工作 */ .flex { display: flex !important; justify-content: center !important; } /* 移除可能的默认边距 */ body, html { margin: 0 !important; padding: 0 !important; }
 	</style>
 </head>
 <body>
@@ -739,51 +59,51 @@
 				<ul class="nav-menu">
 					<li class="nav-item">
 						<a href="#about" class="nav-link active">
-							<i class="fas fa-user" aria-hidden="true"></i> About Me </a>
+							<i class="fas fa-user" aria-hidden="true"></i>About Me</a>
 					</li>
 					<li class="nav-item">
 						<a href="#education" class="nav-link">
-							<i class="fas fa-graduation-cap" aria-hidden="true"></i> Education </a>
+							<i class="fas fa-graduation-cap" aria-hidden="true"></i>Education</a>
 					</li>
 					<li class="nav-item">
 						<a href="#Summer_Camps" class="nav-link active">
-							<i class="fas fa-door-open" aria-hidden="true"></i> Summer Camps & Pre-admission Experiences </a>
+							<i class="fas fa-door-open" aria-hidden="true"></i>Summer Camps & Pre-admission Experiences</a>
 					</li>
 					<li class="nav-item">
 						<a href="#publications" class="nav-link">
-							<i class="fas fa-file-alt" aria-hidden="true"></i> Publications </a>
+							<i class="fas fa-file-alt" aria-hidden="true"></i>Publications</a>
 					</li>
 					<li class="nav-item">
 						<a href="#conferences" class="nav-link">
-							<i class="fas fa-microphone-alt" aria-hidden="true"></i> Conferences </a>
+							<i class="fas fa-microphone-alt" aria-hidden="true"></i>Conferences</a>
 					</li>
 					<li class="nav-item">
 						<a href="#experience" class="nav-link">
-							<i class="fas fa-briefcase" aria-hidden="true"></i> Experience </a>
+							<i class="fas fa-briefcase" aria-hidden="true"></i>Experience</a>
 					</li>
 					<li class="nav-item">
 						<a href="#projects" class="nav-link">
-							<i class="fas fa-lightbulb" aria-hidden="true"></i> Personal Projects </a>
+							<i class="fas fa-lightbulb" aria-hidden="true"></i>Personal Projects</a>
 					</li>
 					<li class="nav-item">
 						<a href="#skills" class="nav-link">
-							<i class="fas fa-code" aria-hidden="true"></i> Skills & Interest </a>
+							<i class="fas fa-code" aria-hidden="true"></i>Skills & Interest</a>
 					</li>
 					<li class="nav-item">
 						<a href="#achievements" class="nav-link">
-							<i class="fas fa-trophy" aria-hidden="true"></i> Scholarships & Travel Grants </a>
+							<i class="fas fa-trophy" aria-hidden="true"></i>Scholarships & Travel Grants</a>
 					</li>
 					<li class="nav-item">
 						<a href="#leadership" class="nav-link">
-							<i class="fas fa-users" aria-hidden="true"></i> Positions </a>
+							<i class="fas fa-users" aria-hidden="true"></i>Positions</a>
 					</li>
 					<li class="nav-item">
 						<a href="#memberships" class="nav-link">
-							<i class="fas fa-id-badge" aria-hidden="true"></i> Memberships </a>
+							<i class="fas fa-id-badge" aria-hidden="true"></i>Memberships</a>
 					</li>
 					<li class="nav-item">
 						<a href="#references" class="nav-link">
-							<i class="fas fa-address-book" aria-hidden="true"></i> References </a>
+							<i class="fas fa-address-book" aria-hidden="true"></i>References</a>
 					</li>
 				</ul>
 			</nav>
@@ -792,7 +112,7 @@
 			<section class="hero-section" aria-labelledby="hero-title">
 				<h1 id="hero-title" class="hero-title">Veritatem sequi!</h1>
 				<p class="hero-subtitle">I Say Hello World in 2001.</p>
-				<p class="hero-description"> I am Jiacheng Zheng, currently an undergraduate student majoring in Bioengineering at Shandong University. I am passionate about data science research and have served as a research assistant at various prestigious institutions including Shandong
+				<p class="hero-description">I am Jiacheng Zheng, currently an undergraduate student majoring in Bioengineering at Shandong University. I am passionate about data science research and have served as a research assistant at various prestigious institutions including Shandong
 					University, University College London and The Hong Kong University of Science and Technology, focusing on economic modeling, climate change analysis, and AI alignment research. When I am free, I would love to share my notes and other interesting thoughts on <a
 						href="https://www.zhihu.com/people/karcenzheng" target="_blank">Zhihu</a>, now I have written ⭐more than 2 million words⭐.</p>
 			</section>
@@ -840,6 +160,8 @@
 					<!-- 1. 数据科学与机器学习 -->
 					<h3>📊 Data Science & Machine Learning（数据科学与机器学习）</h3>
 					<ul>
+						<li>🧮 <a href="https://github.com/Karcen/UCL-math7601-exam-solutions-no-code.github.io" target="_blank">UCL MATH7601 Exam Solutions (No Code)（无代码考试解答）</a></li>
+						<li>💻 <a href="https://karcen.github.io/UCL-math7601-exam-solutions-code.github.io/" target="_blank">UCL MATH7601 Exam Solutions (With Code)（含代码考试解答）</a></li>
 						<li>🧮 <a href="https://karcen.github.io/LU_Decomposition.github.io/" target="_blank">LU Decomposition Visualization（LU分解可视化工具）</a></li>
 						<li>📐 <a href="https://karcen.github.io/UCL_MATH0058_Assessment_2.github.io/" target="_blank">UCL MATH0058 Assessment 2（UCL 数学课程项目）</a></li>
 						<li>🧠 <a href="https://github.com/Karcen/freesurfer-recon-freeview-3dstats" target="_blank">FreeSurfer Complete Workflow Guide（FreeSurfer完整流程手册：重建 + 3D模型 + 核团统计）</a></li>
@@ -867,6 +189,7 @@
 					<!-- 3. 整活 -->
 					<h3>🎉 Fun Projects（整活）</h3>
 					<ul>
+						<li>🌌 <a href="https://karcen.github.io/GestureNebula.github.io/" target="_blank">Gemini Gesture Verse（Gemini 手势粒子宇宙）</a></li>
 						<li>📑 <a href="https://karcen.github.io/bibtex-crossref-validator-online.github.io/" target="_blank">BibTeX Reference Validator(文献引用查重验证器)</a></li>
 						<li>🐠 <a href="https://karcen.github.io/Fish_Head_Orientation.github.io/" target="_blank">Fish Head Auto-Orientation System（鱼头自动朝向机）</a></li>
 						<li>📊 <a href="https://karcen.github.io/kaoyan-finance-dashboard-UIBE.github.io/" target="_blank">UIBE Finance Postgraduate Application Guide 2028（对外经贸大学本科生专属报告 · 2028年秋季入学 金融硕士报考指南）</a></li>
@@ -886,23 +209,23 @@
 				<h2 id="about-title" class="section-title">About Me</h2>
 				<div class="card">
 					<div class="prose max-w-none">
-						<p class="mb-1"> Thank you for visiting my website. I am <strong>Jiacheng Zheng (Karcen Zheng)</strong>, currently an undergraduate student (Class of 2022) majoring in Bioengineering at the Marine College, <strong>Shandong University (Weihai)</strong>. I previously studied
-							<strong>Chemical Engineering</strong> at <strong>Dalian University of Technology</strong> (2019–2021), and participated in a <strong>dual-degree program</strong> in International Politics and International Economics at the <strong>Northeast Asia Studies, Shandong
-								University</strong> (2022–2023). </p>
-						<p class="mb-1"> I have worked as a research assistant at the <strong>Center for Data Analysis on Area and Country Studies</strong>, <em>Institute of International Studies, Shandong University</em>, under the supervision of <a
-								href="https://esnea.wh.sdu.edu.cn/info/1024/1208.htm" target="_blank" rel="noopener noreferrer">Prof. Yuan Li</a> and <a href="https://iis.wh.sdu.edu.cn/info/1216/2395.htm" target="_blank" rel="noopener noreferrer">Dr. Jamal Khan</a> (2023–2025). </p>
-						<p class="mb-1"> From May to August 2024, I joined the <strong>Climate Change Economics and Low Carbon Transition team</strong> at <strong>University College London</strong>, <em>Bartlett School of Sustainable Construction</em>, supervised by <a
-								href="https://www.ucl.ac.uk/bartlett/construction/people/dr-zhifu-mi" target="_blank" rel="noopener noreferrer">Prof. Zhifu Mi</a> and <a href="https://orcid.org/0000-0002-8751-5407" target="_blank" rel="noopener noreferrer">Dr. Haoran Zhang</a>, contributing to the
-							development of the <strong>Intergovernmental Panel on Climate Change(IPCC) database</strong>. </p>
-						<p class="mb-1"> In 2025, I worked as a research Intern at <strong>The Hong Kong University of Science and Technology</strong> for the <strong>Hong Kong Generative AI Research & Development Center (HKGAI)</strong> project. I was involved in deploying the HKGAI large language
-							model for the Hong Kong government and collaborated on data alignment with <a href="https://jijiaming.com" target="_blank" rel="noopener noreferrer">Jiaming Ji</a> and <a href="https://cby-pku.github.io" target="_blank" rel="noopener noreferrer">Boyuan Chen</a> from
-							Peking University. </p>
-						<p class="mb-1"> I am a recipient of the <strong>National Scholarship</strong> (2020) and the <strong>National Encouragement Scholarship</strong> (2023, 2025). I am also a member of the <em>International Input-Output Association (IIOA, 2025-2026)</em>, the <em>Chinese Society
-								of Optimization, Systems Engineering, and Economic Mathematics(2023-2024)</em>, and the <em>Beijing Society for Graphics and Image(2023-2024)</em>. </p>
-						<p class="mb-1"> My academic contributions include <strong>5 SCI/SSCI-indexed and other publications</strong> (one co-first author and one <em>NeurIPS 2025(Spotlight)</em>), a <strong>book chapter translation</strong> (<em>Innovation and Regional Growth in the European
+						<p class="mb-1">Thank you for visiting my website. I am <strong>Jiacheng Zheng (Karcen Zheng)</strong>, currently an undergraduate student (Class of 2022) majoring in Bioengineering at the Marine College, <strong>Shandong University (Weihai)</strong>. I previously studied
+							<strong>Chemical Engineering</strong>at <strong>Dalian University of Technology</strong>(2019–2021), and participated in a <strong>dual-degree program</strong>in International Politics and International Economics at the <strong>Northeast Asia Studies, Shandong
+								University</strong>(2022–2023).</p>
+						<p class="mb-1">I have worked as a research assistant at the <strong>Center for Data Analysis on Area and Country Studies</strong>, <em>Institute of International Studies, Shandong University</em>, under the supervision of <a
+								href="https://esnea.wh.sdu.edu.cn/info/1024/1208.htm" target="_blank" rel="noopener noreferrer">Prof. Yuan Li</a>and <a href="https://iis.wh.sdu.edu.cn/info/1216/2395.htm" target="_blank" rel="noopener noreferrer">Dr. Jamal Khan</a>(2023–2025).</p>
+						<p class="mb-1">From May to August 2024, I joined the <strong>Climate Change Economics and Low Carbon Transition team</strong>at <strong>University College London</strong>, <em>Bartlett School of Sustainable Construction</em>, supervised by <a
+								href="https://www.ucl.ac.uk/bartlett/construction/people/dr-zhifu-mi" target="_blank" rel="noopener noreferrer">Prof. Zhifu Mi</a>and <a href="https://orcid.org/0000-0002-8751-5407" target="_blank" rel="noopener noreferrer">Dr. Haoran Zhang</a>, contributing to the
+							development of the <strong>Intergovernmental Panel on Climate Change(IPCC) database</strong>.</p>
+						<p class="mb-1">In 2025, I worked as a research Intern at <strong>The Hong Kong University of Science and Technology</strong>for the <strong>Hong Kong Generative AI Research & Development Center (HKGAI)</strong>project. I was involved in deploying the HKGAI large language
+							model for the Hong Kong government and collaborated on data alignment with <a href="https://jijiaming.com" target="_blank" rel="noopener noreferrer">Jiaming Ji</a>and <a href="https://cby-pku.github.io" target="_blank" rel="noopener noreferrer">Boyuan Chen</a>from Peking
+							University.</p>
+						<p class="mb-1">I am a recipient of the <strong>National Scholarship</strong>(2020) and the <strong>National Encouragement Scholarship</strong>(2023, 2025). I am also a member of the <em>International Input-Output Association (IIOA, 2025-2026)</em>, the <em>Chinese Society of
+								Optimization, Systems Engineering, and Economic Mathematics(2023-2024)</em>, and the <em>Beijing Society for Graphics and Image(2023-2024)</em>.</p>
+						<p class="mb-1">My academic contributions include <strong>5 SCI/SSCI-indexed and other publications</strong>(one co-first author and one <em>NeurIPS 2025(Spotlight)</em>), a <strong>book chapter translation</strong>( <em>Innovation and Regional Growth in the European
 								Union</em>, Chapter 3, <em>Geographical Accessibility and Human Capital Accumulation</em>, Beijing Economic Management Press, 2024), and acknowledged in the English textbook <em>Wind from the East: How does the Belt and Road Initiative connect continents to unleash
-								economic potential?</em> (Peter Lang, coming soon). I also participated in a <strong>National Social Science Fund project</strong> on the evaluation of soft connectivity under the Belt and Road Initiative (2021). </p>
-						<p> If you have any questions or would like to get in touch, please feel free to contact me via <a href="mailto:karcenzheng17@gmail.com">email</a>. </p>
+								economic potential?</em>(Peter Lang, coming soon). I also participated in a <strong>National Social Science Fund project</strong>on the evaluation of soft connectivity under the Belt and Road Initiative (2021).</p>
+						<p>If you have any questions or would like to get in touch, please feel free to contact me via <a href="mailto:karcenzheng17@gmail.com">email</a>.</p>
 					</div>
 			</section>
 			<section id="education" class="section" aria-labelledby="education-title">
@@ -914,9 +237,10 @@
 							<div class="card-subtitle">Bachelor of Engineering in Bioengineering</div>
 							<div class="card-meta">September 2023 – June 2026 (Expected)</div>
 							<p>GPA: 85.54/100 (Rank: 5/50, Top 10%)</p>
-							<small><em>I was initially admitted to the Marine Resource Development Technology program（海洋资源开发技术） at the Marine College（海洋学院）🐚 in Gaokao, which splits into Bioengineering（生物工程） and Ecological Engineering（生态工程） after the first year. But I was selected through a
-									secondary process into the Double-Degree Experimental Program in International Politics and International Economics & Trade（国际政治+国际经济与贸易双学位实验班） 🌏📘 at the Northeast Asia Studies（东北亚学院）. However, I found the program's humanities-oriented curriculum did not align
-									with my passion for quantitative analysis and mathematical modeling 📊➗. I decided to withdraw and return to my original major in my sophomore, choosing the Bioengineering track 🧬. To stay on track for graduation, I did not defer or switch cohorts 🎓. Instead, I
+							<small>
+								<em>I was initially admitted to the Marine Resource Development Technology program（海洋资源开发技术） at the Marine College（海洋学院）🐚 in Gaokao, which splits into Bioengineering（生物工程） and Ecological Engineering（生态工程） after the first year. But I was selected through a secondary
+									process into the Double-Degree Experimental Program in International Politics and International Economics & Trade（国际政治+国际经济与贸易双学位实验班） 🌏📘 at the Northeast Asia Studies（东北亚学院）. However, I found the program's humanities-oriented curriculum did not align with my
+									passion for quantitative analysis and mathematical modeling 📊➗. I decided to withdraw and return to my original major in my sophomore, choosing the Bioengineering track 🧬. To stay on track for graduation, I did not defer or switch cohorts 🎓. Instead, I
 									completed in one year the equivalent of what most students would study over three semesters 🏃‍♂️💨. At the same time, I faced major health challenges and underwent head surgery during my junior year's first semester 🏥🧠. These combined pressures understandably
 									impacted my academic performance, particularly in the second semester of sophomore year and the first semester of junior year, as reflected in my GPA 📉😭.</em></small>
 							<div class="mt-8">
@@ -950,7 +274,7 @@
 			</section>
 			<section id="Summer_Camps" class="section" aria-labelledby="Summer_Camps-title">
 				<div class="animate-slide-up" style="animation-delay: 0.2s;">
-					<h2 id="Summer_Camps-title" class="section-title text-2xl font-bold text-gray-800 mb-8"> Summer Camps & Pre-admission Experiences </h2>
+					<h2 id="Summer_Camps-title" class="section-title text-2xl font-bold text-gray-800 mb-8">Summer Camps & Pre-admission Experiences</h2>
 					<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
 						<!-- 天津大学 -->
 						<article class="bg-white rounded-xl p-5 shadow-lg card-hover transition-all duration-300">
@@ -1002,8 +326,7 @@
 								</div>
 								<div>
 									<h3 class="card-title font-semibold text-gray-800 text-lg mb-2">School of Economics, Shanghai University of Finance and Economics</h3>
-									<div class="card-meta text-gray-600 mb-3"> PhD in Population, Resources, and Environmental Economics | Sept. 10 | <strong style="color: #d97706;">Give Up</strong>
-									</div>
+									<div class="card-meta text-gray-600 mb-3">PhD in Population, Resources, and Environmental Economics | Sept. 10 | <strong style="color: #d97706;">Give Up</strong></div>
 								</div>
 							</div>
 						</article>
@@ -1015,8 +338,7 @@
 								</div>
 								<div>
 									<h3 class="card-title font-semibold text-gray-800 text-lg mb-2">School of Applied Economics, Renmin University of China</h3>
-									<div class="card-meta text-gray-600 mb-3"> PhD in Regional Economics | August 10 | <strong style="color: #d97706;">Give Up</strong>
-									</div>
+									<div class="card-meta text-gray-600 mb-3">PhD in Regional Economics | August 10 | <strong style="color: #d97706;">Give Up</strong></div>
 								</div>
 							</div>
 						</article>
@@ -1028,10 +350,9 @@
 								</div>
 								<div>
 									<h3 class="card-title font-semibold text-gray-800 text-lg mb-2">Wang Yanan Institute for Studies in Economics, Xiamen University</h3>
-									<div class="card-meta text-gray-600 mb-3"> Interviewed by three professors from WISE | July 11, 2025 | <strong style="color: #d97706;">Give Up</strong>
-									</div>
+									<div class="card-meta text-gray-600 mb-3">Interviewed by three professors from WISE | July 11, 2025 | <strong style="color: #d97706;">Give Up</strong></div>
 									<a href="./PDF/Jiacheng_Zheng_Intro.pdf" class="pdf-link text-blue-600 hover:text-blue-800 flex items-center">
-										<i class="fas fa-file-pdf mr-2" aria-hidden="true"></i> View Presentation </a>
+										<i class="fas fa-file-pdf mr-2" aria-hidden="true"></i>View Presentation</a>
 								</div>
 							</div>
 						</article>
@@ -1043,10 +364,9 @@
 								</div>
 								<div>
 									<h3 class="card-title font-semibold text-gray-800 text-lg mb-2">The Chinese University of Hong Kong, Shenzhen</h3>
-									<div class="card-meta text-gray-600 mb-3"> Interviewed by Dr. Juexiao Zhou | June 5, 2025 | <strong style="color: #dc2626;">Not Qualified</strong>
-									</div>
+									<div class="card-meta text-gray-600 mb-3">Interviewed by Dr. Juexiao Zhou | June 5, 2025 | <strong style="color: #dc2626;">Not Qualified</strong></div>
 									<a href="./PDF/Jiacheng_Zheng_Interview_CUHK.pdf" class="pdf-link text-blue-600 hover:text-blue-800 flex items-center">
-										<i class="fas fa-file-pdf mr-2" aria-hidden="true"></i> View Presentation </a>
+										<i class="fas fa-file-pdf mr-2" aria-hidden="true"></i>View Presentation</a>
 								</div>
 							</div>
 						</article>
@@ -1058,843 +378,837 @@
 								</div>
 								<div>
 									<h3 class="card-title font-semibold text-gray-800 text-lg mb-2">Institute of New Structural Economics, Peking University</h3>
-									<div class="card-meta text-gray-600 mb-3"> Group Interview | May 28, 2025 | <strong style="color: #dc2626;">Not Qualified</strong>
-									</div>
+									<div class="card-meta text-gray-600 mb-3">Group Interview | May 28, 2025 | <strong style="color: #dc2626;">Not Qualified</strong></div>
 									<a href="./PDF/2025 IIOA Conference Linkages and Structural Changes in the Chinese Financial Sector, 1996–2018 A Network and Input–Output Approach.pdf" class="pdf-link text-blue-600 hover:text-blue-800 flex items-center">
-										<i class="fas fa-file-pdf mr-2" aria-hidden="true"></i> View Presentation </a>
+										<i class="fas fa-file-pdf mr-2" aria-hidden="true"></i>View Presentation</a>
 								</div>
 							</div>
 						</article>
 					</div>
 				</div>
 				<br>
-				<!-- ===== 海外/境外 PhD Offers (双列布局) ===== -->
-				<div class="mt-8">
-					<h1 class="text-xl font-bold text-gray-800 mb-6 flex items-center">
-						<i class="fas fa-globe-americas text-blue-500 mr-2"></i> Overseas/Offshore PhD Offers
-					</h1>
-					<br>
-					<!-- 改为和国内部分一致的双列网格布局 -->
-					<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-						<!-- 香港科技大学 -->
-						<article class="bg-white rounded-xl p-5 shadow-lg card-hover transition-all duration-300">
-							<div class="flex items-start">
-								<div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-indigo-400 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
-									<i class="fas fa-star text-white text-xl"></i>
-								</div>
-								<div>
-									<h3 class="card-title font-semibold text-gray-800 text-lg mb-2">The Hong Kong University of Science and Technology, Guangzhou</h3>
-									<div class="card-meta text-gray-600 mb-3"> PhD in Economics (Climate Change Economics) | <strong style="color: #2563eb;">Full Scholarship Opportunity</strong>
-									</div>
-								</div>
+				<!--=====海 外/境外 PhD Offers (双列布局)=====- ->
+          <div class="mt-8">
+          <h1 class="text-xl font-bold text-gray-800 mb-6 flex items-center">
+          <i class="fas fa-globe-americas text-blue-500 mr-2"></i> Overseas/Offshore PhD Offers
+          </h1>
+          <br>
+          <!-- 改为和国内部分一致的双列网格布局 -->
+				<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+					<!-- 香港科技大学 -->
+					<article class="bg-white rounded-xl p-5 shadow-lg card-hover transition-all duration-300">
+						<div class="flex items-start">
+							<div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-indigo-400 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+								<i class="fas fa-star text-white text-xl"></i>
 							</div>
-						</article>
-						<!-- 香港科技大学 -->
-						<article class="bg-white rounded-xl p-5 shadow-lg card-hover transition-all duration-300">
-							<div class="flex items-start">
-								<div class="w-12 h-12 bg-gradient-to-r from-amber-500 to-orange-400 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
-									<i class="fas fa-times-circle text-white text-xl"></i>
-								</div>
-								<div>
-									<h3 class="card-title font-semibold text-gray-800 text-lg mb-2">The Hong Kong University of Science and Technology, Guangzhou</h3>
-									<div class="card-meta text-gray-600 mb-3"> RED BIRD | Officially shortlisted for interview | <strong style="color: #d97706;">Give Up</strong>
-									</div>
-								</div>
-							</div>
-						</article>
-						<!-- 俄亥俄州立大学 -->
-						<article class="bg-white rounded-xl p-5 shadow-lg card-hover transition-all duration-300">
-							<div class="flex items-start">
-								<div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-indigo-400 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
-									<i class="fas fa-star text-white text-xl"></i>
-								</div>
-								<div>
-									<h3 class="card-title font-semibold text-gray-800 text-lg mb-2">Ohio State University (OSU)</h3>
-									<div class="card-meta text-gray-600 mb-3"> PhD in Economics | Verbal Offer from Emeritus Professor (Top 10% Global Economist) | <strong style="color: #2563eb;">Full Scholarship Opportunity</strong>
-									</div>
-								</div>
-							</div>
-						</article>
-						<!-- 新加坡管理大学 -->
-						<article class="bg-white rounded-xl p-5 shadow-lg card-hover transition-all duration-300">
-							<div class="flex items-start">
-								<div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-indigo-400 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
-									<i class="fas fa-star text-white text-xl"></i>
-								</div>
-								<div>
-									<h3 class="card-title font-semibold text-gray-800 text-lg mb-2">Singapore Management University (SMU)</h3>
-									<div class="card-meta text-gray-600 mb-3"> PhD in Economics | Passed Professor Interview | <strong style="color: #2563eb;">Singapore Government Scholarship</strong>
-									</div>
-								</div>
-							</div>
-						</article>
-						<!-- 香港理工大学 -->
-						<article class="bg-white rounded-xl p-5 shadow-lg card-hover transition-all duration-300">
-							<div class="flex items-start">
-								<div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-indigo-400 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
-									<i class="fas fa-star text-white text-xl"></i>
-								</div>
-								<div>
-									<h3 class="card-title font-semibold text-gray-800 text-lg mb-2">The Hong Kong Polytechnic University (PolyU)</h3>
-									<div class="card-meta text-gray-600 mb-3"> PhD in Economics | Arranged by Department Head | <strong style="color: #2563eb;">Full Scholarship Opportunity</strong>
-									</div>
-								</div>
-							</div>
-						</article>
-						<!-- 香港城市大学 -->
-						<article class="bg-white rounded-xl p-5 shadow-lg card-hover transition-all duration-300">
-							<div class="flex items-start">
-								<div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-indigo-400 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
-									<i class="fas fa-star text-white text-xl"></i>
-								</div>
-								<div>
-									<h3 class="card-title font-semibold text-gray-800 text-lg mb-2">City University of Hong Kong (CityU)</h3>
-									<div class="card-meta text-gray-600 mb-3"> PhD in Economics | <strong style="color: #2563eb;">Full Scholarship Opportunity</strong>
-									</div>
-								</div>
-							</div>
-						</article>
-						<!-- 伦敦大学学院 -->
-						<article class="bg-white rounded-xl p-5 shadow-lg card-hover transition-all duration-300">
-							<div class="flex items-start">
-								<div class="w-12 h-12 bg-gradient-to-r from-violet-500 to-purple-400 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
-									<i class="fas fa-door-open text-white text-xl"></i>
-								</div>
-								<div>
-									<h3 class="card-title font-semibold text-gray-800 text-lg mb-2">University College London (UCL) — Bartlett School of Sustainable Construction</h3>
-									<div class="card-meta text-gray-600 mb-3"> PhD in Climate Change Economics | <strong style="color: #7c3aed;">Unfunded Opportunity</strong>
-									</div>
-								</div>
-							</div>
-						</article>
-						<!-- 牛津大学 -->
-						<article class="bg-white rounded-xl p-5 shadow-lg card-hover transition-all duration-300">
-							<div class="flex items-start">
-								<div class="w-12 h-12 bg-gradient-to-r from-violet-500 to-purple-400 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
-									<i class="fas fa-door-open text-white text-xl"></i>
-								</div>
-								<div>
-									<h3 class="card-title font-semibold text-gray-800 text-lg mb-2">University of Oxford</h3>
-									<div class="card-meta text-gray-600 mb-3"> PhD in Economics | <strong style="color: #7c3aed;">Professor Interview Opportunity</strong>
-									</div>
-								</div>
-							</div>
-						</article>
-						<!-- 香港中文大学 -->
-						<article class="bg-white rounded-xl p-5 shadow-lg card-hover transition-all duration-300">
-							<div class="flex items-start">
-								<div class="w-12 h-12 bg-gradient-to-r from-violet-500 to-purple-400 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
-									<i class="fas fa-door-open text-white text-xl"></i>
-								</div>
-								<div>
-									<h3 class="card-title font-semibold text-gray-800 text-lg mb-2">The Chinese University of Hong Kong, Shenzhen (CUHK-Shenzhen)</h3>
-									<div class="card-meta text-gray-600 mb-3"> MPhil in Artificial Intelligence | <strong style="color: #7c3aed;">Opportunity</strong>
-									</div>
-								</div>
-							</div>
-						</article>
-					</div>
-				</div>
-			</section>
-			<section id="publications" class="section" aria-labelledby="publications-title">
-				<h2 id="publications-title" class="section-title">Publications & Papers</h2>
-				<div class="search-box">
-					<input type="text" placeholder="Search publications..." id="searchPapers" aria-label="Search publications">
-					<i class="fas fa-search" aria-hidden="true"></i>
-				</div>
-				<div class="filter-tabs" role="group" aria-label="Filter publications">
-					<button class="filter-tab active" data-filter="all">All</button>
-					<button class="filter-tab" data-filter="first-author">First author</button>
-					<button class="filter-tab" data-filter="co-author">Co-author</button>
-					<button class="filter-tab" data-filter="acknowledged">Acknowledged</button>
-					<button class="filter-tab" data-filter="translation">Translations</button>
-					<button class="filter-tab" data-filter="books">Books</button>
-					<button class="filter-tab" data-filter="under-review">Under Review</button>
-					<button class="filter-tab" data-filter="economics">Economics</button>
-					<button class="filter-tab" data-filter="ai">AI</button>
-				</div>
-				<div id="publications-list">
-					<article class="card publication-card" data-category="co-author ai">
-						<div class="publication-item">
-							<h4 class="card-title">InterMT: Multi-Turn Interleaved Preference Alignment with Human Feedback</h4>
-							<div class="publication-authors"> Chen, B., Hong, D., Ji, J., <strong style="color: #2563eb;">Zheng, J.</strong>, Dong, B., Zhou, J., Wang, K., Dai, J., Wang, X., Chen, W., Zheng, Q., Li, W., Han, S., Guo, Y., & Yang, Y. </div>
-							<div class="publication-journal">NeurIPS 2025 (Spotlight)</div>
-							<div class="publication-description mt-half">
-								<span class="tag">Second-author</span>
-								<span class="tag">AI Alignment</span>
-							</div>
-							<a href="https://pku-intermt.github.io" target="_blank" class="pdf-link">
-								<i class="fas fa-external-link-alt" aria-hidden="true"></i> Project Website </a>
-						</div>
-					</article>
-					<article class="card publication-card" data-category="first-author economics">
-						<div class="publication-item">
-							<h4 class="card-title">Agglomeration economies and inequalities: Theory and evidence from provincial China</h4>
-							<div class="publication-authors">Khan, J., <strong style="color: #2563eb;">Zheng, J.</strong>, Ahmad, M., & Alam Khan, Z.</div>
-							<div class="publication-journal">Journal of Chinese Economic and Business Studies</div>
-							<div class="publication-description mt-half">
-								<span class="tag primary">Co-first Author</span>
-								<span class="tag">NEG</span>
-								<span class="tag">Regional Inequality</span>
-							</div>
-							<a href="./PDF/Presentation_Agglomeration_Economies_and_Inequality__Theory_and_Evidence_from_Provincial_China.pdf" target="_blank" class="pdf-link">
-								<i class="fas fa-file-pdf" aria-hidden="true"></i>
-								<span> View Presentation </span>
-							</a>
-						</div>
-					</article>
-					<article class="card publication-card" data-category="co-author under-review economics">
-						<div class="publication-item">
-							<h4 class="card-title">Structural changes and sectoral linkages: Unveiling the ICT sector’s role in China and India</h4>
-							<div class="publication-authors">Xiao, X., Khan, J., & <strong style="color: #2563eb;">Zheng, J.</strong></div>
-							<div class="publication-journal">Telecommunication Policy (Under Review)</div>
-							<div class="publication-description mt-half">
-								<span class="tag">Third-author</span>
-								<span class="tag">Under Review</span>
-								<span class="tag">ICT Sector</span>
-								<span class="tag">Input-Output Analysis</span>
+							<div>
+								<h3 class="card-title font-semibold text-gray-800 text-lg mb-2">The Hong Kong University of Science and Technology, Guangzhou</h3>
+								<div class="card-meta text-gray-600 mb-3">PhD in Economics (Climate Change Economics) | <strong style="color: #2563eb;">Full Scholarship Opportunity</strong></div>
 							</div>
 						</div>
 					</article>
-					<article class="card publication-card" data-category="co-author under-review economics">
-						<div class="publication-item">
-							<h4 class="card-title">Sectoral growth dynamics, domestic linkages, and GVC movement in Pakistan: A single and multi-regional input-output modeling approach</h4>
-							<div class="publication-authors">Khan, J., Li, Y., & <strong style="color: #2563eb;">Zheng, J.</strong></div>
-							<div class="publication-journal">Review of Development Economics (Under Review)</div>
-							<div class="publication-description mt-half">
-								<span class="tag">Third-author</span>
-								<span class="tag">Under Review</span>
-								<span class="tag">Input-Output Analysis</span>
+					<!-- 香港科技大学 -->
+					<article class="bg-white rounded-xl p-5 shadow-lg card-hover transition-all duration-300">
+						<div class="flex items-start">
+							<div class="w-12 h-12 bg-gradient-to-r from-amber-500 to-orange-400 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+								<i class="fas fa-times-circle text-white text-xl"></i>
+							</div>
+							<div>
+								<h3 class="card-title font-semibold text-gray-800 text-lg mb-2">The Hong Kong University of Science and Technology, Guangzhou</h3>
+								<div class="card-meta text-gray-600 mb-3">RED BIRD | Officially shortlisted for interview | <strong style="color: #d97706;">Give Up</strong></div>
 							</div>
 						</div>
 					</article>
-					<article class="card publication-card" data-category="acknowledged under-review economics">
-						<div class="publication-item">
-							<h4 class="card-title">The effectiveness of unilateral vs. multilateral carbon adjustment mechanisms under WTO and climate rules</h4>
-							<div class="publication-authors">Khan, J., Li, Y., & Girardin, E.</div>
-							<div class="publication-journal">One Earth (Under Review)</div>
-							<div class="publication-description mt-half">
-								<strong>Contributed to data analysis, model development, and visualization.</strong>
-								<div>
-									<span class="tag">Contribution</span>
-									<span class="tag">Under Review</span>
-									<span class="tag">CBAM</span>
-									<span class="tag">Input-Output Analysis</span>
-									<span class="tag">Climate Policy</span>
-								</div>
+					<!-- 俄亥俄州立大学 -->
+					<article class="bg-white rounded-xl p-5 shadow-lg card-hover transition-all duration-300">
+						<div class="flex items-start">
+							<div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-indigo-400 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+								<i class="fas fa-star text-white text-xl"></i>
+							</div>
+							<div>
+								<h3 class="card-title font-semibold text-gray-800 text-lg mb-2">Ohio State University (OSU)</h3>
+								<div class="card-meta text-gray-600 mb-3">PhD in Economics | Verbal Offer from Emeritus Professor (Top 10% Global Economist) | <strong style="color: #2563eb;">Full Scholarship Opportunity</strong></div>
 							</div>
 						</div>
 					</article>
-					<article class="card publication-card" data-category="translation books economics">
-						<div class="publication-item">
-							<h4 class="card-title">欧盟的创新与区域增长中译版 (Innovation and Regional Growth in the European Union, Chinese Edition)</h4>
-							<div class="publication-authors">Crespo, R., & Rodríguez-Pose, A. (任建辉等翻译 (Jianhui Ren, Ed.))</div>
-							<div class="publication-journal">北京经济管理出版社 (Beijing: Economic Management Press) (2024)</div>
-							<div class="publication-description mt-half">
-								<strong>Translated Chapter 3: "Geographical Accessibility and Human Capital Accumulation".</strong> This book explores the interplay between innovation and regional growth using social filter theory. This book was awarded the Third Prize in the “Top 100 Outstanding
-								Achievements in Social Science Research” Project of Shanxi Province.<div>
-									<span class="tag">Translation</span>
-									<span class="tag">Social Filter Theory</span>
-								</div>
+					<!-- 新加坡管理大学 -->
+					<article class="bg-white rounded-xl p-5 shadow-lg card-hover transition-all duration-300">
+						<div class="flex items-start">
+							<div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-indigo-400 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+								<i class="fas fa-star text-white text-xl"></i>
+							</div>
+							<div>
+								<h3 class="card-title font-semibold text-gray-800 text-lg mb-2">Singapore Management University (SMU)</h3>
+								<div class="card-meta text-gray-600 mb-3">PhD in Economics | Passed Professor Interview | <strong style="color: #2563eb;">Singapore Government Scholarship</strong></div>
 							</div>
 						</div>
 					</article>
-					<article class="card publication-card" data-category="acknowledged economics">
-						<div class="publication-item">
-							<h4 class="card-title">Linkages and structural changes in the Chinese financial sector, 1996–2018: A network and input–output approach</h4>
-							<div class="publication-authors">Khan, J., Li, Y., & Mahsud, Q. J.</div>
-							<div class="publication-journal">Structural Change and Economic Dynamics, 70, 33–44 (2024)</div>
-							<div class="publication-description mt-half">
-								<strong>Acknowledged for contributions.</strong> This study highlights the financial sector's critical role in downstream industrial growth and its transformation after the global financial crisis. <div class="tags">
-									<span class="tag">Acknowledged</span>
-									<span class="tag">Input-Output Analysis</span>
-									<span class="tag">Network Analysis</span>
-								</div>
+					<!-- 香港理工大学 -->
+					<article class="bg-white rounded-xl p-5 shadow-lg card-hover transition-all duration-300">
+						<div class="flex items-start">
+							<div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-indigo-400 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+								<i class="fas fa-star text-white text-xl"></i>
 							</div>
-							<a href="./PDF/Linkages and Structural Changes in the Chinese Financial Sector.pdf" target="_blank" class="pdf-link">
-								<i class="fas fa-file-pdf" aria-hidden="true"></i>
-								<span> View Presentation </span>
-							</a>
+							<div>
+								<h3 class="card-title font-semibold text-gray-800 text-lg mb-2">The Hong Kong Polytechnic University (PolyU)</h3>
+								<div class="card-meta text-gray-600 mb-3">PhD in Economics | Arranged by Department Head | <strong style="color: #2563eb;">Full Scholarship Opportunity</strong></div>
+							</div>
 						</div>
 					</article>
-					<article class="card publication-card" data-category="acknowledged economics books">
-						<div class="publication-item">
-							<h4 class="card-title">Wind from the East: How does the Belt and Road Initiative connect continents to unleash economic potential?</h4>
-							<div class="publication-authors">Li, Y., & Khan, J.</div>
-							<div class="publication-journal">Peter Lang (in process)</div>
-							<div class="publication-description mt-half">
-								<strong>Acknowledged for contributions.</strong>
-								<div>
-									<span class="tag">Acknowledged</span>
-									<span class="tag">In Process</span>
-									<span class="tag">BRI</span>
-									<span class="tag">GVCs</span>
-									<span class="tag">Input-Output Analysis</span>
-								</div>
+					<!-- 香港城市大学 -->
+					<article class="bg-white rounded-xl p-5 shadow-lg card-hover transition-all duration-300">
+						<div class="flex items-start">
+							<div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-indigo-400 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+								<i class="fas fa-star text-white text-xl"></i>
+							</div>
+							<div>
+								<h3 class="card-title font-semibold text-gray-800 text-lg mb-2">City University of Hong Kong (CityU)</h3>
+								<div class="card-meta text-gray-600 mb-3">PhD in Economics | <strong style="color: #2563eb;">Full Scholarship Opportunity</strong></div>
+							</div>
+						</div>
+					</article>
+					<!-- 伦敦大学学院 -->
+					<article class="bg-white rounded-xl p-5 shadow-lg card-hover transition-all duration-300">
+						<div class="flex items-start">
+							<div class="w-12 h-12 bg-gradient-to-r from-violet-500 to-purple-400 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+								<i class="fas fa-door-open text-white text-xl"></i>
+							</div>
+							<div>
+								<h3 class="card-title font-semibold text-gray-800 text-lg mb-2">University College London (UCL) — Bartlett School of Sustainable Construction</h3>
+								<div class="card-meta text-gray-600 mb-3">PhD in Climate Change Economics | <strong style="color: #7c3aed;">Unfunded Opportunity</strong></div>
+							</div>
+						</div>
+					</article>
+					<!-- 牛津大学 -->
+					<article class="bg-white rounded-xl p-5 shadow-lg card-hover transition-all duration-300">
+						<div class="flex items-start">
+							<div class="w-12 h-12 bg-gradient-to-r from-violet-500 to-purple-400 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+								<i class="fas fa-door-open text-white text-xl"></i>
+							</div>
+							<div>
+								<h3 class="card-title font-semibold text-gray-800 text-lg mb-2">University of Oxford</h3>
+								<div class="card-meta text-gray-600 mb-3">PhD in Economics | <strong style="color: #7c3aed;">Professor Interview Opportunity</strong></div>
+							</div>
+						</div>
+					</article>
+					<!-- 香港中文大学 -->
+					<article class="bg-white rounded-xl p-5 shadow-lg card-hover transition-all duration-300">
+						<div class="flex items-start">
+							<div class="w-12 h-12 bg-gradient-to-r from-violet-500 to-purple-400 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+								<i class="fas fa-door-open text-white text-xl"></i>
+							</div>
+							<div>
+								<h3 class="card-title font-semibold text-gray-800 text-lg mb-2">The Chinese University of Hong Kong, Shenzhen (CUHK-Shenzhen)</h3>
+								<div class="card-meta text-gray-600 mb-3">MPhil in Artificial Intelligence | <strong style="color: #7c3aed;">Opportunity</strong></div>
 							</div>
 						</div>
 					</article>
 				</div>
-			</section>
-			<section id="conferences" class="section" aria-labelledby="conferences-title">
-				<h2 id="conferences-title" class="section-title">Conference Presentations</h2>
-				<article class="card">
-					<h3 class="card-title">31st International Input-Output Association Conference</h3>
-					<div class="card-subtitle">Oral Presentation <span style="font-style: italic;">(Withdrawn for Health Reasons)</span></div>
-					<div class="card-meta">Malé | 2025</div>
-					<p><strong>Tittle:</strong> <em>Linkages and Structural Changes in the Chinese Financial Sector, 1996–2018</em></p>
-					<a href="./PDF/2025 IIOA Conference Linkages and Structural Changes in the Chinese Financial Sector, 1996–2018 A Network and Input–Output Approach.pdf" class="pdf-link" target="_blank" rel="noopener noreferrer">
-						<i class="fas fa-file-pdf" aria-hidden="true"></i> View Presentation </a>
-				</article>
-				<article class="card">
-					<h3 class="card-title">The 10th International Workshop on RUSE in China</h3>
-					<div class="card-subtitle">Oral Presentation</div>
-					<div class="card-meta">Peking University | 2023</div>
-					<p><strong>Tittle:</strong> <em>Agglomeration Economies and Regional Inequality in Provincial China</em></p>
-					<a href="./PDF/RUSE_Agglomeration Economies and regional inequalities,Theory and Evidence from Provincial China.pdf" class="pdf-link" target="_blank" rel="noopener noreferrer">
-						<i class="fas fa-file-pdf" aria-hidden="true"></i> View Presentation </a>
-				</article>
-			</section>
-			<section id="experience" class="section" aria-labelledby="experience-title">
-				<h2 id="experience-title" class="section-title">Internship & Research Experience</h2>
-				<div class="timeline">
-					<div class="timeline-item">
-						<article class="card">
-							<h3 class="card-title">Research Intern</h3>
-							<div class="card-subtitle">The Hong Kong University of Science and Technology</div>
-							<div class="card-meta">Feb 2025 – May 2025 | Hong Kong, China</div>
-							<ul class="mt-1" style="padding-left: 1.5rem;">
-								<li>Conducted research on data science and data alignment.</li>
-								<li>Collaborated with Jiaming Ji and Boyuan Chen from Peking University on a NeurIPS 2025 submission.</li>
-							</ul>
-						</article>
+	</div>
+	</section>
+	<section id="publications" class="section" aria-labelledby="publications-title">
+		<h2 id="publications-title" class="section-title">Publications & Papers</h2>
+		<div class="search-box">
+			<input type="text" placeholder="Search publications..." id="searchPapers" aria-label="Search publications">
+			<i class="fas fa-search" aria-hidden="true"></i>
+		</div>
+		<div class="filter-tabs" role="group" aria-label="Filter publications">
+			<button class="filter-tab active" data-filter="all">All</button>
+			<button class="filter-tab" data-filter="first-author">First author</button>
+			<button class="filter-tab" data-filter="co-author">Co-author</button>
+			<button class="filter-tab" data-filter="acknowledged">Acknowledged</button>
+			<button class="filter-tab" data-filter="translation">Translations</button>
+			<button class="filter-tab" data-filter="books">Books</button>
+			<button class="filter-tab" data-filter="under-review">Under Review</button>
+			<button class="filter-tab" data-filter="economics">Economics</button>
+			<button class="filter-tab" data-filter="ai">AI</button>
+		</div>
+		<div id="publications-list">
+			<article class="card publication-card" data-category="co-author ai">
+				<div class="publication-item">
+					<h4 class="card-title">InterMT: Multi-Turn Interleaved Preference Alignment with Human Feedback</h4>
+					<div class="publication-authors">Chen, B., Hong, D., Ji, J., <strong style="color: #2563eb;">Zheng, J.</strong>, Dong, B., Zhou, J., Wang, K., Dai, J., Wang, X., Chen, W., Zheng, Q., Li, W., Han, S., Guo, Y., & Yang, Y.</div>
+					<div class="publication-journal">NeurIPS 2025 (Spotlight)</div>
+					<div class="publication-description mt-half">
+						<span class="tag">Second-author</span>
+						<span class="tag">AI Alignment</span>
 					</div>
-					<div class="timeline-item">
-						<article class="card">
-							<h3 class="card-title">Research Assistant</h3>
-							<div class="card-subtitle">The Bartlett School of Sustainable Construction, University College London</div>
-							<div class="card-meta">July 2024 – Aug 2024 | Remote </div>
-							<p class="mt-1"><strong>Group PI:</strong> Prof. Zhifu Mi</p>
-							<ul style="padding-left: 1.5rem;">
-								<li>Participated in the project “The analysis of the references of the Intergovernmental Panel on Climate Change Assessment Reports.” @Group 2, AR2.</li>
-							</ul>
-						</article>
+					<a href="https://pku-intermt.github.io" target="_blank" class="pdf-link">
+						<i class="fas fa-external-link-alt" aria-hidden="true"></i>Project Website</a>
+				</div>
+			</article>
+			<article class="card publication-card" data-category="first-author economics">
+				<div class="publication-item">
+					<h4 class="card-title">Agglomeration economies and inequalities: Theory and evidence from provincial China</h4>
+					<div class="publication-authors">Khan, J., <strong style="color: #2563eb;">Zheng, J.</strong>, Ahmad, M., & Alam Khan, Z.</div>
+					<div class="publication-journal">Journal of Chinese Economic and Business Studies</div>
+					<div class="publication-description mt-half">
+						<span class="tag primary">Co-first Author</span>
+						<span class="tag">NEG</span>
+						<span class="tag">Regional Inequality</span>
 					</div>
-					<div class="timeline-item">
-						<article class="card">
-							<h3 class="card-title">Research Assistant</h3>
-							<div class="card-subtitle">Institute of International Studies, Shandong University</div>
-							<div class="card-meta">March 2023 - March 2025 | Weihai, China</div>
-							<p class="mt-1"><strong>Group PI:</strong> Prof. Yuan Li</p>
-							<ul style="padding-left: 1.5rem;">
-								<li>Contributed to building the Center for Data Analysis on Area and Country Studies.</li>
-								<li>Supported the development of the Center for Data Analysis on Area and Country Studies, performed programming, data visualization, and laboratory system maintenance, primarily supporting research in Input-Output Analysis and Global Value Chains (GVCs), with
-									extended applications to machine learning and natural language processing (NLP) for data-driven economic modeling.</li>
-							</ul>
-						</article>
-					</div>
-					<div class="timeline-item">
-						<article class="card">
-							<h3 class="card-title">Community Leader on Secondment</h3>
-							<div class="card-subtitle">Tian Village, Weihai City (University Social Practice Program)</div>
-							<div class="card-meta">2024 – Present | Weihai, China</div>
-							<ul class="mt-1" style="padding-left: 1.5rem;">
-								<li>Assisted with community initiatives including after-school tutoring, daycare, and science outreach.</li>
-								<li>Provided training on emergency first aid techniques (CPR, Heimlich maneuver) and public health awareness (AIDS, tuberculosis).</li>
-								<li>Facilitated interaction between university students and local community to address social challenges.</li>
-							</ul>
-						</article>
-					</div>
-					<div class="timeline-item">
-						<article class="card">
-							<h3 class="card-title">Management Trainee, Marketing Department</h3>
-							<div class="card-subtitle">Golden Education</div>
-							<div class="card-meta">Summer 2023 | Weihai, China</div>
-							<ul class="mt-1" style="padding-left: 1.5rem;">
-								<li>Organized, planned, and promoted campus branding activities.</li>
-								<li>Utilized online new media platforms to expand networks and provided financial certificate consultations.</li>
-								<li>Supported campus market development and ensured completion of team objectives.</li>
-							</ul>
-						</article>
+					<a href="./PDF/Presentation_Agglomeration_Economies_and_Inequality__Theory_and_Evidence_from_Provincial_China.pdf" target="_blank" class="pdf-link">
+						<i class="fas fa-file-pdf" aria-hidden="true"></i>
+						<span>View Presentation</span></a>
+				</div>
+			</article>
+			<article class="card publication-card" data-category="translation books economics">
+				<div class="publication-item">
+					<h4 class="card-title">欧盟的创新与区域增长中译版 (Innovation and Regional Growth in the European Union, Chinese Edition)</h4>
+					<div class="publication-authors">Crespo, R., & Rodríguez-Pose, A. (任建辉等翻译 (Jianhui Ren, Ed.))</div>
+					<div class="publication-journal">北京经济管理出版社 (Beijing: Economic Management Press) (2024)</div>
+					<div class="publication-description mt-half">
+						<strong>Translated Chapter 3: "Geographical Accessibility and Human Capital Accumulation".</strong>This book explores the interplay between innovation and regional growth using social filter theory. This book was awarded the Third Prize in the “Top 100 Outstanding
+						Achievements in Social Science Research” Project of Shanxi Province. <div>
+							<span class="tag">Translation</span>
+							<span class="tag">Social Filter Theory</span>
+						</div>
 					</div>
 				</div>
-			</section>
-			<section id="projects" class="section" aria-labelledby="projects-title">
-				<h2 id="projects-title" class="section-title">Personal Projects</h2>
-				<div class="grid">
-					<article class="card">
-						<h3 class="card-title">MCM/ICM & APMCM</h3>
-						<div class="card-subtitle">Team Leader</div>
-						<div class="card-meta">2020 - 2024</div>
-						<p>Led teams in multiple Mathematical Contest in Modeling (MCM/ICM) and Asia and Pacific Mathematical Contest in Modeling (APMCM) events, responsible for mathematical modeling and academic paper writing.</p>
-						<div class="mt-1">
-							<p><strong>APMCM Result:</strong> <span class="tag">Third Prize (Top 25%)</span></p>
-							<p><strong>MCM/ICM Result:</strong> <span class="tag">Successful Participant (Top 65%)</span></p>
+			</article>
+			<article class="card publication-card" data-category="acknowledged economics">
+				<div class="publication-item">
+					<h4 class="card-title">Linkages and structural changes in the Chinese financial sector, 1996–2018: A network and input–output approach</h4>
+					<div class="publication-authors">Khan, J., Li, Y., & Mahsud, Q. J.</div>
+					<div class="publication-journal">Structural Change and Economic Dynamics, 70, 33–44 (2024)</div>
+					<div class="publication-description mt-half">
+						<strong>Acknowledged for contributions.</strong>This study highlights the financial sector's critical role in downstream industrial growth and its transformation after the global financial crisis. <div class="tags">
+							<span class="tag">Acknowledged</span>
+							<span class="tag">Input-Output Analysis</span>
+							<span class="tag">Network Analysis</span>
 						</div>
-					</article>
-					<article class="card">
-						<h3 class="card-title">iLoveNoEmo</h3>
-						<div class="card-subtitle">Team Leader</div>
-						<div class="card-meta">2023 | Case Competition</div>
-						<p>A project for the 10th China International "Internet+" College Students Innovation and Entrepreneurship Competition (中国国际“互联网+”大学生创新创业大赛), focusing on youth mental health. Responsible for data analysis, market research, and operation of a WeChat account to deliver
-							digitized emotional well-being solutions.</p>
-						<a href="./PDF/iLoveNoEmo.pdf" class="pdf-link mt-2">
-							<i class="fas fa-file-pdf" aria-hidden="true"></i> View Our Report </a>
-					</article>
-					<article class="card">
-						<h3 class="card-title">iTooth with a Smooth Tongue</h3>
-						<div class="card-subtitle">Team Leader</div>
-						<div class="card-meta">2022 | Case Competition</div>
-						<p>Developed an Internet-based solution to enhance public awareness of oral health and promote dental well-being.</p>
-						<div class="mt-1">
-							<p><strong>Result:</strong> <span class="tag primary">Second Prize (Shandong University)</span></p>
-							<p>13th National College Students E-Commerce "Innovation, Creativity & Entrepreneurship" Challenge (全国大学生电子商务“创新、创意及创业”挑战赛)</p>
-						</div>
-						<a href="./PDF/itooth.pdf" class="pdf-link mt-2">
-							<i class="fas fa-file-pdf" aria-hidden="true"></i> View Our Report </a>
-					</article>
-					<article class="card">
-						<h3 class="card-title">TEACH FOR CHINA (#Bilibili)</h3>
-						<div class="card-subtitle">Volunteer Teacher</div>
-						<div class="card-meta">2023</div>
-						<p>Participated in the TEACH FOR CHINA program (美丽中国), recording lessons for students in underprivileged rural areas to promote educational equity and ensure access to quality education for all children.</p>
-					</article>
+					</div>
+					<a href="./PDF/Linkages and Structural Changes in the Chinese Financial Sector.pdf" target="_blank" class="pdf-link">
+						<i class="fas fa-file-pdf" aria-hidden="true"></i>
+						<span>View Presentation</span></a>
 				</div>
-			</section>
-			<section id="skills" class="section" aria-labelledby="skills-title">
-				<h2 id="skills-title" class="section-title">Professional Skills & Research Interest</h2>
-				<div class="card mb-1">
-					<h3 class="card-title">Software & Languages</h3>
-					<div class="grid" style="grid-template-columns: 1fr 1fr;">
+			</article>
+			<article class="card publication-card" data-category="acknowledged economics books">
+				<div class="publication-item">
+					<h4 class="card-title">Wind from the East: How does the Belt and Road Initiative connect continents to unleash economic potential?</h4>
+					<div class="publication-authors">Li, Y., & Khan, J.</div>
+					<div class="publication-journal">Peter Lang (in process)</div>
+					<div class="publication-description mt-half">
+						<strong>Acknowledged for contributions.</strong>
 						<div>
-							<p><strong>Software:</strong></p>
-							<span class="tag">Microsoft Office Suite (Advanced)</span>
-							<span class="tag">Adobe Creative Suite (Intermediate)</span>
-							<span class="tag">Python (Intermediate)</span>
-							<span class="tag">MATLAB (Intermediate)</span>
-							<span class="tag">C (Intermediate, seldom use)</span>
-							<span class="tag">IBM SPSS Statistics (Intermediate, seldom use)</span>
-							<span class="tag">OriginLab (Intermediate, seldom use)</span>
-							<span class="tag">STATA (Basic)</span>
-							<span class="tag">R (Basic)</span>
-						</div>
-						<div>
-							<p><strong>Languages:</strong></p>
-							<span class="tag primary">Chinese (Native)</span>
-							<span class="tag primary">English (IELTS 7)</span>
+							<span class="tag">Acknowledged</span>
+							<span class="tag">In Process</span>
+							<span class="tag">BRI</span>
+							<span class="tag">GVCs</span>
+							<span class="tag">Input-Output Analysis</span>
 						</div>
 					</div>
 				</div>
-				<div class="card">
-					<h3 class="card-title">Mathematical & Physics Foundation</h3>
-					<p>Key coursework with high performance, demonstrating strong analytical and quantitative abilities. Full academic transcript available upon request via <a href="mailto:karcenzheng17@gmail.com">email</a>.</p>
-					<ul class="mt-1" style="columns: 2; padding-left: 1.5rem;">
-						<li>Calculus I (SDU): <strong>98/100</strong></li>
-						<li>Calculus II (DUT): <strong>92/100</strong></li>
-						<li>Linear Algebra (SDU): <strong>90/100</strong></li>
-						<li>Probability & Statistics (DUT): <strong>88/100</strong></li>
-						<li>College Physics I (DUT): <strong>98/100</strong></li>
-						<li>College Physics II (DUT): <strong>100/100</strong></li>
+			</article>
+		</div>
+	</section>
+	<section id="conferences" class="section" aria-labelledby="conferences-title">
+		<h2 id="conferences-title" class="section-title">Conference Presentations</h2>
+		<article class="card">
+			<h3 class="card-title">31st International Input-Output Association Conference</h3>
+			<div class="card-subtitle">Oral Presentation <span style="font-style: italic;">(Withdrawn for Health Reasons)</span></div>
+			<div class="card-meta">Malé | 2025</div>
+			<p>
+				<strong>Tittle:</strong>
+				<em>Linkages and Structural Changes in the Chinese Financial Sector, 1996–2018</em>
+			</p>
+			<a href="./PDF/2025 IIOA Conference Linkages and Structural Changes in the Chinese Financial Sector, 1996–2018 A Network and Input–Output Approach.pdf" class="pdf-link" target="_blank" rel="noopener noreferrer">
+				<i class="fas fa-file-pdf" aria-hidden="true"></i>View Presentation</a>
+		</article>
+		<article class="card">
+			<h3 class="card-title">The 10th International Workshop on RUSE in China</h3>
+			<div class="card-subtitle">Oral Presentation</div>
+			<div class="card-meta">Peking University | 2023</div>
+			<p>
+				<strong>Tittle:</strong>
+				<em>Agglomeration Economies and Regional Inequality in Provincial China</em>
+			</p>
+			<a href="./PDF/RUSE_Agglomeration Economies and regional inequalities,Theory and Evidence from Provincial China.pdf" class="pdf-link" target="_blank" rel="noopener noreferrer">
+				<i class="fas fa-file-pdf" aria-hidden="true"></i>View Presentation</a>
+		</article>
+	</section>
+	<section id="experience" class="section" aria-labelledby="experience-title">
+		<h2 id="experience-title" class="section-title">Internship & Research Experience</h2>
+		<div class="timeline">
+			<div class="timeline-item">
+				<article class="card">
+					<h3 class="card-title">Research Intern</h3>
+					<div class="card-subtitle">The Hong Kong University of Science and Technology</div>
+					<div class="card-meta">Feb 2025 – May 2025 | Hong Kong, China</div>
+					<ul class="mt-1" style="padding-left: 1.5rem;">
+						<li>Conducted research on data science and data alignment.</li>
+						<li>Collaborated with Jiaming Ji and Boyuan Chen from Peking University on a NeurIPS 2025 submission.</li>
 					</ul>
-				</div>
-				<div class="card">
-					<h3 class="card-title">Areas of Interest</h3>
-					<strong>Data Science, Machine Learning, Natural Language Processing, Large Language Models, Econometrics, Health Economics, Behavioral Economics</strong>
-				</div>
-			</section>
-			<section id="achievements" class="section" aria-labelledby="achievements-title">
-				<h2 id="achievements-title" class="section-title">Scholarships & Travel Grants</h2>
-				<div class="award-item">
-					<div class="award-info">
-						<h4>Merit Scholarship (Third-class)</h4>
-						<p>Shandong University • 2025</p>
-					</div>
-					<div class="award-amount">CNY 1,000 (≈ USD 139)</div>
-				</div>
-				<div class="award-item">
-					<div class="award-info">
-						<h4>National Encouragement Scholarship</h4>
-						<p>Ministry of Education of the People's Republic of China • 2025</p>
-					</div>
-					<div class="award-amount">CNY 6,000 (≈ USD 841)</div>
-				</div>
-				<div class="award-item">
-					<div class="award-info">
-						<h4>IIOA Travel Grant</h4>
-						<p>International Input-Output Association • 2025</p>
-						<p style="font-style: italic; font-size: 0.8rem; color: var(--text-light);"> Note: Initially awarded via the COMPASS system, later cancelled due to exceeding budget limits. </p>
-					</div>
-					<div class="award-amount">USD 3,000</div>
-				</div>
-				<div class="award-item">
-					<div class="award-info">
-						<h4>National Encouragement Scholarship</h4>
-						<p>Ministry of Education of the People's Republic of China • 2023</p>
-					</div>
-					<div class="award-amount">CNY 5,000 (≈ USD 694)</div>
-				</div>
-				<div class="award-item">
-					<div class="award-info">
-						<h4>Merit Scholarship (Third-class)</h4>
-						<p>Shandong University • 2023</p>
-					</div>
-					<div class="award-amount">CNY 1,000 (≈ USD 139)</div>
-				</div>
-				<div class="award-item">
-					<div class="award-info">
-						<h4>PwC Open Day</h4>
-						<p>Jinan, China • 2023</p>
-						<p style="font-style: italic; font-size: 0.8rem; color: var(--text-light);"> Selected via the Golden Education Elite Enterprise Challenge (高顿名企挑战赛) Semi-Final Excellence Award, one of two publicly funded participants from the Weihai city. </p>
-					</div>
-					<div class="award-amount">CNY 450 (≈ USD 62)</div>
-				</div>
-				<div class="award-item">
-					<div class="award-info">
-						<h4>National Scholarship</h4>
-						<p>Ministry of Education of the People's Republic of China • 2020</p>
-					</div>
-					<div class="award-amount">CNY 8,000 (≈ USD 1,111)</div>
-				</div>
-				<div class="award-item">
-					<div class="award-info">
-						<h4>Academic Secondary Scholarship</h4>
-						<p>Dalian University of Technology • 2020</p>
-					</div>
-					<div class="award-amount">CNY 500 (≈ USD 69)</div>
-				</div>
-				<div class="award-item">
-					<div class="award-info">
-						<h4>Scholarship for Excellence in Character and Civic Spirit (精神文明奖学金)</h4>
-						<p>Dalian University of Technology • 2020</p>
-					</div>
-					<div class="award-amount">CNY 400 (≈ USD 56)</div>
-				</div>
-			</section>
-			<section id="leadership" class="section" aria-labelledby="leadership-title">
-				<h2 id="leadership-title" class="section-title">Positions of Responsibility</h2>
-				<div class="leadership-role">
-					<h4>Vice President</h4>
-					<div class="organization">'Shanhai' Political Observation Club (山海时政观察协会), School of Marxism, Shandong University</div>
-					<div class="period">2024 – 2025</div>
-				</div>
-				<div class="leadership-role">
-					<h4>Head of External Relations</h4>
-					<div class="organization">'Shanhai' Political Observation Club (山海时政观察协会), School of Marxism, Shandong University</div>
-					<div class="period">2023 – 2024</div>
-				</div>
-				<div class="leadership-role">
-					<h4>Secretary</h4>
-					<div class="organization">Department of Student Rights and Mental Health（生心权益部）, School of Northeast Asia Studies, Shandong University</div>
-					<div class="period">2022 – 2023</div>
-				</div>
-				<div class="leadership-role">
-					<h4>Head</h4>
-					<div class="organization">College Housing Committee (楼委会), Dalian University of Technology</div>
-					<div class="period">2019 – 2021</div>
-				</div>
-				<div class="leadership-role">
-					<h4>Vice Minister</h4>
-					<div class="organization">New Media Studio of Art Troupe (新媒体工作室), Dalian University of Technology</div>
-					<div class="period">2020 – 2021</div>
-				</div>
-				<div class="leadership-role">
-					<h4>Vice Minister</h4>
-					<div class="organization">'Yin Ji Guang Ying' New Media Studio of Art Troupe (印记光影新媒体工作室), Dalian University of Technology</div>
-					<div class="period">2019 – 2020</div>
-				</div>
-				<div class="leadership-role">
-					<h4>Vice Minister</h4>
-					<div class="organization">Department of Literature and Art（文化部）, School of Chemistry, Dalian University of Technology</div>
-					<div class="period">2019 – 2020</div>
-				</div>
-			</section>
-			<section id="memberships" class="section" aria-labelledby="memberships-title">
-				<h2 id="memberships-title" class="section-title">Memberships</h2>
-				<div class="card">
-					<ul style="padding-left: 1.5rem; columns: 2;">
-						<li>International Input-Output Association (IIOA, 2025-2026)</li>
-						<li>Chinese Society of Optimization, Systems Engineering, and Economic Mathematics(2023-2024)</li>
-						<li>Beijing Society of Image and Graphics(2023-2024)</li>
-					</ul>
-				</div>
-			</section>
-			<section id="references" class="section" aria-labelledby="references-title">
-				<h2 id="references-title" class="section-title">References</h2>
-				<div class="card"> Available upon request. </div>
-			</section>
-			<section id="gallery" class="section">
-				<h2 class="section-title">📸 Gallery</h2>
-				<div class="gallery-slider-container">
-					<div class="gallery-slider" id="gallerySlider">
-						<div class="slide">
-							<img src="./image/img(11).jpg" class="gallery-image" data-index="0">
-						</div>
-						<div class="slide">
-							<img src="./image/img (4).jpg" class="gallery-image" data-index="0">
-						</div>
-						<div class="slide">
-							<img src="./image/img (5).jpg" class="gallery-image" data-index="1">
-						</div>
-						<div class="slide">
-							<img src="./image/img (7).jpg" class="gallery-image" data-index="3">
-						</div>
-						<div class="slide">
-							<img src="./image/img (8).jpg" class="gallery-image" data-index="4">
-						</div>
-						<div class="slide">
-							<img src="./image/img (9).jpg" class="gallery-image" data-index="5">
-						</div>
-						<div class="slide">
-							<img src="./image/img (10).jpg" class="gallery-image" data-index="6">
-						</div>
-						<div class="slide">
-							<img src="./image/img (12).jpg" class="gallery-image" data-index="7">
-						</div>
-						<div class="slide">
-							<img src="./image/img (13).jpg" class="gallery-image" data-index="8">
-						</div>
-						<div class="slide">
-							<img src="./image/img (1).jpg" class="gallery-image" data-index="9">
-						</div>
-						<div class="slide">
-							<img src="./image/img (2).jpg" class="gallery-image" data-index="11">
-						</div>
-						<div class="slide">
-							<img src="./image/img (3).jpg" class="gallery-image" data-index="12">
-						</div>
-					</div>
-					<button class="gallery-prev" onclick="prevSlide()"><i class="fa fa-chevron-left"></i></button>
-					<button class="gallery-next" onclick="nextSlide()"><i class="fa fa-chevron-right"></i></button>
-					<div class="gallery-dots" id="galleryDots"></div>
-				</div>
-			</section>
-			<div id="imageViewer" class="modal">
-				<span class="close-btn" onclick="closeViewer()">&times;</span>
-				<img class="modal-content" id="modalImage">
-				<div class="modal-caption" id="modalCaption"></div>
-				<button class="viewer-prev" onclick="prevImage()"><i class="fa fa-chevron-left"></i></button>
-				<button class="viewer-next" onclick="nextImage()"><i class="fa fa-chevron-right"></i></button>
+				</article>
 			</div>
-			<section>
-				<footer class="py-16 bg-gradient-to-br from-gray-100 to-gray-200">
-					<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-						<h3 class="text-2xl font-semibold text-primary mb-4">Jiacheng Zheng</h3>
-						<p class="text-lg text-secondary mb-6">Interdisciplinary Student | Data Science Researcher</p>
-						<div class="flex justify-center space-x-8 mb-8">
-							<a href="mailto:karcenzheng@yeah.net" class="text-secondary hover:text-primary transition-smooth">
-								<i class="fa fa-envelope text-2xl"></i>
-							</a> &nbsp; <a href="https://www.zhihu.com/people/karcenzheng" target="_blank" class="text-secondary hover:text-primary transition-smooth">
-								<i class="fa fa-globe text-2xl"></i>
-							</a>
-						</div>
-						<div class="text-sm text-accent space-y-2">
-							<p>Veritatem sequi! | I Say Hello World in 2001.</p>
-						</div>
-						<div class="mt-8 pt-8 border-t border-gray-300 text-xs text-accent">
-							<p>© 2026 Jiacheng Zheng. All rights reserved.</p>
-						</div>
-					</div>
-				</footer>
-			</section>
-			<script>
-				// 画廊滑动功能
-				let currentSlide = 0;
-				const slides = document.querySelectorAll('.slide');
-				const dots = document.getElementById('galleryDots');
-				const slider = document.getElementById('gallerySlider');
-				const images = document.querySelectorAll('.gallery-image');
-				const imageViewer = document.getElementById('imageViewer');
-				const modalImage = document.getElementById('modalImage');
-				const modalCaption = document.getElementById('modalCaption');
-				
-				// 初始化指示器
-				slides.forEach((_, index) => {
-				  const dot = document.createElement('span');
-				  dot.className = 'dot';
-				  dot.onclick = () => goToSlide(index);
-				  dots.appendChild(dot);
-				});
-				
-				updateDots();
-				
-				// 滑动控制函数
-				function nextSlide() {
-				  currentSlide = (currentSlide + 1) % slides.length;
-				  updateSlider();
-				}
-				
-				function prevSlide() {
-				  currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-				  updateSlider();
-				}
-				
-				function goToSlide(index) {
-				  currentSlide = index;
-				  updateSlider();
-				}
-				
-				function updateSlider() {
-				  slider.style.transform = `translateX(-${currentSlide * 100}%)`;
-				  updateDots();
-				}
-				
-				function updateDots() {
-				  document.querySelectorAll('.dot').forEach((dot, index) => {
-				    dot.classList.toggle('active', index === currentSlide);
-				  });
-				}
-				
-				// 图片查看器功能
-				images.forEach(img => {
-				  img.addEventListener('click', () => {
-				    const index = parseInt(img.dataset.index);
-				    openViewer(index);
-				  });
-				});
-				
-				function openViewer(index) {
-				  currentSlide = index;
-				  updateViewerImage();
-				  imageViewer.style.display = 'block';
-				  document.body.style.overflow = 'hidden'; // 防止背景滚动
-				}
-				
-				function closeViewer() {
-				  imageViewer.style.display = 'none';
-				  document.body.style.overflow = 'auto'; // 恢复背景滚动
-				}
-				
-				function nextImage() {
-				  currentSlide = (currentSlide + 1) % slides.length;
-				  updateViewerImage();
-				}
-				
-				function prevImage() {
-				  currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-				  updateViewerImage();
-				}
-				
-				function updateViewerImage() {
-				  const img = slides[currentSlide].querySelector('img');
-				  modalImage.src = img.src;
-				  modalImage.alt = img.alt;
-				  modalCaption.textContent = img.alt;
-				}
-				
-				// 点击空白处关闭查看器
-				imageViewer.addEventListener('click', (e) => {
-				  if (e.target === imageViewer) {
-				    closeViewer();
-				  }
-				});
-				
-				// 键盘导航
-				document.addEventListener('keydown', (e) => {
-				  if (imageViewer.style.display === 'block') {
-				    if (e.key === 'Escape') closeViewer();
-				    if (e.key === 'ArrowRight') nextImage();
-				    if (e.key === 'ArrowLeft') prevImage();
-				  } else {
-				    if (e.key === 'ArrowRight') nextSlide();
-				    if (e.key === 'ArrowLeft') prevSlide();
-				  }
-				});
-			</script>
-		</main>
+			<div class="timeline-item">
+				<article class="card">
+					<h3 class="card-title">Research Assistant</h3>
+					<div class="card-subtitle">The Bartlett School of Sustainable Construction, University College London</div>
+					<div class="card-meta">July 2024 – Aug 2024 | Remote</div>
+					<p class="mt-1">
+						<strong>Group PI:</strong>Prof. Zhifu Mi
+					</p>
+					<ul style="padding-left: 1.5rem;">
+						<li>Participated in the project “The analysis of the references of the Intergovernmental Panel on Climate Change Assessment Reports.” @Group 2, AR2.</li>
+					</ul>
+				</article>
+			</div>
+			<div class="timeline-item">
+				<article class="card">
+					<h3 class="card-title">Research Assistant</h3>
+					<div class="card-subtitle">Institute of International Studies, Shandong University</div>
+					<div class="card-meta">March 2023 - March 2025 | Weihai, China</div>
+					<p class="mt-1">
+						<strong>Group PI:</strong>Prof. Yuan Li
+					</p>
+					<ul style="padding-left: 1.5rem;">
+						<li>Contributed to building the Center for Data Analysis on Area and Country Studies.</li>
+						<li>Supported the development of the Center for Data Analysis on Area and Country Studies, performed programming, data visualization, and laboratory system maintenance, primarily supporting research in Input-Output Analysis and Global Value Chains (GVCs), with extended
+							applications to machine learning and natural language processing (NLP) for data-driven economic modeling.</li>
+					</ul>
+				</article>
+			</div>
+			<div class="timeline-item">
+				<article class="card">
+					<h3 class="card-title">Community Leader on Secondment</h3>
+					<div class="card-subtitle">Tian Village, Weihai City (University Social Practice Program)</div>
+					<div class="card-meta">2024 – Present | Weihai, China</div>
+					<ul class="mt-1" style="padding-left: 1.5rem;">
+						<li>Assisted with community initiatives including after-school tutoring, daycare, and science outreach.</li>
+						<li>Provided training on emergency first aid techniques (CPR, Heimlich maneuver) and public health awareness (AIDS, tuberculosis).</li>
+						<li>Facilitated interaction between university students and local community to address social challenges.</li>
+					</ul>
+				</article>
+			</div>
+			<div class="timeline-item">
+				<article class="card">
+					<h3 class="card-title">Management Trainee, Marketing Department</h3>
+					<div class="card-subtitle">Golden Education</div>
+					<div class="card-meta">Summer 2023 | Weihai, China</div>
+					<ul class="mt-1" style="padding-left: 1.5rem;">
+						<li>Organized, planned, and promoted campus branding activities.</li>
+						<li>Utilized online new media platforms to expand networks and provided financial certificate consultations.</li>
+						<li>Supported campus market development and ensured completion of team objectives.</li>
+					</ul>
+				</article>
+			</div>
+		</div>
+	</section>
+	<section id="projects" class="section" aria-labelledby="projects-title">
+		<h2 id="projects-title" class="section-title">Personal Projects</h2>
+		<div class="grid">
+			<article class="card">
+				<h3 class="card-title">MCM/ICM & APMCM</h3>
+				<div class="card-subtitle">Team Leader</div>
+				<div class="card-meta">2020 - 2024</div>
+				<p>Led teams in multiple Mathematical Contest in Modeling (MCM/ICM) and Asia and Pacific Mathematical Contest in Modeling (APMCM) events, responsible for mathematical modeling and academic paper writing.</p>
+				<div class="mt-1">
+					<p>
+						<strong>APMCM Result:</strong>
+						<span class="tag">Third Prize (Top 25%)</span>
+					</p>
+					<p>
+						<strong>MCM/ICM Result:</strong>
+						<span class="tag">Successful Participant (Top 65%)</span>
+					</p>
+				</div>
+			</article>
+			<article class="card">
+				<h3 class="card-title">iLoveNoEmo</h3>
+				<div class="card-subtitle">Team Leader</div>
+				<div class="card-meta">2023 | Case Competition</div>
+				<p>A project for the 10th China International "Internet+" College Students Innovation and Entrepreneurship Competition (中国国际“互联网+”大学生创新创业大赛), focusing on youth mental health. Responsible for data analysis, market research, and operation of a WeChat account to deliver digitized
+					emotional well-being solutions.</p>
+				<a href="./PDF/iLoveNoEmo.pdf" class="pdf-link mt-2">
+					<i class="fas fa-file-pdf" aria-hidden="true"></i>View Our Report</a>
+			</article>
+			<article class="card">
+				<h3 class="card-title">iTooth with a Smooth Tongue</h3>
+				<div class="card-subtitle">Team Leader</div>
+				<div class="card-meta">2022 | Case Competition</div>
+				<p>Developed an Internet-based solution to enhance public awareness of oral health and promote dental well-being.</p>
+				<div class="mt-1">
+					<p>
+						<strong>Result:</strong>
+						<span class="tag primary">Second Prize (Shandong University)</span>
+					</p>
+					<p>13th National College Students E-Commerce "Innovation, Creativity & Entrepreneurship" Challenge (全国大学生电子商务“创新、创意及创业”挑战赛)</p>
+				</div>
+				<a href="./PDF/itooth.pdf" class="pdf-link mt-2">
+					<i class="fas fa-file-pdf" aria-hidden="true"></i>View Our Report</a>
+			</article>
+			<article class="card">
+				<h3 class="card-title">TEACH FOR CHINA (#Bilibili)</h3>
+				<div class="card-subtitle">Volunteer Teacher</div>
+				<div class="card-meta">2023</div>
+				<p>Participated in the TEACH FOR CHINA program (美丽中国), recording lessons for students in underprivileged rural areas to promote educational equity and ensure access to quality education for all children.</p>
+			</article>
+		</div>
+	</section>
+	<section id="skills" class="section" aria-labelledby="skills-title">
+		<h2 id="skills-title" class="section-title">Professional Skills & Research Interest</h2>
+		<div class="card mb-1">
+			<h3 class="card-title">Software & Languages</h3>
+			<div class="grid" style="grid-template-columns: 1fr 1fr;">
+				<div>
+					<p>
+						<strong>Software:</strong>
+					</p>
+					<span class="tag">Microsoft Office Suite (Advanced)</span>
+					<span class="tag">Adobe Creative Suite (Intermediate)</span>
+					<span class="tag">Python (Intermediate)</span>
+					<span class="tag">MATLAB (Intermediate)</span>
+					<span class="tag">C (Intermediate, seldom use)</span>
+					<span class="tag">IBM SPSS Statistics (Intermediate, seldom use)</span>
+					<span class="tag">OriginLab (Intermediate, seldom use)</span>
+					<span class="tag">STATA (Basic)</span>
+					<span class="tag">R (Basic)</span>
+				</div>
+				<div>
+					<p>
+						<strong>Languages:</strong>
+					</p>
+					<span class="tag primary">Chinese (Native)</span>
+					<span class="tag primary">English (IELTS 7)</span>
+				</div>
+			</div>
+		</div>
+		<div class="card">
+			<h3 class="card-title">Mathematical & Physics Foundation</h3>
+			<p>Key coursework with high performance, demonstrating strong analytical and quantitative abilities. Full academic transcript available upon request via <a href="mailto:karcenzheng17@gmail.com">email</a>.</p>
+			<ul class="mt-1" style="columns: 2; padding-left: 1.5rem;">
+				<li>Calculus I (SDU): <strong>98/100</strong></li>
+				<li>Calculus II (DUT): <strong>92/100</strong></li>
+				<li>Linear Algebra (SDU): <strong>90/100</strong></li>
+				<li>Probability & Statistics (DUT): <strong>88/100</strong></li>
+				<li>College Physics I (DUT): <strong>98/100</strong></li>
+				<li>College Physics II (DUT): <strong>100/100</strong></li>
+			</ul>
+		</div>
+		<div class="card">
+			<h3 class="card-title">Areas of Interest</h3>
+			<strong>Data Science, Machine Learning, Natural Language Processing, Large Language Models, Econometrics, Health Economics, Behavioral Economics</strong>
+		</div>
+	</section>
+	<section id="achievements" class="section" aria-labelledby="achievements-title">
+		<h2 id="achievements-title" class="section-title">Scholarships & Travel Grants</h2>
+		<div class="award-item">
+			<div class="award-info">
+				<h4>Merit Scholarship (Third-class)</h4>
+				<p>Shandong University • 2025</p>
+			</div>
+			<div class="award-amount">CNY 1,000 (≈ USD 139)</div>
+		</div>
+		<div class="award-item">
+			<div class="award-info">
+				<h4>National Encouragement Scholarship</h4>
+				<p>Ministry of Education of the People's Republic of China • 2025</p>
+			</div>
+			<div class="award-amount">CNY 6,000 (≈ USD 841)</div>
+		</div>
+		<div class="award-item">
+			<div class="award-info">
+				<h4>IIOA Travel Grant</h4>
+				<p>International Input-Output Association • 2025</p>
+				<p style="font-style: italic; font-size: 0.8rem; color: var(--text-light);">Note: Initially awarded via the COMPASS system, later cancelled due to exceeding budget limits.</p>
+			</div>
+			<div class="award-amount">USD 3,000</div>
+		</div>
+		<div class="award-item">
+			<div class="award-info">
+				<h4>National Encouragement Scholarship</h4>
+				<p>Ministry of Education of the People's Republic of China • 2023</p>
+			</div>
+			<div class="award-amount">CNY 5,000 (≈ USD 694)</div>
+		</div>
+		<div class="award-item">
+			<div class="award-info">
+				<h4>Merit Scholarship (Third-class)</h4>
+				<p>Shandong University • 2023</p>
+			</div>
+			<div class="award-amount">CNY 1,000 (≈ USD 139)</div>
+		</div>
+		<div class="award-item">
+			<div class="award-info">
+				<h4>PwC Open Day</h4>
+				<p>Jinan, China • 2023</p>
+				<p style="font-style: italic; font-size: 0.8rem; color: var(--text-light);">Selected via the Golden Education Elite Enterprise Challenge (高顿名企挑战赛) Semi-Final Excellence Award, one of two publicly funded participants from the Weihai city.</p>
+			</div>
+			<div class="award-amount">CNY 450 (≈ USD 62)</div>
+		</div>
+		<div class="award-item">
+			<div class="award-info">
+				<h4>National Scholarship</h4>
+				<p>Ministry of Education of the People's Republic of China • 2020</p>
+			</div>
+			<div class="award-amount">CNY 8,000 (≈ USD 1,111)</div>
+		</div>
+		<div class="award-item">
+			<div class="award-info">
+				<h4>Academic Secondary Scholarship</h4>
+				<p>Dalian University of Technology • 2020</p>
+			</div>
+			<div class="award-amount">CNY 500 (≈ USD 69)</div>
+		</div>
+		<div class="award-item">
+			<div class="award-info">
+				<h4>Scholarship for Excellence in Character and Civic Spirit (精神文明奖学金)</h4>
+				<p>Dalian University of Technology • 2020</p>
+			</div>
+			<div class="award-amount">CNY 400 (≈ USD 56)</div>
+		</div>
+	</section>
+	<section id="leadership" class="section" aria-labelledby="leadership-title">
+		<h2 id="leadership-title" class="section-title">Positions of Responsibility</h2>
+		<div class="leadership-role">
+			<h4>Vice President</h4>
+			<div class="organization">'Shanhai' Political Observation Club (山海时政观察协会), School of Marxism, Shandong University</div>
+			<div class="period">2024 – 2025</div>
+		</div>
+		<div class="leadership-role">
+			<h4>Head of External Relations</h4>
+			<div class="organization">'Shanhai' Political Observation Club (山海时政观察协会), School of Marxism, Shandong University</div>
+			<div class="period">2023 – 2024</div>
+		</div>
+		<div class="leadership-role">
+			<h4>Secretary</h4>
+			<div class="organization">Department of Student Rights and Mental Health（生心权益部）, School of Northeast Asia Studies, Shandong University</div>
+			<div class="period">2022 – 2023</div>
+		</div>
+		<div class="leadership-role">
+			<h4>Head</h4>
+			<div class="organization">College Housing Committee (楼委会), Dalian University of Technology</div>
+			<div class="period">2019 – 2021</div>
+		</div>
+		<div class="leadership-role">
+			<h4>Vice Minister</h4>
+			<div class="organization">New Media Studio of Art Troupe (新媒体工作室), Dalian University of Technology</div>
+			<div class="period">2020 – 2021</div>
+		</div>
+		<div class="leadership-role">
+			<h4>Vice Minister</h4>
+			<div class="organization">'Yin Ji Guang Ying' New Media Studio of Art Troupe (印记光影新媒体工作室), Dalian University of Technology</div>
+			<div class="period">2019 – 2020</div>
+		</div>
+		<div class="leadership-role">
+			<h4>Vice Minister</h4>
+			<div class="organization">Department of Literature and Art（文化部）, School of Chemistry, Dalian University of Technology</div>
+			<div class="period">2019 – 2020</div>
+		</div>
+	</section>
+	<section id="memberships" class="section" aria-labelledby="memberships-title">
+		<h2 id="memberships-title" class="section-title">Memberships</h2>
+		<div class="card">
+			<ul style="padding-left: 1.5rem; columns: 2;">
+				<li>International Input-Output Association (IIOA, 2025-2026)</li>
+				<li>Chinese Society of Optimization, Systems Engineering, and Economic Mathematics(2023-2024)</li>
+				<li>Beijing Society of Image and Graphics(2023-2024)</li>
+			</ul>
+		</div>
+	</section>
+	<section id="references" class="section" aria-labelledby="references-title">
+		<h2 id="references-title" class="section-title">References</h2>
+		<div class="card">Available upon request.</div>
+	</section>
+	<section id="gallery" class="section">
+		<h2 class="section-title">📸 Gallery</h2>
+		<div class="gallery-slider-container">
+			<div class="gallery-slider" id="gallerySlider">
+				<div class="slide">
+					<img src="./image/img(11).jpg" class="gallery-image" data-index="0">
+				</div>
+				<div class="slide">
+					<img src="./image/img (4).jpg" class="gallery-image" data-index="0">
+				</div>
+				<div class="slide">
+					<img src="./image/img (5).jpg" class="gallery-image" data-index="1">
+				</div>
+				<div class="slide">
+					<img src="./image/img (7).jpg" class="gallery-image" data-index="3">
+				</div>
+				<div class="slide">
+					<img src="./image/img (8).jpg" class="gallery-image" data-index="4">
+				</div>
+				<div class="slide">
+					<img src="./image/img (9).jpg" class="gallery-image" data-index="5">
+				</div>
+				<div class="slide">
+					<img src="./image/img (10).jpg" class="gallery-image" data-index="6">
+				</div>
+				<div class="slide">
+					<img src="./image/img (12).jpg" class="gallery-image" data-index="7">
+				</div>
+				<div class="slide">
+					<img src="./image/img (13).jpg" class="gallery-image" data-index="8">
+				</div>
+				<div class="slide">
+					<img src="./image/img (1).jpg" class="gallery-image" data-index="9">
+				</div>
+				<div class="slide">
+					<img src="./image/img (2).jpg" class="gallery-image" data-index="11">
+				</div>
+				<div class="slide">
+					<img src="./image/img (3).jpg" class="gallery-image" data-index="12">
+				</div>
+			</div>
+			<button class="gallery-prev" onclick="prevSlide()">
+				<i class="fa fa-chevron-left"></i>
+			</button>
+			<button class="gallery-next" onclick="nextSlide()">
+				<i class="fa fa-chevron-right"></i>
+			</button>
+			<div class="gallery-dots" id="galleryDots"></div>
+		</div>
+	</section>
+	<div id="imageViewer" class="modal">
+		<span class="close-btn" onclick="closeViewer()">&times;</span>
+		<img class="modal-content" id="modalImage">
+		<div class="modal-caption" id="modalCaption"></div>
+		<button class="viewer-prev" onclick="prevImage()">
+			<i class="fa fa-chevron-left"></i>
+		</button>
+		<button class="viewer-next" onclick="nextImage()">
+			<i class="fa fa-chevron-right"></i>
+		</button>
+	</div>
+	<section>
+		<footer class="py-16 bg-gradient-to-br from-gray-100 to-gray-200">
+			<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+				<h3 class="text-2xl font-semibold text-primary mb-4">Jiacheng Zheng</h3>
+				<p class="text-lg text-secondary mb-6">Interdisciplinary Student | Data Science Researcher</p>
+				<div class="flex justify-center space-x-8 mb-8">
+					<a href="mailto:karcenzheng@yeah.net" class="text-secondary hover:text-primary transition-smooth">
+						<i class="fa fa-envelope text-2xl"></i>
+					</a>&nbsp; <a href="https://www.zhihu.com/people/karcenzheng" target="_blank" class="text-secondary hover:text-primary transition-smooth">
+						<i class="fa fa-globe text-2xl"></i></a>
+				</div>
+				<div class="text-sm text-accent space-y-2">
+					<p>Veritatem sequi! | I Say Hello World in 2001.</p>
+				</div>
+				<div class="mt-8 pt-8 border-t border-gray-300 text-xs text-accent">
+					<p>© 2026 Jiacheng Zheng. All rights reserved.</p>
+				</div>
+			</div>
+		</footer>
+	</section>
+	<script>
+		// 画廊滑动功能
+		          let currentSlide = 0;
+		          const slides = document.querySelectorAll('.slide');
+		          const dots = document.getElementById('galleryDots');
+		          const slider = document.getElementById('gallerySlider');
+		          const images = document.querySelectorAll('.gallery-image');
+		          const imageViewer = document.getElementById('imageViewer');
+		          const modalImage = document.getElementById('modalImage');
+		          const modalCaption = document.getElementById('modalCaption');
+		
+		          // 初始化指示器
+		          slides.forEach((_, index) = >{
+		            const dot = document.createElement('span');
+		            dot.className = 'dot';
+		            dot.onclick = () = >goToSlide(index);
+		            dots.appendChild(dot);
+		          });
+		
+		          updateDots();
+		
+		          // 滑动控制函数
+		          function nextSlide() {
+		            currentSlide = (currentSlide + 1) % slides.length;
+		            updateSlider();
+		          }
+		
+		          function prevSlide() {
+		            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+		            updateSlider();
+		          }
+		
+		          function goToSlide(index) {
+		            currentSlide = index;
+		            updateSlider();
+		          }
+		
+		          function updateSlider() {
+		            slider.style.transform = `translateX( - $ {
+		              currentSlide * 100
+		            } % )`;
+		            updateDots();
+		          }
+		
+		          function updateDots() {
+		            document.querySelectorAll('.dot').forEach((dot, index) = >{
+		              dot.classList.toggle('active', index === currentSlide);
+		            });
+		          }
+		
+		          // 图片查看器功能
+		          images.forEach(img = >{
+		            img.addEventListener('click', () = >{
+		              const index = parseInt(img.dataset.index);
+		              openViewer(index);
+		            });
+		          });
+		
+		          function openViewer(index) {
+		            currentSlide = index;
+		            updateViewerImage();
+		            imageViewer.style.display = 'block';
+		            document.body.style.overflow = 'hidden'; // 防止背景滚动
+		          }
+		
+		          function closeViewer() {
+		            imageViewer.style.display = 'none';
+		            document.body.style.overflow = 'auto'; // 恢复背景滚动
+		          }
+		
+		          function nextImage() {
+		            currentSlide = (currentSlide + 1) % slides.length;
+		            updateViewerImage();
+		          }
+		
+		          function prevImage() {
+		            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+		            updateViewerImage();
+		          }
+		
+		          function updateViewerImage() {
+		            const img = slides[currentSlide].querySelector('img');
+		            modalImage.src = img.src;
+		            modalImage.alt = img.alt;
+		            modalCaption.textContent = img.alt;
+		          }
+		
+		          // 点击空白处关闭查看器
+		          imageViewer.addEventListener('click', (e) = >{
+		            if (e.target === imageViewer) {
+		              closeViewer();
+		            }
+		          });
+		
+		          // 键盘导航
+		          document.addEventListener('keydown', (e) = >{
+		            if (imageViewer.style.display === 'block') {
+		              if (e.key === 'Escape') closeViewer();
+		              if (e.key === 'ArrowRight') nextImage();
+		              if (e.key === 'ArrowLeft') prevImage();
+		            } else {
+		              if (e.key === 'ArrowRight') nextSlide();
+		              if (e.key === 'ArrowLeft') prevSlide();
+		            }
+		          });
+	</script>
+	</main>
 	</div>
 	<button class="floating-action" onclick="scrollToTop()" aria-label="Scroll to top">
 		<i class="fas fa-arrow-up" aria-hidden="true"></i>
 	</button>
 	<script>
-		document.addEventListener('DOMContentLoaded', function() {
-		    // Smooth scrolling for navigation links
-		    document.querySelectorAll('.nav-link').forEach(link => {
-		        link.addEventListener('click', function(e) {
+		document.addEventListener('DOMContentLoaded',
+		      function() {
+		        // Smooth scrolling for navigation links
+		        document.querySelectorAll('.nav-link').forEach(link = >{
+		          link.addEventListener('click',
+		          function(e) {
 		            e.preventDefault();
 		            const targetId = this.getAttribute('href');
 		            const targetSection = document.querySelector(targetId);
-		            
+		
 		            if (targetSection) {
-		                targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-		                // History push state can be added here if desired
+		              targetSection.scrollIntoView({
+		                behavior: 'smooth',
+		                block: 'start'
+		              });
+		              // History push state can be added here if desired
 		            }
+		          });
 		        });
-		    });
 		
-		    // Scroll to top function
-		    window.scrollToTop = () => {
-		        window.scrollTo({ top: 0, behavior: 'smooth' });
-		    };
+		        // Scroll to top function
+		        window.scrollToTop = () = >{
+		          window.scrollTo({
+		            top: 0,
+		            behavior: 'smooth'
+		          });
+		        };
 		
-		    // Publication filter functionality
-		    const filterTabs = document.querySelectorAll('.filter-tab');
-		    const publications = document.querySelectorAll('#publications-list .publication-card');
+		        // Publication filter functionality
+		        const filterTabs = document.querySelectorAll('.filter-tab');
+		        const publications = document.querySelectorAll('#publications-list .publication-card');
 		
-		    filterTabs.forEach(tab => {
-		        tab.addEventListener('click', function() {
-		            filterTabs.forEach(t => t.classList.remove('active'));
+		        filterTabs.forEach(tab = >{
+		          tab.addEventListener('click',
+		          function() {
+		            filterTabs.forEach(t = >t.classList.remove('active'));
 		            this.classList.add('active');
-		            
+		
 		            const filter = this.dataset.filter;
-		            
-		            publications.forEach(pubCard => {
-		                const categories = pubCard.dataset.category || '';
-		                const isVisible = (filter === 'all') || categories.includes(filter);
-		                pubCard.style.display = isVisible ? 'block' : 'none';
+		
+		            publications.forEach(pubCard = >{
+		              const categories = pubCard.dataset.category || '';
+		              const isVisible = (filter === 'all') || categories.includes(filter);
+		              pubCard.style.display = isVisible ? 'block': 'none';
 		            });
+		          });
 		        });
-		    });
 		
-		    // Publication search functionality
-		    document.getElementById('searchPapers').addEventListener('input', function() {
-		        const searchTerm = this.value.toLowerCase().trim();
-		        
-		        publications.forEach(pubCard => {
+		        // Publication search functionality
+		        document.getElementById('searchPapers').addEventListener('input',
+		        function() {
+		          const searchTerm = this.value.toLowerCase().trim();
+		
+		          publications.forEach(pubCard = >{
 		            const textContent = pubCard.textContent.toLowerCase();
-		            pubCard.style.display = textContent.includes(searchTerm) ? 'block' : 'none';
+		            pubCard.style.display = textContent.includes(searchTerm) ? 'block': 'none';
+		          });
 		        });
-		    });
 		
-		    // Intersection Observer for active nav link
-		    const sections = document.querySelectorAll('.section');
-		    const navLinks = document.querySelectorAll('.nav-link');
+		        // Intersection Observer for active nav link
+		        const sections = document.querySelectorAll('.section');
+		        const navLinks = document.querySelectorAll('.nav-link');
 		
-		    const observerOptions = {
-		        root: null,
-		        rootMargin: '-40% 0px -60% 0px',
-		        threshold: 0
-		    };
+		        const observerOptions = {
+		          root: null,
+		          rootMargin: '-40% 0px -60% 0px',
+		          threshold: 0
+		        };
 		
-		    const sectionObserver = new IntersectionObserver((entries, observer) => {
-		        entries.forEach(entry => {
+		        const sectionObserver = new IntersectionObserver((entries, observer) = >{
+		          entries.forEach(entry = >{
 		            if (entry.isIntersecting) {
-		                const sectionId = entry.target.id;
-		                navLinks.forEach(link => {
-		                    link.classList.remove('active');
-		                    if (link.getAttribute('href') === `#${sectionId}`) {
-		                        link.classList.add('active');
-		                    }
-		                });
+		              const sectionId = entry.target.id;
+		              navLinks.forEach(link = >{
+		                link.classList.remove('active');
+		                if (link.getAttribute('href') === `#$ {
+		                  sectionId
+		                }`) {
+		                  link.classList.add('active');
+		                }
+		              });
 		            }
-		        });
-		    }, observerOptions);
+		          });
+		        },
+		        observerOptions);
 		
-		    sections.forEach(section => {
-		        sectionObserver.observe(section);
-		    });
-		    
-		    // Floating action button visibility
-		    const floatingBtn = document.querySelector('.floating-action');
-		    window.addEventListener('scroll', () => {
-		        if (window.scrollY > 300) {
+		        sections.forEach(section = >{
+		          sectionObserver.observe(section);
+		        });
+		
+		        // Floating action button visibility
+		        const floatingBtn = document.querySelector('.floating-action');
+		        window.addEventListener('scroll', () = >{
+		          if (window.scrollY > 300) {
 		            floatingBtn.style.opacity = '1';
 		            floatingBtn.style.visibility = 'visible';
-		        } else {
+		          } else {
 		            floatingBtn.style.opacity = '0';
 		            floatingBtn.style.visibility = 'hidden';
-		        }
-		    }, { passive: true });
-		});
+		          }
+		        },
+		        {
+		          passive: true
+		        });
+		      });
 	</script>
 	<button id="theme-toggle" class="floating-action" style="bottom: 7rem; right: 2rem;" title="theme-change">
 		<i class="fas fa-moon" id="theme-icon"></i>
@@ -1904,167 +1218,171 @@
 	</button>
 	<script>
 		const toggleButton = document.getElementById('theme-toggle');
-		const themeIcon = document.getElementById('theme-icon');
+		      const themeIcon = document.getElementById('theme-icon');
 		
-		toggleButton.addEventListener('click', () => {
-		    document.documentElement.classList.toggle('dark-mode');
-		    if (document.documentElement.classList.contains('dark-mode')) {
-		        themeIcon.classList.remove('fa-moon');
-		        themeIcon.classList.add('fa-sun');
-		    } else {
-		        themeIcon.classList.remove('fa-sun');
-		        themeIcon.classList.add('fa-moon');
-		    }
-		});
-		
+		      toggleButton.addEventListener('click', () = >{
+		        document.documentElement.classList.toggle('dark-mode');
+		        if (document.documentElement.classList.contains('dark-mode')) {
+		          themeIcon.classList.remove('fa-moon');
+		          themeIcon.classList.add('fa-sun');
+		        } else {
+		          themeIcon.classList.remove('fa-sun');
+		          themeIcon.classList.add('fa-moon');
+		        }
+		      });
 	</script>
 	<script>
 		// Intersection Observer for animations
 		      const observerOptions = {
-		          threshold: 0.1,
-		          rootMargin: '0px 0px -50px 0px'
+		        threshold: 0.1,
+		        rootMargin: '0px 0px -50px 0px'
 		      };
 		
 		      const observer = new IntersectionObserver(function(entries) {
-		          entries.forEach(entry => {
-		              if (entry.isIntersecting) {
-		                  entry.target.style.opacity = '1';
-		                  entry.target.style.transform = 'translateY(0)';
-		              }
-		          });
-		      }, observerOptions);
+		        entries.forEach(entry = >{
+		          if (entry.isIntersecting) {
+		            entry.target.style.opacity = '1';
+		            entry.target.style.transform = 'translateY(0)';
+		          }
+		        });
+		      },
+		      observerOptions);
 		
 		      // Observe all animated elements
-		      document.querySelectorAll('.animate-slide-up, .animate-fade-in').forEach(el => {
-		          el.style.opacity = '0';
-		          el.style.transform = 'translateY(30px)';
-		          el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
-		          observer.observe(el);
+		      document.querySelectorAll('.animate-slide-up, .animate-fade-in').forEach(el = >{
+		        el.style.opacity = '0';
+		        el.style.transform = 'translateY(30px)';
+		        el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+		        observer.observe(el);
 		      });
 		
-			const ctx1 = document.getElementById('gpaChart').getContext('2d');
-		new Chart(ctx1, {
-		  type: 'line',
-		  data: {
-		      labels: ['2022 I', '2022 II', '2023 I', '2023 II', '2024 I', '2024 II', '2025 I'],
-		      datasets: [{
-		          label: 'GPA Trend',
-		          data: [87.95, 88.19, 82.45, 84.86, 84.00, 92.81, 94],
-		          borderColor: 'rgba(59, 130, 246, 1)',
-		          backgroundColor: 'rgba(59, 130, 246, 0.1)',
-		          borderWidth: 3,
-		          fill: true,
-		          tension: 0.4,
-		          pointBackgroundColor: '#3B82F6',
-		          pointBorderColor: '#ffffff',
-		          pointBorderWidth: 2,
-		          pointRadius: 6,
-		          pointHoverRadius: 8
-		      }]
-		  },
-		  options: {
-		      responsive: true,
-		      plugins: {
-		          legend: {
+		      const ctx1 = document.getElementById('gpaChart').getContext('2d');
+		      new Chart(ctx1, {
+		        type: 'line',
+		        data: {
+		          labels: ['2022 I', '2022 II', '2023 I', '2023 II', '2024 I', '2024 II', '2025 I'],
+		          datasets: [{
+		            label: 'GPA Trend',
+		            data: [87.95, 88.19, 82.45, 84.86, 84.00, 92.81, 94],
+		            borderColor: 'rgba(59, 130, 246, 1)',
+		            backgroundColor: 'rgba(59, 130, 246, 0.1)',
+		            borderWidth: 3,
+		            fill: true,
+		            tension: 0.4,
+		            pointBackgroundColor: '#3B82F6',
+		            pointBorderColor: '#ffffff',
+		            pointBorderWidth: 2,
+		            pointRadius: 6,
+		            pointHoverRadius: 8
+		          }]
+		        },
+		        options: {
+		          responsive: true,
+		          plugins: {
+		            legend: {
 		              display: false
-		          },
-		          tooltip: {
+		            },
+		            tooltip: {
 		              callbacks: {
-		                  label: function(context) {
-		                      return `GPA: ${context.raw}`;
-		                  }
+		                label: function(context) {
+		                  return`GPA: $ {
+		                    context.raw
+		                  }`;
+		                }
 		              }
-		          }
-		      },
-		      scales: {
-		          y: {
+		            }
+		          },
+		          scales: {
+		            y: {
 		              beginAtZero: false,
 		              min: 80,
 		              max: 100,
 		              grid: {
-		                  color: 'rgba(0, 0, 0, 0.1)'
+		                color: 'rgba(0, 0, 0, 0.1)'
 		              }
-		          },
-		          x: {
+		            },
+		            x: {
 		              grid: {
-		                  display: false
+		                display: false
 		              }
-		          }
-		      },
-		      elements: {
-		          point: {
+		            }
+		          },
+		          elements: {
+		            point: {
 		              hoverBorderWidth: 3
+		            }
 		          }
-		      }
-		  }
-		});
+		        }
+		      });
 		
-		const ctx2 = document.getElementById('dutGpaChart').getContext('2d');
-		new Chart(ctx2, {
-		  type: 'line',
-		  data: {
-		      labels: ['2019 I', '2019 II', '2020 I', '2020 II'],
-		      datasets: [{
-		          label: 'Weighted Average Score Trend',
-		          data: [81.68, 88.67, 92.60, 86.90],
-		          borderColor: 'rgba(139, 92, 246, 1)',
-		          backgroundColor: 'rgba(139, 92, 246, 0.1)',
-		          borderWidth: 3,
-		          fill: true,
-		          tension: 0.4,
-		          pointBackgroundColor: '#8B5CF6',
-		          pointBorderColor: '#ffffff',
-		          pointBorderWidth: 2,
-		          pointRadius: 6,
-		          pointHoverRadius: 8
-		      }]
-		  },
-		  options: {
-		      responsive: true,
-		      plugins: {
-		          legend: {
+		      const ctx2 = document.getElementById('dutGpaChart').getContext('2d');
+		      new Chart(ctx2, {
+		        type: 'line',
+		        data: {
+		          labels: ['2019 I', '2019 II', '2020 I', '2020 II'],
+		          datasets: [{
+		            label: 'Weighted Average Score Trend',
+		            data: [81.68, 88.67, 92.60, 86.90],
+		            borderColor: 'rgba(139, 92, 246, 1)',
+		            backgroundColor: 'rgba(139, 92, 246, 0.1)',
+		            borderWidth: 3,
+		            fill: true,
+		            tension: 0.4,
+		            pointBackgroundColor: '#8B5CF6',
+		            pointBorderColor: '#ffffff',
+		            pointBorderWidth: 2,
+		            pointRadius: 6,
+		            pointHoverRadius: 8
+		          }]
+		        },
+		        options: {
+		          responsive: true,
+		          plugins: {
+		            legend: {
 		              display: true,
 		              position: 'top',
 		              labels: {
-		                  font: {
-		                      size: 12,
-		                      family: 'Arial'
-		                  }
+		                font: {
+		                  size: 12,
+		                  family: 'Arial'
+		                }
 		              }
-		          },
-		          tooltip: {
+		            },
+		            tooltip: {
 		              callbacks: {
-		                  label: function(context) {
-		                      return `Weighted Score: ${context.raw}`;
-		                  }
+		                label: function(context) {
+		                  return`Weighted Score: $ {
+		                    context.raw
+		                  }`;
+		                }
 		              }
-		          }
-		      },
-		      scales: {
-		          y: {
+		            }
+		          },
+		          scales: {
+		            y: {
 		              beginAtZero: false,
 		              min: 75,
 		              max: 95,
 		              grid: {
-		                  color: 'rgba(0, 0, 0, 0.1)'
+		                color: 'rgba(0, 0, 0, 0.1)'
 		              },
 		              ticks: {
-		                  stepSize: 5
+		                stepSize: 5
 		              }
-		          },
-		          x: {
+		            },
+		            x: {
 		              grid: {
-		                  display: false
+		                display: false
 		              }
-		          }
-		      },
-		      elements: {
-		          point: {
+		            }
+		          },
+		          elements: {
+		            point: {
 		              hoverBorderWidth: 3
+		            }
 		          }
-		      }
-		  }
-		});
+		        }
+		      });
 	</script>
 </body>
 </html>
