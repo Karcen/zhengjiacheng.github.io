@@ -992,397 +992,383 @@
 					</div>
 				</footer>
 			</section>
-			<script>
-				// 画廊滑动功能
-				          let currentSlide = 0;
-				          const slides = document.querySelectorAll('.slide');
-				          const dots = document.getElementById('galleryDots');
-				          const slider = document.getElementById('gallerySlider');
-				          const images = document.querySelectorAll('.gallery-image');
-				          const imageViewer = document.getElementById('imageViewer');
-				          const modalImage = document.getElementById('modalImage');
-				          const modalCaption = document.getElementById('modalCaption');
-				
-				          // 初始化指示器
-				          slides.forEach((_, index) = >{
-				            const dot = document.createElement('span');
-				            dot.className = 'dot';
-				            dot.onclick = () = >goToSlide(index);
-				            dots.appendChild(dot);
-				          });
-				
-				          updateDots();
-				
-				          // 滑动控制函数
-				          function nextSlide() {
-				            currentSlide = (currentSlide + 1) % slides.length;
-				            updateSlider();
-				          }
-				
-				          function prevSlide() {
-				            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-				            updateSlider();
-				          }
-				
-				          function goToSlide(index) {
-				            currentSlide = index;
-				            updateSlider();
-				          }
-				
-				          function updateSlider() {
-				            slider.style.transform = `translateX( - $ {
-				              currentSlide * 100
-				            } % )`;
-				            updateDots();
-				          }
-				
-				          function updateDots() {
-				            document.querySelectorAll('.dot').forEach((dot, index) = >{
-				              dot.classList.toggle('active', index === currentSlide);
-				            });
-				          }
-				
-				          // 图片查看器功能
-				          images.forEach(img = >{
-				            img.addEventListener('click', () = >{
-				              const index = parseInt(img.dataset.index);
-				              openViewer(index);
-				            });
-				          });
-				
-				          function openViewer(index) {
-				            currentSlide = index;
-				            updateViewerImage();
-				            imageViewer.style.display = 'block';
-				            document.body.style.overflow = 'hidden'; // 防止背景滚动
-				          }
-				
-				          function closeViewer() {
-				            imageViewer.style.display = 'none';
-				            document.body.style.overflow = 'auto'; // 恢复背景滚动
-				          }
-				
-				          function nextImage() {
-				            currentSlide = (currentSlide + 1) % slides.length;
-				            updateViewerImage();
-				          }
-				
-				          function prevImage() {
-				            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-				            updateViewerImage();
-				          }
-				
-				          function updateViewerImage() {
-				            const img = slides[currentSlide].querySelector('img');
-				            modalImage.src = img.src;
-				            modalImage.alt = img.alt;
-				            modalCaption.textContent = img.alt;
-				          }
-				
-				          // 点击空白处关闭查看器
-				          imageViewer.addEventListener('click', (e) = >{
-				            if (e.target === imageViewer) {
-				              closeViewer();
-				            }
-				          });
-				
-				          // 键盘导航
-				          document.addEventListener('keydown', (e) = >{
-				            if (imageViewer.style.display === 'block') {
-				              if (e.key === 'Escape') closeViewer();
-				              if (e.key === 'ArrowRight') nextImage();
-				              if (e.key === 'ArrowLeft') prevImage();
-				            } else {
-				              if (e.key === 'ArrowRight') nextSlide();
-				              if (e.key === 'ArrowLeft') prevSlide();
-				            }
-				          });
+		<script>
+			// 画廊滑动功能
+			let currentSlide = 0;
+			const slides = document.querySelectorAll('.slide');
+			const dots = document.getElementById('galleryDots');
+			const slider = document.getElementById('gallerySlider');
+			const images = document.querySelectorAll('.gallery-image');
+			const imageViewer = document.getElementById('imageViewer');
+			const modalImage = document.getElementById('modalImage');
+			const modalCaption = document.getElementById('modalCaption');
+
+			// 初始化指示器
+			slides.forEach((_, index) => {
+				const dot = document.createElement('span');
+				dot.className = 'dot';
+				dot.onclick = () => goToSlide(index);
+				dots.appendChild(dot);
+			});
+
+			updateDots();
+
+			// 滑动控制函数
+			function nextSlide() {
+				currentSlide = (currentSlide + 1) % slides.length;
+				updateSlider();
+			}
+
+			function prevSlide() {
+				currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+				updateSlider();
+			}
+
+			function goToSlide(index) {
+				currentSlide = index;
+				updateSlider();
+			}
+
+			function updateSlider() {
+				slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+				updateDots();
+			}
+
+			function updateDots() {
+				document.querySelectorAll('.dot').forEach((dot, index) => {
+				dot.classList.toggle('active', index === currentSlide);
+				});
+			}
+
+			// 图片查看器功能
+			images.forEach(img => {
+				img.addEventListener('click', () => {
+				const index = parseInt(img.dataset.index);
+				openViewer(index);
+				});
+			});
+
+			function openViewer(index) {
+				currentSlide = index;
+				updateViewerImage();
+				imageViewer.style.display = 'block';
+				document.body.style.overflow = 'hidden'; // 防止背景滚动
+			}
+
+			function closeViewer() {
+				imageViewer.style.display = 'none';
+				document.body.style.overflow = 'auto'; // 恢复背景滚动
+			}
+
+			function nextImage() {
+				currentSlide = (currentSlide + 1) % slides.length;
+				updateViewerImage();
+			}
+
+			function prevImage() {
+				currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+				updateViewerImage();
+			}
+
+			function updateViewerImage() {
+				const img = slides[currentSlide].querySelector('img');
+				modalImage.src = img.src;
+				modalImage.alt = img.alt;
+				modalCaption.textContent = img.alt;
+			}
+
+			// 点击空白处关闭查看器
+			imageViewer.addEventListener('click', (e) => {
+				if (e.target === imageViewer) {
+				closeViewer();
+				}
+			});
+
+			// 键盘导航
+			document.addEventListener('keydown', (e) => {
+				if (imageViewer.style.display === 'block') {
+				if (e.key === 'Escape') closeViewer();
+				if (e.key === 'ArrowRight') nextImage();
+				if (e.key === 'ArrowLeft') prevImage();
+				} else {
+				if (e.key === 'ArrowRight') nextSlide();
+				if (e.key === 'ArrowLeft') prevSlide();
+				}
+			});
 			</script>
-		</main>
-	</div>
-	<button class="floating-action" onclick="scrollToTop()" aria-label="Scroll to top">
-		<i class="fas fa-arrow-up" aria-hidden="true"></i>
-	</button>
-	<script>
-		document.addEventListener('DOMContentLoaded',
-		      function() {
-		        // Smooth scrolling for navigation links
-		        document.querySelectorAll('.nav-link').forEach(link = >{
-		          link.addEventListener('click',
-		          function(e) {
-		            e.preventDefault();
-		            const targetId = this.getAttribute('href');
-		            const targetSection = document.querySelector(targetId);
-		
-		            if (targetSection) {
-		              targetSection.scrollIntoView({
-		                behavior: 'smooth',
-		                block: 'start'
-		              });
-		              // History push state can be added here if desired
-		            }
-		          });
-		        });
-		
-		        // Scroll to top function
-		        window.scrollToTop = () = >{
-		          window.scrollTo({
-		            top: 0,
-		            behavior: 'smooth'
-		          });
-		        };
-		
-		        // Publication filter functionality
-		        const filterTabs = document.querySelectorAll('.filter-tab');
-		        const publications = document.querySelectorAll('#publications-list .publication-card');
-		
-		        filterTabs.forEach(tab = >{
-		          tab.addEventListener('click',
-		          function() {
-		            filterTabs.forEach(t = >t.classList.remove('active'));
-		            this.classList.add('active');
-		
-		            const filter = this.dataset.filter;
-		
-		            publications.forEach(pubCard = >{
-		              const categories = pubCard.dataset.category || '';
-		              const isVisible = (filter === 'all') || categories.includes(filter);
-		              pubCard.style.display = isVisible ? 'block': 'none';
-		            });
-		          });
-		        });
-		
-		        // Publication search functionality
-		        document.getElementById('searchPapers').addEventListener('input',
-		        function() {
-		          const searchTerm = this.value.toLowerCase().trim();
-		
-		          publications.forEach(pubCard = >{
-		            const textContent = pubCard.textContent.toLowerCase();
-		            pubCard.style.display = textContent.includes(searchTerm) ? 'block': 'none';
-		          });
-		        });
-		
-		        // Intersection Observer for active nav link
-		        const sections = document.querySelectorAll('.section');
-		        const navLinks = document.querySelectorAll('.nav-link');
-		
-		        const observerOptions = {
-		          root: null,
-		          rootMargin: '-40% 0px -60% 0px',
-		          threshold: 0
-		        };
-		
-		        const sectionObserver = new IntersectionObserver((entries, observer) = >{
-		          entries.forEach(entry = >{
-		            if (entry.isIntersecting) {
-		              const sectionId = entry.target.id;
-		              navLinks.forEach(link = >{
-		                link.classList.remove('active');
-		                if (link.getAttribute('href') === `#$ {
-		                  sectionId
-		                }`) {
-		                  link.classList.add('active');
-		                }
-		              });
-		            }
-		          });
-		        },
-		        observerOptions);
-		
-		        sections.forEach(section = >{
-		          sectionObserver.observe(section);
-		        });
-		
-		        // Floating action button visibility
-		        const floatingBtn = document.querySelector('.floating-action');
-		        window.addEventListener('scroll', () = >{
-		          if (window.scrollY > 300) {
-		            floatingBtn.style.opacity = '1';
-		            floatingBtn.style.visibility = 'visible';
-		          } else {
-		            floatingBtn.style.opacity = '0';
-		            floatingBtn.style.visibility = 'hidden';
-		          }
-		        },
-		        {
-		          passive: true
-		        });
-		      });
-	</script>
-	<button id="theme-toggle" class="floating-action" style="bottom: 7rem; right: 2rem;" title="theme-change">
-		<i class="fas fa-moon" id="theme-icon"></i>
-	</button>
-	<button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="floating-action" aria-label="Scroll to top">
-		<i class="fas fa-arrow-up" aria-hidden="true"></i>
-	</button>
-	<script>
-		const toggleButton = document.getElementById('theme-toggle');
-		      const themeIcon = document.getElementById('theme-icon');
-		
-		      toggleButton.addEventListener('click', () = >{
-		        document.documentElement.classList.toggle('dark-mode');
-		        if (document.documentElement.classList.contains('dark-mode')) {
-		          themeIcon.classList.remove('fa-moon');
-		          themeIcon.classList.add('fa-sun');
-		        } else {
-		          themeIcon.classList.remove('fa-sun');
-		          themeIcon.classList.add('fa-moon');
-		        }
-		      });
-	</script>
-	<script>
-		// Intersection Observer for animations
-		      const observerOptions = {
-		        threshold: 0.1,
-		        rootMargin: '0px 0px -50px 0px'
-		      };
-		
-		      const observer = new IntersectionObserver(function(entries) {
-		        entries.forEach(entry = >{
-		          if (entry.isIntersecting) {
-		            entry.target.style.opacity = '1';
-		            entry.target.style.transform = 'translateY(0)';
-		          }
-		        });
-		      },
-		      observerOptions);
-		
-		      // Observe all animated elements
-		      document.querySelectorAll('.animate-slide-up, .animate-fade-in').forEach(el = >{
-		        el.style.opacity = '0';
-		        el.style.transform = 'translateY(30px)';
-		        el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
-		        observer.observe(el);
-		      });
-		
-		      const ctx1 = document.getElementById('gpaChart').getContext('2d');
-		      new Chart(ctx1, {
-		        type: 'line',
-		        data: {
-		          labels: ['2022 I', '2022 II', '2023 I', '2023 II', '2024 I', '2024 II', '2025 I'],
-		          datasets: [{
-		            label: 'GPA Trend',
-		            data: [87.95, 88.19, 82.45, 84.86, 84.00, 92.81, 94],
-		            borderColor: 'rgba(59, 130, 246, 1)',
-		            backgroundColor: 'rgba(59, 130, 246, 0.1)',
-		            borderWidth: 3,
-		            fill: true,
-		            tension: 0.4,
-		            pointBackgroundColor: '#3B82F6',
-		            pointBorderColor: '#ffffff',
-		            pointBorderWidth: 2,
-		            pointRadius: 6,
-		            pointHoverRadius: 8
-		          }]
-		        },
-		        options: {
-		          responsive: true,
-		          plugins: {
-		            legend: {
-		              display: false
-		            },
-		            tooltip: {
-		              callbacks: {
-		                label: function(context) {
-		                  return`GPA: $ {
-		                    context.raw
-		                  }`;
-		                }
-		              }
-		            }
-		          },
-		          scales: {
-		            y: {
-		              beginAtZero: false,
-		              min: 80,
-		              max: 100,
-		              grid: {
-		                color: 'rgba(0, 0, 0, 0.1)'
-		              }
-		            },
-		            x: {
-		              grid: {
-		                display: false
-		              }
-		            }
-		          },
-		          elements: {
-		            point: {
-		              hoverBorderWidth: 3
-		            }
-		          }
-		        }
-		      });
-		
-		      const ctx2 = document.getElementById('dutGpaChart').getContext('2d');
-		      new Chart(ctx2, {
-		        type: 'line',
-		        data: {
-		          labels: ['2019 I', '2019 II', '2020 I', '2020 II'],
-		          datasets: [{
-		            label: 'Weighted Average Score Trend',
-		            data: [81.68, 88.67, 92.60, 86.90],
-		            borderColor: 'rgba(139, 92, 246, 1)',
-		            backgroundColor: 'rgba(139, 92, 246, 0.1)',
-		            borderWidth: 3,
-		            fill: true,
-		            tension: 0.4,
-		            pointBackgroundColor: '#8B5CF6',
-		            pointBorderColor: '#ffffff',
-		            pointBorderWidth: 2,
-		            pointRadius: 6,
-		            pointHoverRadius: 8
-		          }]
-		        },
-		        options: {
-		          responsive: true,
-		          plugins: {
-		            legend: {
-		              display: true,
-		              position: 'top',
-		              labels: {
-		                font: {
-		                  size: 12,
-		                  family: 'Arial'
-		                }
-		              }
-		            },
-		            tooltip: {
-		              callbacks: {
-		                label: function(context) {
-		                  return`Weighted Score: $ {
-		                    context.raw
-		                  }`;
-		                }
-		              }
-		            }
-		          },
-		          scales: {
-		            y: {
-		              beginAtZero: false,
-		              min: 75,
-		              max: 95,
-		              grid: {
-		                color: 'rgba(0, 0, 0, 0.1)'
-		              },
-		              ticks: {
-		                stepSize: 5
-		              }
-		            },
-		            x: {
-		              grid: {
-		                display: false
-		              }
-		            }
-		          },
-		          elements: {
-		            point: {
-		              hoverBorderWidth: 3
-		            }
-		          }
-		        }
-		      });
+
+			<button class="floating-action" onclick="scrollToTop()" aria-label="Scroll to top">
+			<i class="fas fa-arrow-up" aria-hidden="true"></i>
+			</button>
+
+			<script>
+			document.addEventListener('DOMContentLoaded', function() {
+				// 平滑滚动导航
+				document.querySelectorAll('.nav-link').forEach(link => {
+				link.addEventListener('click', function(e) {
+					e.preventDefault();
+					const targetId = this.getAttribute('href');
+					const targetSection = document.querySelector(targetId);
+
+					if (targetSection) {
+					targetSection.scrollIntoView({
+						behavior: 'smooth',
+						block: 'start'
+					});
+					}
+				});
+				});
+
+				// 返回顶部函数
+				window.scrollToTop = () => {
+				window.scrollTo({
+					top: 0,
+					behavior: 'smooth'
+				});
+				};
+
+				// 论文筛选功能
+				const filterTabs = document.querySelectorAll('.filter-tab');
+				const publications = document.querySelectorAll('#publications-list .publication-card');
+
+				filterTabs.forEach(tab => {
+				tab.addEventListener('click', function() {
+					filterTabs.forEach(t => t.classList.remove('active'));
+					this.classList.add('active');
+
+					const filter = this.dataset.filter;
+
+					publications.forEach(pubCard => {
+					const categories = pubCard.dataset.category || '';
+					const isVisible = (filter === 'all') || categories.includes(filter);
+					pubCard.style.display = isVisible ? 'block' : 'none';
+					});
+				});
+				});
+
+				// 论文搜索功能
+				document.getElementById('searchPapers').addEventListener('input', function() {
+				const searchTerm = this.value.toLowerCase().trim();
+
+				publications.forEach(pubCard => {
+					const textContent = pubCard.textContent.toLowerCase();
+					pubCard.style.display = textContent.includes(searchTerm) ? 'block' : 'none';
+				});
+				});
+
+				// 导航栏高亮监听
+				const sections = document.querySelectorAll('.section');
+				const navLinks = document.querySelectorAll('.nav-link');
+
+				const observerOptions = {
+				root: null,
+				rootMargin: '-40% 0px -60% 0px',
+				threshold: 0
+				};
+
+				const sectionObserver = new IntersectionObserver((entries) => {
+				entries.forEach(entry => {
+					if (entry.isIntersecting) {
+					const sectionId = entry.target.id;
+					navLinks.forEach(link => {
+						link.classList.remove('active');
+						if (link.getAttribute('href') === `#${sectionId}`) {
+						link.classList.add('active');
+						}
+					});
+					}
+				});
+				}, observerOptions);
+
+				sections.forEach(section => {
+				sectionObserver.observe(section);
+				});
+
+				// 悬浮按钮显示/隐藏
+				const floatingBtn = document.querySelector('.floating-action');
+				window.addEventListener('scroll', () => {
+				if (window.scrollY > 300) {
+					floatingBtn.style.opacity = '1';
+					floatingBtn.style.visibility = 'visible';
+				} else {
+					floatingBtn.style.opacity = '0';
+					floatingBtn.style.visibility = 'hidden';
+				}
+				}, { passive: true });
+			});
+			</script>
+
+			<!-- 主题切换按钮（保留一个，删除重复的返回顶部按钮） -->
+			<button id="theme-toggle" class="floating-action" style="bottom: 7rem; right: 2rem;" title="theme-change">
+			<i class="fas fa-moon" id="theme-icon"></i>
+			</button>
+
+			<script>
+			// 深色模式切换
+			const toggleButton = document.getElementById('theme-toggle');
+			const themeIcon = document.getElementById('theme-icon');
+
+			toggleButton.addEventListener('click', () => {
+				document.documentElement.classList.toggle('dark-mode');
+				if (document.documentElement.classList.contains('dark-mode')) {
+				themeIcon.classList.remove('fa-moon');
+				themeIcon.classList.add('fa-sun');
+				} else {
+				themeIcon.classList.remove('fa-sun');
+				themeIcon.classList.add('fa-moon');
+				}
+			});
+			</script>
+
+			<script>
+			// 滚动动画
+			const observerOptions = {
+				threshold: 0.1,
+				rootMargin: '0px 0px -50px 0px'
+			};
+
+			const observer = new IntersectionObserver(function(entries) {
+				entries.forEach(entry => {
+				if (entry.isIntersecting) {
+					entry.target.style.opacity = '1';
+					entry.target.style.transform = 'translateY(0)';
+				}
+				});
+			}, observerOptions);
+
+			// 监听所有动画元素
+			document.querySelectorAll('.animate-slide-up, .animate-fade-in').forEach(el => {
+				el.style.opacity = '0';
+				el.style.transform = 'translateY(30px)';
+				el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+				observer.observe(el);
+			});
+
+			// GPA 图表
+			const ctx1 = document.getElementById('gpaChart').getContext('2d');
+			new Chart(ctx1, {
+				type: 'line',
+				data: {
+				labels: ['2022 I', '2022 II', '2023 I', '2023 II', '2024 I', '2024 II', '2025 I'],
+				datasets: [{
+					label: 'GPA Trend',
+					data: [87.95, 88.19, 82.45, 84.86, 84.00, 92.81, 94],
+					borderColor: 'rgba(59, 130, 246, 1)',
+					backgroundColor: 'rgba(59, 130, 246, 0.1)',
+					borderWidth: 3,
+					fill: true,
+					tension: 0.4,
+					pointBackgroundColor: '#3B82F6',
+					pointBorderColor: '#ffffff',
+					pointBorderWidth: 2,
+					pointRadius: 6,
+					pointHoverRadius: 8
+				}]
+				},
+				options: {
+				responsive: true,
+				plugins: {
+					legend: {
+					display: false
+					},
+					tooltip: {
+					callbacks: {
+						label: function(context) {
+						return `GPA: ${context.raw}`;
+						}
+					}
+					}
+				},
+				scales: {
+					y: {
+					beginAtZero: false,
+					min: 80,
+					max: 100,
+					grid: {
+						color: 'rgba(0, 0, 0, 0.1)'
+					}
+					},
+					x: {
+					grid: {
+						display: false
+					}
+					}
+				},
+				elements: {
+					point: {
+					hoverBorderWidth: 3
+					}
+				}
+				}
+			});
+
+			// 加权平均分图表
+			const ctx2 = document.getElementById('dutGpaChart').getContext('2d');
+			new Chart(ctx2, {
+				type: 'line',
+				data: {
+				labels: ['2019 I', '2019 II', '2020 I', '2020 II'],
+				datasets: [{
+					label: 'Weighted Average Score Trend',
+					data: [81.68, 88.67, 92.60, 86.90],
+					borderColor: 'rgba(139, 92, 246, 1)',
+					backgroundColor: 'rgba(139, 92, 246, 0.1)',
+					borderWidth: 3,
+					fill: true,
+					tension: 0.4,
+					pointBackgroundColor: '#8B5CF6',
+					pointBorderColor: '#ffffff',
+					pointBorderWidth: 2,
+					pointRadius: 6,
+					pointHoverRadius: 8
+				}]
+				},
+				options: {
+				responsive: true,
+				plugins: {
+					legend: {
+					display: true,
+					position: 'top',
+					labels: {
+						font: {
+						size: 12,
+						family: 'Arial'
+						}
+					}
+					},
+					tooltip: {
+					callbacks: {
+						label: function(context) {
+						return `Weighted Score: ${context.raw}`;
+						}
+					}
+					}
+				},
+				scales: {
+					y: {
+					beginAtZero: false,
+					min: 75,
+					max: 95,
+					grid: {
+						color: 'rgba(0, 0, 0, 0.1)'
+					},
+					ticks: {
+						stepSize: 5
+					}
+					},
+					x: {
+					grid: {
+						display: false
+					}
+					}
+				},
+				elements: {
+					point: {
+					hoverBorderWidth: 3
+					}
+				}
+				}
+			});
 	</script>
 </body>
 </html>
