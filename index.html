@@ -222,10 +222,10 @@
 		details[open] summary .chev { transform: rotate(90deg); }
 		.collapse-body { padding: 0 0 1rem; }
 
-		.link-list { list-style: none; columns: 2; column-gap: 2rem; }
-		.link-list li { break-inside: avoid; padding: 0.32rem 0; font-size: 0.89rem; line-height: 1.4; }
-		.link-list a { color: var(--text-muted); transition: color 0.15s; }
-		.link-list a:hover { color: var(--accent); }
+		.link-list { list-style: none; columns: 2; column-gap: 2rem; color: var(--accent);}
+		.link-list li { break-inside: avoid; padding: 0.32rem 0; font-size: 0.89rem; line-height: 1.4; color: var(--accent);}
+		.link-list a { color: var(--text-muted); transition: color 0.15s; color: var(--accent);}
+		.link-list a:hover { color: var(--accent); color: var(--accent);}
 
 		.muted-note { color: var(--text-faint); font-style: italic; font-size: 0.85rem; margin-top: 0.9rem; }
 		.cols-2 { columns: 2; column-gap: 1.8rem; padding-left: 1.15rem; }
@@ -262,9 +262,9 @@
 		@media (max-width: 680px) {
 			.brand-mini { display: none; }
 			.nav { margin-left: 0; }
-			.hero h1 { font-size: 2.1rem; }
+			.hero h1 { font-size: 2.1rem;}
 			.flat-grid { grid-template-columns: 1fr; gap: 0; }
-			.link-list { columns: 1; }
+			.link-list { columns: 1;}
 		}
 		@media (max-width: 440px) {
 			.stats { grid-template-columns: repeat(2, 1fr); gap: 1rem 0; }
@@ -300,7 +300,7 @@
 	<main id="top">
 		<section class="hero">
 			<div class="wrap">
-				<div class="avatar-ring"><img src="me2.jpg" alt="Jiacheng (Karcen) Zheng"></div>
+				<div class="avatar-ring"><img src="me.jpg" alt="Jiacheng (Karcen) Zheng"></div>
 				<h1>Jiacheng <span class="grad-text">(Karcen)</span> Zheng<br><span class="cn">郑嘉诚</span></h1>
 				<p class="role">Incoming <b>M.A. in Applied Economics</b>, Tianjin University</p>
 				<p class="lead">Interdisciplinary researcher working on data science. Previously a research assistant at Shandong University, University College London, and The Hong Kong University of Science and Technology. I also write a lot on <a href="https://www.zhihu.com/people/karcenzheng" target="_blank" rel="noopener">Zhihu</a> — over two million words so far.</p>
@@ -436,7 +436,7 @@
 					<div class="entry-head"><h3 class="entry-title">Shandong University (SDU)</h3><span class="entry-date">Sep 2022 – Jun 2026</span></div>
 					<div class="entry-sub">B.Eng. in Bioengineering · Marine College</div>
 					<p>GPA 86.24/100 (Rank 5/50, top 10%). <strong>Outstanding Graduate Award</strong> (≈ <em>summa cum laude</em>). <em>Dual-Degree Experimental Class</em> (Int'l Politics &amp; Int'l Economics and Trade), School of Northeast Asian Studies, 2022–2023.</p>
-					<p style="margin-top:0.4rem;"><strong>Thesis:</strong> <em>Is More Complexity Always Better? Hepatotoxicity Prediction of Marine Natural Products with in vivo Validation in Danio rerio</em> — ranked 1st in the defense panel.</p>
+					<p style="margin-top:0.4rem;"><strong>Thesis: </strong>Is More Complexity Always Better? Hepatotoxicity Prediction of Marine Natural Products with in vivo Validation in Danio rerio — ranked 1st in the defense panel.</p>
 					<div class="tags"><span class="tag">Bioengineering</span><span class="tag">Int'l Economics &amp; Trade</span><span class="tag">International Politics</span><span class="tag">Data Science</span></div>
 				</div>
 				<div class="entry">
