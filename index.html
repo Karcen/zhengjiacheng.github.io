@@ -9,9 +9,6 @@
 	<meta name="author" content="Jiacheng (Karcen) Zheng">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 	<style>
-		/* =========================================================
-		   Bilingual display — default English, Chinese on toggle
-		   ========================================================= */
 		.t-zh { display: none; }
 		.b-zh { display: none; }
 		html[data-lang="zh"] .t-en { display: none; }
@@ -19,9 +16,7 @@
 		html[data-lang="zh"] .b-en { display: none; }
 		html[data-lang="zh"] .b-zh { display: block; }
 		
-		/* =========================================================
-		   Variables — inspired by the acad Jekyll template
-		   ========================================================= */
+		
 		:root {
 		  --text-color: #4a5258;
 		  --text-muted: #7a8288;
@@ -52,9 +47,7 @@
 		  --tag-bg: #161b22;
 		}
 		
-		/* =========================================================
-		   Base
-		   ========================================================= */
+		
 		* { box-sizing: border-box; }
 		html { scroll-behavior: smooth; min-height: 100%; position: relative; }
 		body {
@@ -100,9 +93,7 @@
 					
 		img.svg { width: 18px; vertical-align: -3px; }
 		
-		/* =========================================================
-		   Masthead (top nav) — 模仿模板顶部
-		   ========================================================= */
+		
 		.masthead {
 		  position: sticky;
 		  top: 0;
@@ -171,9 +162,7 @@
 		}
 		.theme-toggle:hover { color: var(--link-color); border-color: var(--accent); }
 		
-		/* =========================================================
-		   Main layout — 两栏：左侧侧栏（作者信息） + 右侧正文
-		   ========================================================= */
+		
 		#main {
 		  max-width: 1280px;
 		  margin: 1em auto 0;
@@ -185,7 +174,7 @@
 		  animation-delay: 0.15s;
 		}
 		
-		/* —— Sidebar —— */
+		
 		.sidebar {
 		  position: sticky;
 		  top: 4.5em;
@@ -242,12 +231,12 @@
 		}
 		.author__urls i { width: 1.3em; color: var(--text-muted); }
 		
-		/* —— Page content —— */
+		
 		.page__content {
 		  min-width: 0;
 		}
 		
-		/* About-me section 突出 */
+		
 		#about-me {
 		  margin-top: 0;
 		}
@@ -274,14 +263,12 @@
 		  border: 1px solid var(--border-color);
 		}
 		
-		/* —— Section anchor offset (for sticky nav) —— */
+		
 		.page__content section[id] {
 		  scroll-margin-top: 4.5em;
 		}
 		
-		/* =========================================================
-		   Paper box — 论文条目（模仿模板中显眼的论文框）
-		   ========================================================= */
+		
 		.paper-box {
 		  display: flex;
 		  gap: 1.5em;
@@ -348,9 +335,7 @@
 		  font-size: 0.9em;
 		}
 		
-		/* =========================================================
-		   Flat entry list （教育 / 会议 / 实习 / 奖项 条目）
-		   ========================================================= */
+		
 		.entry {
 		  padding: 0.9em 0;
 		  border-bottom: 1px solid var(--border-color);
@@ -381,7 +366,7 @@
 		.entry p { margin-top: 0.4em; font-size: 0.95em; }
 		.entry ul { margin-top: 0.4em; font-size: 0.95em; }
 		
-		/* Open-source / zhihu links */
+		
 		.link-grid {
 		  display: grid;
 		  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
@@ -393,7 +378,7 @@
 		  margin-bottom: 0.25em;
 		}
 		
-		/* Awards */
+		
 		.award-row {
 		  display: flex;
 		  align-items: baseline;
@@ -412,7 +397,7 @@
 		}
 		.award-row p { margin: 0; font-size: 0.9em; color: var(--text-muted); }
 		
-		/* Tags */
+		
 		.tags {
 			display: block;
 			margin-top: 0.5em;
@@ -434,7 +419,7 @@
 		  border-color: var(--accent);
 		}
 		
-		/* Collapsible */
+		
 		details.collapse {
 		  border-bottom: 1px solid var(--border-color);
 		  padding: 0.4em 0;
@@ -461,7 +446,7 @@
 		.collapse-body { padding: 0.5em 0 0.8em; }
 		.count { color: var(--text-muted); font-weight: normal; font-size: 0.85em; }
 		
-		/* Hero CTA in about */
+		
 		.cta-row {
 		  margin-top: 1em;
 		  display: flex;
@@ -478,12 +463,10 @@
 		.cta-row a:hover { color: var(--link-color); text-decoration: none; }
 		.cta-row a i { color: var(--text-muted); }
 		
-		/* Inline math-style LaTeX label */
+		
 		.latex { font-family: Georgia, serif; letter-spacing: 0.02em; }
 		
-		/* =========================================================
-		   Footer
-		   ========================================================= */
+		
 		.footer_site {
 		  padding-top: 4em;
 		  text-align: center;
@@ -501,9 +484,7 @@
 		}
 		.footer_copyright a { color: var(--link-color); }
 		
-		/* =========================================================
-		   Responsive
-		   ========================================================= */
+		
 		@keyframes intro {
 		  from { opacity: 0; transform: translateY(6px); }
 		  to   { opacity: 1; transform: translateY(0); }
@@ -540,7 +521,7 @@
 		  h2 { font-size: 1.25em; }
 		}
 		
-		/* Print-friendly */
+		
 		@media print {
 		  .masthead, .theme-toggle, .footer_site { display: none; }
 		  #main { grid-template-columns: 1fr; padding: 0; }
@@ -549,7 +530,6 @@
 	</style>
 </head>
 <body>
-	<!-- ============ Masthead / Top nav ============ -->
 	<header class="masthead">
 		<div class="masthead__inner-wrap">
 			<span class="masthead__menu-title">
@@ -575,9 +555,7 @@
 			</button>
 		</div>
 	</header>
-	<!-- ============ Main content ============ -->
 	<div id="main">
-		<!-- ========== Sidebar: author profile ========== -->
 		<aside class="sidebar">
 			<div class="profile_box">
 				<div class="author__avatar">
@@ -602,10 +580,8 @@
 				</div>
 			</div>
 		</aside>
-		<!-- ========== Main page content ========== -->
 		<article class="page">
 			<div class="page__content">
-				<!-- ======== About me ======== -->
 				<section id="about-me">
 					<h1>👋 <span class="t-en">About</span><span class="t-zh">简介</span></h1>
 					<p class="lead">
@@ -644,7 +620,6 @@
 						<span><code>Behavioral Economics</code></span>
 					</div>
 				</section>
-				<!-- ======== Education ======== -->
 				<section id="education">
 					<h2>🎓 <span class="t-en">Education</span><span class="t-zh">教育背景</span></h2>
 					<div class="entry">
@@ -859,7 +834,6 @@
 							</div>
 						</div>
 					</div>
-					<!-- === Conferences === -->
 					<h3 style="margin-top:1.5em;">📣 <span class="t-en">Conference Presentations</span><span class="t-zh">学术会议</span></h3>
 					<div class="entry">
 						<div class="entry-head">
@@ -885,7 +859,6 @@
 						</div>
 					</div>
 				</section>
-				<!-- ======== Experience ======== -->
 				<section id="experience">
 					<h2>🔬 <span class="t-en">Research &amp; Internship Experience</span><span class="t-zh">科研与实习经历</span></h2>
 					<div class="entry">
@@ -979,7 +952,6 @@
 						</ul>
 					</div>
 				</section>
-				<!-- ======== Awards ======== -->
 				<section id="awards">
 					<h2>🏆 <span class="t-en">Scholarships &amp; Travel Grants</span><span class="t-zh">奖学金与荣誉</span></h2>
 					<div class="award-row">
@@ -1063,7 +1035,6 @@
 						<span class="t-zh">* 汇率按 1 USD ≈ 7.20 CNY 近似。</span>
 					</p>
 				</section>
-				<!-- ======== Projects / open source ======== -->
 				<section id="projects">
 					<h2>🛠 <span class="t-en">Projects, Tools &amp; Writing</span><span class="t-zh">开源项目与写作</span></h2>
 					<details class="collapse" open>
@@ -1131,7 +1102,6 @@
 							</ul>
 						</div>
 					</details>
-					<!-- Competitions -->
 					<h3 style="margin-top:1.3em;">🏁 <span class="t-en">Competitions &amp; Team Projects</span><span class="t-zh">竞赛与团队项目</span></h3>
 					<div class="entry">
 						<div class="entry-head">
@@ -1159,7 +1129,6 @@
 						</p>
 					</div>
 				</section>
-				<!-- ======== Skills ======== -->
 				<section id="skills">
 					<h2>💡 <span class="t-en">Skills &amp; Interests</span><span class="t-zh">技能与兴趣</span></h2>
 					<h3><span class="t-en">Software</span><span class="t-zh">软件与编程</span></h3>
@@ -1197,7 +1166,6 @@
 						<span class="tag primary">fMRI</span>
 					</div>
 				</section>
-				<!-- ======== Service ======== -->
 				<section id="service">
 					<h2>🤝 <span class="t-en">Service &amp; Affiliations</span><span class="t-zh">学术服务与成员</span></h2>
 					<h3><span class="t-en">Positions of Responsibility</span><span class="t-zh">学生干部与社团职务</span></h3>
@@ -1271,9 +1239,9 @@
 						<p><span class="t-en">Available upon request.</span><span class="t-zh">如有需要，请邮件联系。</span></p>
 					</div>
 				</section>
-			</div><!--/.page__content-->
+			</div>
 		</article>
-	</div><!--/#main-->
+	</div>
 	<div class="footer_site">
 		<hr>
 		<div class="footer_copyright"> © 2026 Jiacheng (Karcen) Zheng · <span class="t-zh">郑嘉诚</span> · <span class="t-en">Built from the</span><span class="t-zh">基于</span>
@@ -1282,18 +1250,13 @@
 		</div>
 	</div>
 	<script>
-		// ============================================================
-		//   Language switcher — EN (default) <-> 中文
-		//   Theme switcher — Light (default) <-> Dark
-		//   Both preferences are saved in localStorage and persist across sessions.
-		// ============================================================
 		(function () {
 		  var root = document.documentElement;
 		
-		  // ---------- Theme ----------
+		  
 		  var themeBtn = document.getElementById('theme-toggle');
-		  // The button contains two language copies of the label. We pick the
-		  // <i> icon and handle labels via CSS visibility.
+		  
+		  
 		  var themeIcon = themeBtn.querySelector('i');
 		
 		  function applyTheme(theme) {
@@ -1313,15 +1276,15 @@
 		    applyTheme(next);
 		  });
 		
-		  // ---------- Language ----------
+		  
 		  var langBtn = document.getElementById('lang-toggle');
 		
 		  function applyLang(lang) {
 		    root.setAttribute('data-lang', lang);
-		    // Switch <html lang=""> so screen readers / search engines follow.
+		    
 		    root.setAttribute('lang', lang);
-		    // The button's <span> inside already has class="t-en"/"t-zh" — CSS
-		    // rules take care of showing/hiding.
+		    
+		    
 		    var icon = langBtn.querySelector('i');
 		    if (lang === 'zh') {
 		      icon.className = 'fas fa-language';
@@ -1338,7 +1301,7 @@
 		  });
 		})();
 		
-		// Smooth scroll for in-page anchors (fallback for CSS scroll-margin-top)
+		
 		document.querySelectorAll('a[href^="#"]').forEach(function (a) {
 		  a.addEventListener('click', function (e) {
 		    var id = a.getAttribute('href').slice(1);
