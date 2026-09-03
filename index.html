@@ -1,0 +1,1254 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Jiacheng (Karcen) Zheng</title>
+	<link rel="shortcut icon" href="./imgs/logo.ico" type="image/x-icon">
+	<meta name="description" content="Jiacheng (Karcen) Zheng — a MPhil student in Applied Economics at Tianjin University, with research interests in input–output analysis, global value chains, machine learning, and data science for economics and climate research.">
+	<meta name="author" content="Jiacheng (Karcen) Zheng">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+	<style>
+:root {
+		  --text-color: #4a5258;
+		  --text-muted: #7a8288;
+		  --link-color: #224b8d;
+		  --link-color-hover: #163057;
+		  --border-color: #e8e8e8;
+		  --bg-color: #ffffff;
+		  --code-bg: #EDEDEB;
+		  --code-text: #E65555;
+		  --accent: #224b8d;
+		  --tag-bg: #f4f5f7;
+		  --highlight-bg: #fff3b0;
+		  --highlight-text: #4a3a00;
+		  --font-serif: "Trebuchet MS", "Helvetica", "Source Han Sans SC", "Microsoft YaHei", sans-serif;
+		  --font-body: "Trebuchet MS", "Helvetica", "Source Han Sans SC", "Microsoft YaHei", sans-serif;
+		  --radius: 4px;
+		  --box-shadow: 0 1px 1px rgba(0, 0, 0, 0.125);
+		}
+		
+		[data-theme="dark"] {
+		  --text-color: #c9d1d9;
+		  --text-muted: #8b949e;
+		  --link-color: #58a6ff;
+		  --link-color-hover: #79b8ff;
+		  --border-color: #30363d;
+		  --bg-color: #0d1117;
+		  --code-bg: #161b22;
+		  --code-text: #ff7b72;
+		  --accent: #58a6ff;
+		  --tag-bg: #161b22;
+		  --highlight-bg: #3f3511;
+		  --highlight-text: #ffe8a3;
+		}
+		
+		
+		* { box-sizing: border-box; }
+		html { scroll-behavior: smooth; min-height: 100%; position: relative; }
+		body {
+		  margin: 0;
+		  padding: 0;
+		  color: var(--text-color);
+		  background: var(--bg-color);
+		  font-family: var(--font-body);
+		  line-height: 1.6;
+		  font-size: 15px;
+		  -webkit-font-smoothing: antialiased;
+		}
+		
+		h1, h2, h3, h4, h5, h6 {
+		  margin: 1em 0 0.5em;
+		  line-height: 1.25;
+		  font-weight: bold;
+		  color: var(--text-color);
+		}
+		h1 { font-size: 1.8em; margin-top: 1em; }
+		h2 { font-size: 1.4em; padding-bottom: 0.4em; border-bottom: 1px solid var(--border-color); }
+		h3 { font-size: 1.1em; }
+		p  { margin: 0 0 0.75em; }
+		ul { padding-left: 1.5em; margin: 0.3em 0; }
+		li { margin-bottom: 0.35em; }
+		
+		a {
+		  color: var(--link-color);
+		  text-decoration: none;
+		  transition: color 0.15s ease;
+		}
+		a:hover { color: var(--link-color-hover); text-decoration: underline; }
+		a:focus { outline: 2px dotted var(--accent); outline-offset: 2px; }
+		
+		code {
+			background: rgba(143, 18, 55, 0.08);
+			color: #8f1237;
+			border-radius: 3px;
+			padding: 0.15em 0.4em;
+			font-size: 0.87em;
+			font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+			}
+					
+		img.svg { width: 18px; vertical-align: -3px; }
+		
+		
+		.masthead {
+		  position: sticky;
+		  top: 0;
+		  z-index: 50;
+		  background: var(--bg-color);
+		  border-bottom: 1px solid var(--border-color);
+		  animation: intro 0.4s ease both;
+		}
+		.masthead__inner-wrap {
+		  max-width: 1280px;
+		  margin: 0 auto;
+		  padding: 0.6em 1.25em;
+		  display: flex;
+		  align-items: center;
+		  flex-wrap: wrap;
+		  gap: 0.3em;
+		}
+		.masthead__menu-title {
+		  font-family: var(--font-serif);
+		  font-size: 0.95em;
+		  font-weight: bold;
+		  margin-right: 1.5em;
+		  color: var(--text-color);
+		  white-space: nowrap;
+		}
+		.greedy-nav {
+		  display: flex;
+		  align-items: center;
+		  flex-wrap: wrap;
+		  gap: 0.3em;
+		  flex: 1;
+		}
+		.visible-links {
+		  list-style: none;
+		  padding: 0;
+		  margin: 0;
+		  display: flex;
+		  flex-wrap: wrap;
+		  gap: 0.2em;
+		}
+		.masthead__menu-item a {
+		  display: inline-block;
+		  padding: 0.35em 0.75em;
+		  font-size: 0.92em;
+		  color: var(--text-color);
+		  border-radius: var(--radius);
+		  transition: background 0.15s, color 0.15s;
+		}
+		.masthead__menu-item a:hover {
+		  background: var(--tag-bg);
+		  color: var(--link-color);
+		  text-decoration: none;
+		}
+		.theme-toggle {
+		  background: transparent;
+		  border: 1px solid var(--border-color);
+		  color: var(--text-muted);
+		  cursor: pointer;
+		  padding: 0.35em 0.7em;
+		  font-size: 0.85em;
+		  border-radius: var(--radius);
+		  font-family: inherit;
+		  margin-left: auto;
+		  transition: all 0.15s;
+		}
+		.theme-toggle:hover { color: var(--link-color); border-color: var(--accent); }
+		
+		
+		#main {
+		  max-width: 1280px;
+		  margin: 1em auto 0;
+		  padding: 0 1.25em 3em;
+		  display: grid;
+		  grid-template-columns: 220px 1fr;
+		  gap: 2.5em;
+		  animation: intro 0.4s both;
+		  animation-delay: 0.15s;
+		}
+		
+		
+		.sidebar {
+		  position: sticky;
+		  top: 4.5em;
+		  align-self: start;
+		}
+		.profile_box {
+		  display: block;
+		}
+		.author__avatar img {
+		  width: 100%;
+		  max-width: 180px;
+		  border-radius: 50%;
+		  padding: 4px;
+		  border: 1px solid var(--border-color);
+		  display: block;
+		  margin: 0 auto;
+		  background: var(--bg-color);
+		}
+		.author__content {
+		  text-align: center;
+		  margin-top: 1em;
+		}
+		.author__name {
+		  font-size: 1.25em;
+		  margin: 0 0 0.2em;
+		  font-weight: bold;
+		}
+		.author__bio {
+		  margin: 0.5em 0 1em;
+		  font-size: 0.9em;
+		  color: var(--text-muted);
+		  line-height: 1.5;
+		}
+		.author__urls {
+		  list-style: none;
+		  padding: 0;
+		  margin: 1em 0 0;
+		  text-align: left;
+		}
+		.author__urls li { margin-bottom: 0.25em; }
+		.author__urls a {
+		  display: block;
+		  padding: 0.3em 0.5em;
+		  color: var(--text-color);
+		  font-size: 0.9em;
+		  border-radius: var(--radius);
+		  transition: background 0.15s, color 0.15s;
+		}
+		.author__urls a:hover {
+		  background: var(--tag-bg);
+		  color: var(--link-color);
+		  text-decoration: none;
+		}
+		.author__urls i { width: 1.3em; color: var(--text-muted); }
+		
+		
+		.page__content {
+		  min-width: 0;
+		}
+		
+		
+		#about-me {
+		  margin-top: 0;
+		}
+		#about-me h1 {
+		  margin-top: 0;
+		}
+		.lead {
+		  font-size: 1.1em;
+		  color: var(--text-color);
+		  line-height: 1.7;
+		}
+		.intro-tags {
+		  margin-top: 1em;
+		  display: flex;
+		  flex-wrap: wrap;
+		  gap: 0.4em;
+		}
+		.intro-tags span {
+		  background: var(--tag-bg);
+		  color: var(--link-color);
+		  padding: 0.25em 0.75em;
+		  border-radius: 999px;
+		  font-size: 0.88em;
+		  border: 1px solid var(--border-color);
+		}
+
+		.honor-note {
+		  display: inline-block;
+		  background: var(--highlight-bg);
+		  color: var(--highlight-text);
+		  padding: 0.3em 0.7em;
+		  border-radius: 6px;
+		  font-weight: 600;
+		}
+		
+		
+		.page__content section[id] {
+		  scroll-margin-top: 4.5em;
+		}
+		
+		
+		.paper-box {
+		  display: flex;
+		  gap: 1.5em;
+		  padding: 1.25em;
+		  margin: 1em 0;
+		  border: 1px solid var(--border-color);
+		  border-radius: var(--radius);
+		  background: linear-gradient(to bottom right, var(--bg-color), var(--tag-bg) 250%);
+		  transition: box-shadow 0.2s, transform 0.2s;
+		}
+		.paper-box:hover {
+		  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+		  transform: translateY(-2px);
+		}
+		.paper-box-image {
+		  flex: 0 0 180px;
+		}
+		.paper-box-image > div {
+		  position: relative;
+		  border: 1px solid var(--border-color);
+		  border-radius: var(--radius);
+		  overflow: hidden;
+		}
+		.paper-box-image .badge {
+		  position: absolute;
+		  top: 0;
+		  left: 0;
+		  background: var(--accent);
+		  color: #fff;
+		  font-size: 0.75em;
+		  padding: 0.3em 0.8em;
+		  border-top-left-radius: var(--radius);
+		  font-weight: bold;
+		  letter-spacing: 0.05em;
+		}
+		.paper-box-image svg {
+		  display: block;
+		  width: 100%;
+		  height: auto;
+		}
+		.paper-box-text {
+		  flex: 1;
+		  min-width: 0;
+		}
+		.paper-box-text h3 {
+		  margin: 0 0 0.4em;
+		  font-size: 1.05em;
+		}
+		.paper-box-text h3 a { color: var(--text-color); }
+		.paper-box-text h3 a:hover { color: var(--link-color); }
+		.paper-box-text .pub-authors { font-size: 0.92em; color: var(--text-muted); }
+		.paper-box-text .pub-authors .me { color: var(--link-color); font-weight: bold; }
+		.paper-box-text .pub-venue {
+		  font-size: 0.92em;
+		  margin-top: 0.3em;
+		  color: var(--text-color);
+		  font-style: italic;
+		}
+		.paper-links {
+		  margin-top: 0.6em;
+		  display: flex;
+		  gap: 0.8em;
+		  flex-wrap: wrap;
+		  font-size: 0.9em;
+		}
+		
+		
+		.entry {
+		  padding: 0.9em 0;
+		  border-bottom: 1px solid var(--border-color);
+		}
+		.entry:last-child { border-bottom: none; }
+		.entry-head {
+		  display: flex;
+		  flex-wrap: wrap;
+		  align-items: baseline;
+		  justify-content: space-between;
+		  gap: 0.5em;
+		}
+		.entry-title {
+		  margin: 0;
+		  font-size: 1.05em;
+		}
+		.entry-date {
+		  color: var(--text-muted);
+		  font-size: 0.88em;
+		  white-space: nowrap;
+		}
+		.entry-sub {
+		  color: var(--accent);
+		  font-weight: 500;
+		  font-size: 0.95em;
+		  margin-top: 0.15em;
+		}
+		.entry p { margin-top: 0.4em; font-size: 0.95em; }
+		.entry ul { margin-top: 0.4em; font-size: 0.95em; }
+		
+		
+		.link-grid {
+		  display: grid;
+		  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+		  gap: 0.5em 1.5em;
+		  margin-top: 0.5em;
+		}
+		.link-grid li {
+		  list-style: none;
+		  margin-bottom: 0.25em;
+		}
+		
+		
+		.award-row {
+		  display: flex;
+		  align-items: baseline;
+		  justify-content: space-between;
+		  gap: 1em;
+		  padding: 0.6em 0;
+		  border-bottom: 1px solid var(--border-color);
+		}
+		.award-row:last-child { border-bottom: none; }
+		.award-row .amt {
+		  font-family: var(--font-serif);
+		  color: var(--link-color);
+		  font-weight: bold;
+		  font-size: 0.95em;
+		  white-space: nowrap;
+		}
+		.award-row p { margin: 0; font-size: 0.9em; color: var(--text-muted); }
+		
+		
+		.tags {
+			display: block;
+			margin-top: 0.5em;
+		}
+		.tags > div {
+			margin-bottom: 0.3em;
+		}
+		.tag {
+		  background: var(--tag-bg);
+		  padding: 0.2em 0.6em;
+		  border-radius: 999px;
+		  font-size: 0.85em;
+		  border: 1px solid var(--border-color);
+		  color: var(--text-muted);
+		}
+		.tag.primary {
+		  color: var(--link-color);
+		  background: transparent;
+		  border-color: var(--accent);
+		}
+		
+		
+		details.collapse {
+		  border-bottom: 1px solid var(--border-color);
+		  padding: 0.4em 0;
+		}
+		details.collapse > summary {
+		  cursor: pointer;
+		  font-weight: bold;
+		  padding: 0.3em 0;
+		  display: flex;
+		  align-items: center;
+		  gap: 0.5em;
+		  font-size: 1em;
+		  list-style: none;
+		  user-select: none;
+		}
+		details.collapse > summary::-webkit-details-marker { display: none; }
+		details.collapse .chev {
+		  color: var(--accent);
+		  transition: transform 0.2s ease;
+		  margin-left: auto;
+		  font-size: 0.75em;
+		}
+		details[open] .chev { transform: rotate(90deg); }
+		.collapse-body { padding: 0.5em 0 0.8em; }
+		.count { color: var(--text-muted); font-weight: normal; font-size: 0.85em; }
+		
+		
+		.cta-row {
+		  margin-top: 1em;
+		  display: flex;
+		  flex-wrap: wrap;
+		  gap: 1em;
+		}
+		.cta-row a {
+		  display: inline-flex;
+		  align-items: center;
+		  gap: 0.45em;
+		  color: var(--text-color);
+		  font-size: 0.95em;
+		}
+		.cta-row a:hover { color: var(--link-color); text-decoration: none; }
+		.cta-row a i { color: var(--text-muted); }
+		
+		
+		.latex {
+			font-family: "Latin Modern Roman", "Computer Modern", serif;
+		}
+		
+		
+		.footer_site {
+		  padding-top: 4em;
+		  text-align: center;
+		}
+		.footer_site hr {
+		  border: 0;
+		  border-top: 1px solid var(--border-color);
+		  margin: 0;
+		}
+		.footer_copyright {
+		  margin-top: 0.8em;
+		  font-size: 0.85em;
+		  color: var(--text-muted);
+		  padding-bottom: 1.5em;
+		}
+		.footer_copyright a { color: var(--link-color); }
+		
+		.skill-list {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 0.5em 1em;
+		}
+		@keyframes intro {
+		  from { opacity: 0; transform: translateY(6px); }
+		  to   { opacity: 1; transform: translateY(0); }
+		}
+		
+		@media (max-width: 900px) {
+		  #main {
+		    grid-template-columns: 1fr;
+		    gap: 1em;
+		  }
+		  .sidebar {
+		    position: static;
+		    text-align: center;
+		  }
+		  .author__urls {
+		    display: flex;
+		    flex-wrap: wrap;
+		    justify-content: center;
+		    gap: 0.2em;
+		    margin: 1em auto 0;
+		    text-align: center;
+		  }
+		  .author__urls a { padding: 0.3em 0.6em; }
+		  .profile_box .author__avatar img { max-width: 140px; }
+		  .paper-box { flex-direction: column; gap: 1em; }
+		  .paper-box-image { flex: 0 0 auto; max-width: 220px; margin: 0 auto; }
+		  .masthead__menu-title { width: 100%; margin-bottom: 0.3em; }
+		}
+		@media (max-width: 520px) {
+		  body { font-size: 14.5px; }
+		  .masthead__inner-wrap { padding: 0.5em 1em; }
+		  .masthead__menu-item a { padding: 0.3em 0.55em; font-size: 0.88em; }
+		  h1 { font-size: 1.55em; }
+		  h2 { font-size: 1.25em; }
+		}
+		
+		
+		@media print {
+		  .masthead, .theme-toggle, .footer_site { display: none; }
+		  #main { grid-template-columns: 1fr; padding: 0; }
+		  a { color: #000; text-decoration: underline; }
+		}
+	</style>
+</head>
+<body>
+	<header class="masthead">
+		<div class="masthead__inner-wrap">
+			<span class="masthead__menu-title">
+				Karcen
+			</span>
+			<nav class="greedy-nav" aria-label="Section navigation">
+				<ul class="visible-links">
+					<li class="masthead__menu-item"><a href="#about-me">About</a></li>
+					<li class="masthead__menu-item"><a href="#education">Education</a></li>
+					<li class="masthead__menu-item"><a href="#publications">Publications</a></li>
+					<li class="masthead__menu-item"><a href="#experience">Experience</a></li>
+					<li class="masthead__menu-item"><a href="#awards">Awards</a></li>
+					<li class="masthead__menu-item"><a href="#projects">Projects</a></li>
+					<li class="masthead__menu-item"><a href="#skills">Skills</a></li>
+					<li class="masthead__menu-item"><a href="#service">Service</a></li>
+				</ul>
+			</nav>
+			<button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+				<i class="fas fa-moon"></i> Dark
+			</button>
+		</div>
+	</header>
+	<div id="main">
+		<aside class="sidebar">
+			<div class="profile_box">
+				<div class="author__avatar">
+					<img src="./imgs/me.jpg" alt="Jiacheng (Karcen) Zheng" onerror="this.onerror=null; this.src='./imgs/logo.ico';">
+				</div>
+				<div class="author__content">
+					<h3 class="author__name">
+						Jiacheng (Karcen) Zheng
+					</h3>
+					<p class="author__bio">
+						MPhil Student in Applied Economics<br>Tianjin University
+						
+					</p>
+					<ul class="author__urls">
+						<li><a href="mailto:karcenzheng@gmail.com"><i class="fas fa-envelope"></i> Email</a></li>
+						<li><a href="https://scholar.google.com/citations?user=cReA6nwAAAAJ" target="_blank" rel="noopener"><i class="fas fa-graduation-cap"></i> Google Scholar</a></li>
+						<li><a href="https://orcid.org/0009-0003-1318-7986" target="_blank" rel="noopener"><i class="fab fa-orcid"></i> ORCID</a></li>
+						<li><a href="https://github.com/Karcen" target="_blank" rel="noopener"><i class="fab fa-github"></i> GitHub</a></li>
+						<li><a href="https://www.zhihu.com/people/karcenzheng" target="_blank" rel="noopener"><i class="fab fa-zhihu"></i> Zhihu</a></li>
+						<li><a href="CV_of_Jiacheng_Karcen__Zheng.pdf" target="_blank" rel="noopener"><i class="fas fa-file-arrow-down"></i> CV</a></li>
+					</ul>
+				</div>
+			</div>
+		</aside>
+		<article class="page">
+			<div class="page__content">
+				<section id="about-me">
+					<h1>👋 About</h1>
+					<p class="lead">
+						Hi, I’m <strong>Jiacheng “Karcen” Zheng</strong> (pronounced approximately “JYAH-chung JUNG”). I am a <code>MPhil student in Applied Economics</code> at the <strong>Ma Yinchu School of Economics, Tianjin University</strong> (2026–2029). My research interests center on applications of <code>data science</code> to economic research.
+					</p>
+					<p>
+						I earned a <strong>B.Eng. in Bioengineering from Shandong University’s Marine College</strong> (2022–2026; <code>GPA: 86.24/100</code>; <code>rank: 5/50</code>; <code>top 10%</code>; <code>Outstanding Graduate Award</code>). I also pursued a dual-degree track in <code>International Politics and International Economics and Trade</code> at the <strong>School of Northeast Asian Studies, Shandong University</strong> (2022–2023). Before that, I studied <strong>Chemical Engineering at Dalian University of Technology</strong> (2019–2021; <code>GPA: 88/100</code>; <code>top 7.4%</code> of my cohort) before beginning a new undergraduate program at Shandong University.
+					</p>
+					<p>
+						My research experience includes working as a research assistant at the <strong>Center for Regional and Country-Specific Data Analytics, Institute of International Studies, Shandong University</strong> (2023–2025; principal investigator: Professor Yuan Li), with a focus on <code>input–output analysis</code> and <code>global value chains</code>. In summer 2024, I joined <strong>Professor Zhifu Mi’s research group at the Bartlett School of Sustainable Construction, University College London (UCL)</strong>, where I helped build a reference database for citation-network analysis of the <code>IPCC Sixth Assessment Report</code> (Working Group II). In 2025, I contributed to <code>generative AI alignment</code> research at <strong>the Hong Kong University of Science and Technology (HKUST)</strong>. This work resulted in a paper, coauthored with researchers at Peking University, that was accepted as a <code>Spotlight at NeurIPS 2025</code>.
+					</p>
+					<div class="cta-row">
+						<a href="mailto:karcenzheng@gmail.com"><i class="fas fa-envelope"></i> karcenzheng@gmail.com</a>
+						<a href="https://scholar.google.com/citations?user=cReA6nwAAAAJ" target="_blank" rel="noopener"><i class="fas fa-graduation-cap"></i> Google Scholar</a>
+						<a href="https://orcid.org/0009-0003-1318-7986" target="_blank" rel="noopener"><i class="fab fa-orcid"></i> ORCID</a>
+						<a href="https://github.com/Karcen" target="_blank" rel="noopener"><i class="fab fa-github"></i> GitHub</a>
+						<a href="https://www.zhihu.com/people/karcenzheng" target="_blank" rel="noopener"><i class="fab fa-zhihu"></i> Zhihu</a>
+						<a href="CV_of_Jiacheng_Karcen__Zheng.pdf" target="_blank" rel="noopener"><i class="fas fa-file-arrow-down"></i> CV</a>
+					</div>
+					<div class="intro-tags">
+						<span>Data Science</span>
+						<span>Machine Learning &amp; NLP</span>
+						<span>AI for Economics</span>
+						<span>Health Economics</span>
+						<span>Econometrics</span>
+						<span>Behavioral Economics</span>
+						<span>fMRI</span>
+					</div>
+				</section>
+				<section id="education">
+					<h2>🎓 Education</h2>
+					<div class="entry">
+						<div class="entry-head">
+							<h3 class="entry-title"><img class="svg" src="https://www.tju.edu.cn/favicon.ico" alt="" onerror="this.style.display='none'"> Tianjin University</h3>
+							<span class="entry-date">Sep 2026 – Jun 2029 (Expected)</span>
+						</div>
+						<div class="entry-sub">MPhil in Applied Economics · Ma Yinchu School of Economics</div>
+						<p>
+							Advisor: <a href="https://sites.google.com/view/shenshenyang" target="_blank" rel="noopener">Shenshen Yang</a>, Assistant Professor. Research areas: theoretical econometrics, causal inference, missing data, and public health policy. 					
+						</p>
+						<p>
+							<span class="honor-note">⭐ I’m honored to be Professor Yang’s first graduate student!</span>
+						</p>
+						<div class="tags">
+							<span class="tag primary">Health Economics</span>
+							<span class="tag primary">Econometrics</span>
+							<span class="tag primary">Finance</span>
+							<span class="tag primary">Data Science</span>
+						</div>
+					</div>
+					<div class="entry">
+						<div class="entry-head">
+							<h3 class="entry-title"><img class="svg" src="https://www.sdu.edu.cn/favicon.ico" alt="" onerror="this.style.display='none'"> Shandong University </h3>
+							<span class="entry-date">Sep 2022 – Jun 2026</span>
+						</div>
+						<div class="entry-sub">B.Eng. in Bioengineering · Marine College</div>
+						<p>
+							GPA: 86.24/100 (5/50; top 10%). Recipient of Shandong University’s <strong>Excellent Graduate</strong>. Pursued a dual-degree track in <em>International Politics and International Economics and Trade</em> at the School of Northeast Asian Studies, Shandong University (2022–2023).
+							
+						</p>
+						<p>
+							<strong>Undergraduate thesis:</strong> <em>Is More Complexity Always Better? Hepatotoxicity Prediction of Marine Natural Products with in vivo Validation in <i>Danio rerio</i></em> — <code>ranked 1st in my thesis-defense group.</code>
+							
+						</p>
+						<div class="tags">
+							<span class="tag primary">Bioengineering</span>
+							<span class="tag primary">Economics</span>
+							<span class="tag primary">Data Science</span>
+						</div>
+					</div>
+					<div class="entry">
+						<div class="entry-head">
+							<h3 class="entry-title"><img class="svg" src="https://www.dlut.edu.cn/favicon.ico" alt="" onerror="this.style.display='none'"> Dalian University of Technology</h3>
+							<span class="entry-date">Sep 2019 – Mar 2021</span>
+						</div>
+						<div class="entry-sub">Coursework toward a B.Eng. in Chemical Engineering · School of Chemistry</div>
+						<p>
+							GPA: 88/100 (top 7.4% of the cohort). Withdrew in 2021 and retook China’s National College Entrance Examination (Gaokao).
+							
+						</p>
+						<div class="tags">
+							<span class="tag primary">Chemical Engineering</span>
+							<span class="tag primary">Mathematical Modeling</span>
+							<span class="tag primary">Data Science</span>
+						</div>
+					</div>
+				</section>
+				<section id="publications">
+					<h2>📝 Publications &amp; Scholarly Contributions</h2>
+					<div class="paper-box">
+						<div class="paper-box-image">
+							<div>
+								<div class="badge"> Biology 2026 · Article
+									
+								</div>
+								<img src="paper_img/biology-15-01150-ag.png" alt="TLR4 Axis and Non-Starch Polysaccharides" style="width: 100%; aspect-ratio: 6254/4367; object-fit: cover; display: block; border-radius: 4px;">
+							</div>
+						</div>
+						<div class="paper-box-text">
+							<div class="paper-title">
+								<a href="https://doi.org/10.3390/biology15141150" target="_blank" rel="noopener noreferrer"> Integrative Bioinformatics Prioritizes the <i>TLR4</i> Axis and Candidate Non-Starch Polysaccharides in Hyperuricemia-Associated Inflammation </a>
+							</div>
+							<div class="paper-authors"> Pengcheng You, Anye Chen, Qiancheng Feng, Junhong Hou, <strong style="color: #0066cc;">Jiacheng Zheng</strong>, and Hao Chen* </div>
+							<div class="paper-journal">
+								<i>Biology</i>, 2026, 15, 1150
+							</div>
+							<div class="paper-links">
+								<a href="https://doi.org/10.3390/biology15141150" target="_blank" rel="noopener noreferrer"> [Paper] </a>
+							</div>
+						</div>
+					</div>
+					<div class="paper-box">
+						<div class="paper-box-image">
+							<div>
+								<div class="badge"> NeurIPS 2025 · Spotlight
+									
+								</div>
+								<img src="paper_img/neurips2025.png" alt="InterMT" style="width: 100%; aspect-ratio: 423/296; object-fit: cover; display: block; border-radius: 4px;">
+							</div>
+						</div>
+						<div class="paper-box-text">
+							<div class="paper-title">
+								<a href="https://pku-intermt.github.io" target="_blank" rel="noopener noreferrer"> InterMT: Multi-Turn Interleaved Preference Alignment with Human Feedback </a>
+							</div>
+							<div class="paper-authors"> Boyuan Chen, Donghai Hong, Jiaming Ji, <strong style="color: #0066cc;">Jiacheng Zheng</strong>, Bowen Dong, Jiayi Zhou, Kaile Wang, Juntao Dai, Xuyao Wang, Wenqi Chen, Qirui Zheng, Wenxin Li, Sirui Han, Yike Guo, &amp; Yaodong Yang </div>
+							<div class="paper-journal">
+								<code>NeurIPS 2025</code> · <code>Spotlight</code>
+							</div>
+							<div class="paper-links">
+								<a href="https://pku-intermt.github.io" target="_blank" rel="noopener noreferrer"> [Project Page] </a>
+							</div>
+						</div>
+					</div>
+					<div class="paper-box">
+						<div class="paper-box-image">
+							<div>
+								<div class="badge"> Agglomeration &amp; Inequality </div>
+								<img src="paper_img/agglomeration.png" alt="Agglomeration Economies" style="width: 100%; aspect-ratio: 938/549; object-fit: cover; display: block; border-radius: 4px;">
+							</div>
+						</div>
+						<div class="paper-box-text">
+							<div class="paper-title">
+								<a href="https://doi.org/10.1080/14765284.2025.2538328" target="_blank" rel="noopener noreferrer"> Agglomeration economies and inequality: theory and evidence from provincial China </a>
+							</div>
+							<div class="paper-authors"> Jamal Khan, <strong style="color: #0066cc;">Jiacheng Zheng</strong>, Maaz Ahmad, &amp; Zubair Alam Khan </div>
+							<div class="paper-journal">
+								<i>Journal of Chinese Economic and Business Studies</i>, <i>24</i>(2), 317–340 (2026)
+							</div>
+							<div class="paper-links">
+								<a href="https://doi.org/10.1080/14765284.2025.2538328" target="_blank" rel="noopener noreferrer"> [Paper] </a>
+								<a href="pdf/Presentation_Agglomeration_Economies_and_Inequality__Theory_and_Evidence_from_Provincial_China.pdf" target="_blank" rel="noopener noreferrer"> [Presentation] </a>
+							</div>
+						</div>
+					</div>
+					<h3 style="margin-top:1.5em;">Translations &amp; Other Scholarly Contributions</h3>
+					<div class="paper-box">
+						<div class="paper-box-image">
+							<div>
+								<div class="badge"> Social Filter Theory </div>
+								<img src="paper_img/EU_IG.jpg" alt="Innovation and Regional Growth in the European Union" style="width: 100%; aspect-ratio: 1/1; object-fit: cover; display: block; border-radius: 4px;">
+							</div>
+						</div>
+						<div class="paper-box-text">
+							<div class="paper-title">
+								
+									<a href="https://www.amazon.fr/-/en/dp/7509699916" target="_blank" rel="noopener noreferrer"> Innovation and Regional Growth in the European Union (Chinese Edition) </a>
+								
+								
+							</div>
+							<div class="paper-authors"> Riccardo Crescenzi &amp; Andrés Rodríguez-Pose  (Chinese translation by Jianhui Ren <i>et al.</i>) 
+								
+							</div>
+							<div class="paper-journal">
+								 <i>Beijing Economic Management Press</i> (2024) 
+								
+							</div>
+							<p>
+								Contributed to the Chinese translation of <strong>Chapter 3, “Geographical Accessibility and Human Capital Accumulation.”</strong> The book received Third Prize in the “Hundred Works” Project for Outstanding Achievements in Social Science Research in Shanxi Province. 
+								
+							</p>
+							<div class="paper-links">
+								<a href="https://www.amazon.fr/-/en/dp/7509699916" target="_blank" rel="noopener noreferrer"> [Book] </a>
+								<span style="font-size: 0.9em; color: #666; margin-left: 10px;"> <strong style="color: #0066cc;">Contributing translator</strong></span>
+							</div>
+						</div>
+					</div>
+					<div class="paper-box">
+						<div class="paper-box-image">
+							<div>
+								<div class="badge"> Financial Sector in China </div>
+								<img src="paper_img/linkages.png" alt="Linkages and Structural Changes" style="width: 100%; aspect-ratio:389/342; object-fit: cover; display: block; border-radius: 4px;">
+							</div>
+						</div>
+						<div class="paper-box-text">
+							<div class="paper-title">
+								<a href="https://doi.org/10.1016/j.strueco.2023.12.017" target="_blank" rel="noopener noreferrer"> Linkages and Structural Changes in the Chinese Financial Sector, 1996–2018: A Network and Input–Output Approach </a>
+							</div>
+							<div class="paper-authors"> Jamal Khan, Yuan Li, &amp; Qaiser Jamal Mahsud </div>
+							<div class="paper-journal">
+								<i>Structural Change and Economic Dynamics</i>, <i>70</i>, 33–44 (2024)
+							</div>
+							<p>
+								 Examines the financial sector’s role in post-crisis industrial linkages and structural transformation. My contributions to <code>data analysis</code> and <code>visualization</code> are acknowledged in the paper. 
+								
+							</p>
+							<div class="paper-links">
+								<a href="https://doi.org/10.1016/j.strueco.2023.12.017" target="_blank" rel="noopener noreferrer"> [Paper] </a>
+								<span style="font-size: 0.9em; color: #666; margin-left: 10px;"> <strong style="color: #0066cc;">Contribution acknowledged</strong></span>
+							</div>
+						</div>
+					</div>
+					<div class="paper-box">
+						<div class="paper-box-image">
+							<div>
+								<div class="badge"> Belt and Road Initiative </div>
+								<img src="paper_img/wind.jpeg" alt="Wind from the East" style="width: 100%; aspect-ratio: 337/500; object-fit: cover; display: block; border-radius: 4px;">
+							</div>
+						</div>
+						<div class="paper-box-text">
+							<div class="paper-title">
+								<a href="https://doi.org/10.3726/b22199" target="_blank" rel="noopener noreferrer"> Wind from the East: How does the Belt and Road Initiative Connect Continents to Unleash Economic Potential? </a>
+							</div>
+							<div class="paper-authors"> Yuan Li &amp; Jamal Khan </div>
+							<div class="paper-journal">
+								<i>Peter Lang</i>
+							</div>
+							<p>
+								The book examines the Belt and Road Initiative’s effects on infrastructure, trade, employment, and global economic governance. My contribution is acknowledged in the volume. 
+								
+							</p>
+							<div class="paper-links">
+								<a href="https://doi.org/10.3726/b22199" target="_blank" rel="noopener noreferrer"> [Book] </a>
+								<span style="font-size: 0.9em; color: #666; margin-left: 10px;"> <strong style="color: #0066cc;">Contribution acknowledged</strong></span>
+							</div>
+						</div>
+					</div>
+					<h3 style="margin-top:1.5em;">📣 Conference Presentations</h3>
+					<div class="entry">
+						<div class="entry-head">
+							<h3 class="entry-title">31st International Input–Output Association Conference</h3>
+							<span class="entry-date">2025 · Malé</span>
+						</div>
+						<div class="entry-sub"><code>Accepted for oral presentation</code> — withdrawn for health reasons</div>
+						<p><em>Linkages and Structural Changes in the Chinese Financial Sector, 1996–2018.</em></p>
+						<div class="paper-links">
+							<a href="pdf/2025 IIOA Conference Linkages and Structural Changes in the Chinese Financial Sector, 1996–2018 A Network and Input–Output Approach.pdf" target="_blank" rel="noopener"><i class="fas fa-file-pdf"></i> Slides</a>
+						</div>
+					</div>
+					<div class="entry">
+						<div class="entry-head">
+							<h3 class="entry-title">10th International Workshop on RUSE in China</h3>
+							<span class="entry-date">2023 · Peking University</span>
+						</div>
+						<div class="entry-sub"><code>Oral presentation</code></div>
+						<p><em>Agglomeration Economies and Regional Inequality in Provincial China.</em></p>
+						<div class="paper-links">
+							<a href="pdf/RUSE_Agglomeration Economies and regional inequalities,Theory and Evidence from Provincial China.pdf" target="_blank" rel="noopener"><i class="fas fa-file-pdf"></i> Slides</a>
+						</div>
+					</div>
+				</section>
+				<section id="experience">
+					<h2>🔬 Research &amp; Internship Experience</h2>
+					<div class="entry">
+						<div class="entry-head">
+							<h3 class="entry-title">Research Assistant · Tianjin University</h3>
+							<span class="entry-date">Sep 2025 – Present</span>
+						</div>
+						<div class="entry-sub">Ma Yinchu School of Economics &amp; College of Management and Economics (CoME)</div>
+						<ul>
+							<li>
+								Conduct research in health economics and financial economics under two projects funded by the National Natural Science Foundation of China (NSFC).
+								
+							</li>
+						</ul>
+					</div>
+					<div class="entry">
+						<div class="entry-head">
+							<h3 class="entry-title">Research Intern · The Hong Kong University of Science and Technology (HKUST)</h3>
+							<span class="entry-date">Feb – May 2025 · Remote</span>
+						</div>
+						<div class="entry-sub">Big Data Institute of HKUST &amp; Hong Kong Generative AI Research and Development Center Limited (HKGAI)</div>
+						<ul>
+							<li>
+								Conducted research on data-driven preference alignment for multimodal, multi-turn large language models.
+								
+							</li>
+							<li>
+								Collaborated with Jiaming Ji, Boyuan Chen, and other researchers at Peking University; the resulting paper was accepted as a <em>Spotlight at NeurIPS 2025</em>.
+								
+							</li>
+						</ul>
+					</div>
+					<div class="entry">
+						<div class="entry-head">
+							<h3 class="entry-title">Research Assistant · University College London (UCL)</h3>
+							<span class="entry-date">Jul – Aug 2024 · Remote</span>
+						</div>
+						<div class="entry-sub">The Bartlett School of Sustainable Construction · Principal Investigator: Professor Zhifu Mi</div>
+						<ul>
+							<li>
+								Contributed to citation-network analysis of references in the <em>IPCC Sixth Assessment Report</em> (Working Group II), building reference databases and analytical pipelines.
+								
+							</li>
+						</ul>
+					</div>
+					<div class="entry">
+						<div class="entry-head">
+							<h3 class="entry-title">Research Assistant · Institute of International Studies, Shandong University</h3>
+							<span class="entry-date">Mar 2023 – Mar 2025 · Weihai</span>
+						</div>
+						<div class="entry-sub">Center for Regional and Country-Specific Data Analytics · Principal Investigators: Professor Yuan Li and Dr. Jamal Khan (now an associate professor)</div>
+						<ul>
+							<li>
+								Helped build the center’s data infrastructure; led programming and data-visualization tasks; and contributed to manuscript preparation.
+								
+							</li>
+							<li>
+								Applied machine learning, deep learning, and natural language processing to data-driven economic modeling, with a focus on <em>input–output analysis</em> and <em>global value chains</em>.
+								
+							</li>
+						</ul>
+					</div>
+					<div class="entry">
+						<div class="entry-head">
+							<h3 class="entry-title">Community Outreach Lead · Volunteer and Community Engagement</h3>
+							<span class="entry-date">2024 – Present · Weihai</span>
+						</div>
+						<div class="entry-sub">Tian Village · University-sponsored community engagement project</div>
+						<ul>
+							<li>
+								Provided after-school tutoring and science outreach for rural elementary and middle school students.
+								
+							</li>
+							<li>
+								Led community first-aid training in CPR and the Heimlich maneuver and organized public health awareness campaigns.
+								
+							</li>
+						</ul>
+					</div>
+					<div class="entry">
+						<div class="entry-head">
+							<h3 class="entry-title">Marketing Management Trainee</h3>
+							<span class="entry-date">Summer 2023 · Weihai</span>
+						</div>
+						<div class="entry-sub">Golden Education · Mentor: Jihai Zhao</div>
+						<ul>
+							<li>
+								Planned and executed campus branding campaigns; supported social media operations and expanded campus outreach.
+								
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section id="awards">
+					<h2>🏆 Scholarships, Awards &amp; Travel Grants</h2>
+					<div class="award-row">
+						<div>
+							<strong>Outstanding Graduate Award</strong>
+							<p>Shandong University · 2026</p>
+						</div>
+						<span class="amt"></span>
+					</div>
+					<div class="award-row">
+						<div>
+							<strong>National Encouragement Scholarship</strong>
+							<p>Ministry of Education of the People’s Republic of China · 2025</p>
+						</div>
+						<span class="amt">CNY 6,000 ≈ US$841</span>
+					</div>
+					<div class="award-row">
+						<div>
+							<strong>Merit Scholarship (Level III)</strong>
+							<p>Shandong University · 2025</p>
+						</div>
+						<span class="amt">CNY 1,000 ≈ US$139</span>
+					</div>
+					<div class="award-row">
+						<div>
+							<strong>IIOA Travel Grant</strong>
+							<p>
+								International Input–Output Association · 2025 (selected through the COMPASS program; funding was later withdrawn because of budget constraints)
+								
+							</p>
+						</div>
+						<span class="amt">US$3,000</span>
+					</div>
+					<div class="award-row">
+						<div>
+							<strong>National Encouragement Scholarship</strong>
+							<p>Ministry of Education of the People’s Republic of China · 2023</p>
+						</div>
+						<span class="amt">CNY 5,000 ≈ US$694</span>
+					</div>
+					<div class="award-row">
+						<div>
+							<strong>Merit Scholarship (Level III)</strong>
+							<p>Shandong University · 2023</p>
+						</div>
+						<span class="amt">CNY 1,000 ≈ US$139</span>
+					</div>
+					<div class="award-row">
+						<div>
+							<strong>Invited Delegate, PwC Open Day</strong>
+							<p>
+								PwC Jinan · 2023 (one of two fully funded delegates from Weihai via the Golden Education Elite Business Challenge)
+								
+							</p>
+						</div>
+						<span class="amt">CNY 450 ≈ US$62</span>
+					</div>
+					<div class="award-row">
+						<div>
+							<strong>National Scholarship</strong>
+							<p>Ministry of Education of the People’s Republic of China · 2020</p>
+						</div>
+						<span class="amt">CNY 8,000 ≈ US$1,111</span>
+					</div>
+					<div class="award-row">
+						<div>
+							<strong>Outstanding Student Scholarship (Level II)</strong>
+							<p>Dalian University of Technology · 2020</p>
+						</div>
+						<span class="amt">CNY 500 ≈ US$69</span>
+					</div>
+					<div class="award-row">
+						<div>
+							<strong>Outstanding Youth League Member &amp; Spiritual Civilization Scholarship</strong>
+							<p>Dalian University of Technology · 2020</p>
+						</div>
+						<span class="amt">CNY 400 ≈ US$56</span>
+					</div>
+					<p style="color: var(--text-muted); font-size: 0.9em; margin-top: 0.5em;">
+						* Approximate exchange rate used: CNY 7.20 ≈ US$1.
+						
+					</p>
+				</section>
+				<section id="projects">
+					<h2>🛠 Projects, Tools &amp; Writing</h2>
+					<details class="collapse" open>
+						<summary>📊 Open-Source Tools &amp; Notes<i class="fas fa-chevron-right chev"></i></summary>
+						<div class="collapse-body">
+							<ul class="link-grid">
+								<li><a href="https://github.com/Karcen/fMRI-GUI-BrainAnalyzer/" target="_blank" rel="noopener">Brain Analyzer V3.0</a></li>
+								<li><a href="https://github.com/Karcen/elder_ai_survey/" target="_blank" rel="noopener">ElderAI Survey Platform</a></li>
+								<li><a href="https://github.com/Karcen/ipcc_refs_toolkit" target="_blank" rel="noopener">IPCC References Toolkit</a></li>
+								<li><a href="https://github.com/karcen/SDU-Thesis-LaTeX" target="_blank" rel="noopener">SDU Thesis LaTeX Template (2026 Edition)</a></li>
+								<li><a href="https://karcen.github.io/tikz-atelier.github.io/" target="_blank" rel="noopener">TikZ Atelier</a></li>
+								<li><a href="https://karcen.github.io/is-this-paper-real.gitub.io/" target="_blank" rel="noopener">Is This Paper Real? — Citation authenticity checker</a></li>
+								<li><a href="https://karcen.github.io/bibtex-crossref-validator-online.github.io/" target="_blank" rel="noopener">BibTeX Reference Validator</a></li>
+								<li><a href="https://github.com/Karcen/Journal-of-Wedding-Latex-Template" target="_blank" rel="noopener">Wedding Journal LaTeX Template</a></li>
+							</ul>
+						</div>
+					</details>
+					<details class="collapse">
+						<summary>📝 Selected Zhihu Columns <span class="count">(Selected Notes)</span><i class="fas fa-chevron-right chev"></i></summary>
+						<div class="collapse-body">
+							<ul class="link-grid">
+								<li><a href="https://www.zhihu.com/column/c_1568334418753777664" target="_blank" rel="noopener">Microeconomics</a></li>
+								<li><a href="https://www.zhihu.com/column/c_1509192231001321472" target="_blank" rel="noopener">Love Letters &amp; Replies</a></li>
+								<li><a href="https://www.zhihu.com/column/c_1509192089074659328" target="_blank" rel="noopener">Gaokao Experience &amp; Tips</a></li>
+								<li><a href="https://www.zhihu.com/column/c_1414923908398780416" target="_blank" rel="noopener">Analytical Chemistry</a></li>
+								<li><a href="https://www.zhihu.com/column/c_1414923587220742144" target="_blank" rel="noopener">Inorganic Chemistry</a></li>
+								<li><a href="https://www.zhihu.com/column/c_1414923273159639040" target="_blank" rel="noopener">IELTS Preparation</a></li>
+								<li><a href="https://www.zhihu.com/column/c_1414923135989248000" target="_blank" rel="noopener">C Programming</a></li>
+								<li><a href="https://www.zhihu.com/column/c_1414922883429277696" target="_blank" rel="noopener">Electrical Engineering</a></li>
+								<li><a href="https://www.zhihu.com/column/c_1414922606332440576" target="_blank" rel="noopener">University Physics</a></li>
+								<li><a href="https://www.zhihu.com/column/c_1414921772727083008" target="_blank" rel="noopener">Engineering Calculus</a></li>
+							</ul>
+						</div>
+					</details>
+					<h3 style="margin-top:1.3em;">🏁 Competitions &amp; Team Projects</h3>
+					<div class="entry">
+						<div class="entry-head">
+							<h3 class="entry-title">iTooth — A Digital Platform for Community Oral Health</h3>
+							<span class="entry-date">2022 · 13th National University E-commerce "Innovation, Creativity &amp; Entrepreneurship" Challenge</span>
+						</div>
+						<div class="entry-sub">Team Leader</div>
+						<p>
+							A digital platform designed to promote oral-health literacy and facilitate preliminary screening. The project won <strong>Second Prize</strong> in the Shandong University round.
+							
+						</p>
+						<div class="paper-links">
+							<a href="pdf/itooth.pdf" target="_blank" rel="noopener"><i class="fas fa-file-pdf"></i> Project report</a>
+						</div>
+					</div>
+					<div class="entry">
+						<div class="entry-head">
+							<h3 class="entry-title">Teach For China (Bilibili) — Educational Outreach for Rural Students</h3>
+							<span class="entry-date">2023</span>
+						</div>
+						<div class="entry-sub">Volunteer Teacher</div>
+						<p>
+							Produced science education videos for elementary and middle school students in rural and underserved communities to support educational access and equity.
+							
+						</p>
+					</div>
+				</section>
+				<section id="skills">
+					<h2>💡 Skills &amp; Interests</h2>
+					<h3>Software</h3>
+					<div class="tags">
+						<div class="skill-list">
+							<span><i class="fa-brands fa-python"></i> Python</span>
+							<span><i class="fa-brands fa-microsoft"></i> Microsoft Office</span>
+							<span><i class="fa-solid fa-palette"></i> Adobe Creative Suite</span>
+							<span><i class="fa-solid fa-chart-column"></i> SPSS</span>
+							<span class="latex"><i class="fa-solid fa-square-root-variable"></i> LaTeX</span>
+							<span><i class="fa-solid fa-wave-square"></i> MATLAB</span>
+							<span><i class="fa-solid fa-diagram-project"></i> Orange 3</span>
+							<span><i class="fa-solid fa-chart-line"></i> Stata</span>
+							<span><i class="fa-brands fa-r-project"></i> R</span>
+							<span><i class="fa-brands fa-github"></i> Git / GitHub</span>
+						</div>
+					</div>
+					<h3>Languages</h3>
+					<div class="tags">
+						<span class="tag primary">Chinese · Native</span>
+						<span class="tag primary">English · IELTS 7.0</span>
+					</div>
+					<h3>Selected Quantitative Coursework</h3>
+					<ul class="link-grid">
+						<li>Calculus I · <strong>98 / 100</strong></li>
+						<li>Calculus II · <strong>92 / 100</strong></li>
+						<li>Linear Algebra · <strong>90 / 100</strong></li>
+						<li>Probability &amp; Statistics · <strong>88 / 100</strong></li>
+						<li>University Physics I · <strong>98 / 100</strong></li>
+						<li>University Physics II · <strong>100 / 100</strong></li>
+					</ul>
+					<p style="color: var(--text-muted); font-size: 0.92em; margin-top: 0.3em;">
+						Full transcript available upon request: <a href="mailto:karcenzheng@gmail.com">karcenzheng@gmail.com</a>
+						
+					</p>
+					<h3>Research Interests</h3>
+					<div class="tags">
+						<span class="tag primary">Health Economics</span>
+						<span class="tag primary">Behavioral Economics</span>
+						<span class="tag primary">Regional Economics</span>
+						<span class="tag primary">Poverty</span>
+						<span class="tag primary">Data Science in Economics</span>
+						<span class="tag primary">fMRI</span>
+					</div>
+				</section>
+				<section id="service">
+					<h2>🤝 Service &amp; Affiliations</h2>
+					<h3>Leadership</h3>
+					<div class="entry">
+						<div class="entry-head">
+							<h3 class="entry-title">Vice President</h3>
+							<span class="entry-date">2024 – 2025</span>
+						</div>
+						<div class="entry-sub">“Shanhai” Political Observation Club · Student organization affiliated with the School of Marxism, Shandong University</div>
+					</div>
+					<div class="entry">
+						<div class="entry-head">
+							<h3 class="entry-title">Director of External Relations</h3>
+							<span class="entry-date">2023 – 2024</span>
+						</div>
+						<div class="entry-sub">“Shanhai” Political Observation Club · Student organization affiliated with the School of Marxism, Shandong University</div>
+					</div>
+					<div class="entry">
+						<div class="entry-head">
+							<h3 class="entry-title">Secretary</h3>
+							<span class="entry-date">2022 – 2023</span>
+						</div>
+						<div class="entry-sub">Department of Student Rights and Mental Health · School of Northeast Asian Studies, Shandong University</div>
+					</div>
+					<div class="entry">
+						<div class="entry-head">
+							<h3 class="entry-title">Residence Hall Council Chair</h3>
+							<span class="entry-date">2019 – 2021</span>
+						</div>
+						<div class="entry-sub">Dalian University of Technology</div>
+					</div>
+					<div class="entry">
+						<div class="entry-head">
+							<h3 class="entry-title">Deputy Director, New Media</h3>
+							<span class="entry-date">2019 – 2021</span>
+						</div>
+						<div class="entry-sub">“Yin Ji Guang Ying” New Media Studio · Dalian University of Technology</div>
+					</div>
+					<div class="entry">
+						<div class="entry-head">
+							<h3 class="entry-title">Deputy Director, Culture and Arts</h3>
+							<span class="entry-date">2019 – 2020</span>
+						</div>
+						<div class="entry-sub">Department of Culture and Arts · School of Chemistry, Dalian University of Technology</div>
+					</div>
+					<h3 style="margin-top:1.5em;">Peer-Review Service</h3>
+					<div class="entry">
+						<p><strong>Ad Hoc Reviewer</strong>, <em>Journal of Chinese Economic and Business Studies</em></p>
+					</div>
+					<h3 style="margin-top:1.5em;">Memberships</h3>
+					<div class="tags">
+						<div>
+							Chinese Economic Association UK/Europe (CEA) · 2026–Present
+							
+						</div>
+						<div>
+							International Input–Output Association (IIOA) · 2025–2026
+							
+						</div>
+						<div>
+							Chinese Society of Optimization, Systems Engineering &amp; Economic Mathematics · 2023–2024
+							
+						</div>
+						<div>
+							Beijing Society of Image and Graphics · 2023–2024
+							
+						</div>
+					</div>
+				</section>
+			</div>
+		</article>
+	</div>
+	<div class="footer_site">
+		<hr>
+		<div class="footer_copyright"> © 2026 Jiacheng (Karcen) Zheng · Built with the
+			<a href="https://github.com/RayeRen/acad-homepage.github.io">acad</a>
+			template
+		</div>
+	</div>
+	<script>
+		(function () {
+		  var root = document.documentElement;
+		
+		  
+		  var themeBtn = document.getElementById('theme-toggle');
+		  
+		  
+		  var themeIcon = themeBtn.querySelector('i');
+		
+		  function applyTheme(theme) {
+		    root.setAttribute('data-theme', theme);
+		    if (theme === 'dark') {
+		      themeIcon.className = 'fas fa-sun';
+		    } else {
+		      themeIcon.className = 'fas fa-moon';
+		    }
+		  }
+		  var savedTheme = localStorage.getItem('theme')
+		    || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+		  applyTheme(savedTheme);
+		  themeBtn.addEventListener('click', function () {
+		    var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+		    localStorage.setItem('theme', next);
+		    applyTheme(next);
+		  });
+
+		})();
+		
+		
+		document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+		  a.addEventListener('click', function (e) {
+		    var id = a.getAttribute('href').slice(1);
+		    var el = document.getElementById(id);
+		    if (el) {
+		      e.preventDefault();
+		      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+		    }
+		  });
+		});
+	</script>
+</body>
+</html>
