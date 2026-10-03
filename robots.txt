@@ -1,6 +1,0 @@
-User-agent: *
-Allow: /
-
-# This repo was renamed from zhengjiacheng.github.io to karcen.github.io. The old
-# project path (/zhengjiacheng.github.io/) no longer exists and is handled by 404.html.
-Sitemap: https://karcen.github.io/sitemap.xml
