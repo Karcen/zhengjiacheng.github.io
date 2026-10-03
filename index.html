@@ -25,7 +25,6 @@
 		  --code-bg: #EDEDEB;
 		  --code-text: #E65555;
 		  --accent: #224b8d;
-		  --lnk-underline: rgba(34, 75, 141, 0.38);
 		  --lnk-hover-bg: rgba(34, 75, 141, 0.09);
 		  --tag-bg: #f4f5f7;
 		  --highlight-bg: #fff3b0;
@@ -46,7 +45,6 @@
 		  --code-bg: #161b22;
 		  --code-text: #ff7b72;
 		  --accent: #58a6ff;
-		  --lnk-underline: rgba(88, 166, 255, 0.42);
 		  --lnk-hover-bg: rgba(88, 166, 255, 0.14);
 		  --tag-bg: #161b22;
 		  --highlight-bg: #3f3511;
@@ -85,33 +83,24 @@
 		  text-decoration: none;
 		  transition: color 0.15s ease;
 		}
-		a:hover { color: var(--link-color-hover); text-decoration: underline; }
+		a:hover { color: var(--link-color-hover); }
 		a:focus { outline: 2px dotted var(--accent); outline-offset: 2px; }
 
 		/*
 		 * Inline reference links (a.lnk) for the people and institutions named in
-		 * running text. A hard underline on 30-odd names turns the prose into a wall
-		 * of lines, so these get a thin tinted underline that firms up on hover, plus
-		 * a soft tinted chip. The negative margin cancels the padding, so the hover
-		 * highlight never shifts the surrounding text.
+		 * running text. No underline anywhere: the accent colour marks them as links
+		 * and hovering adds a soft tinted chip. The negative margin cancels the
+		 * padding, so the hover highlight never shifts the surrounding text.
 		 */
 		a.lnk {
-		  text-decoration: underline;
-		  text-decoration-thickness: 0.06em;
-		  text-underline-offset: 0.16em;
-		  text-decoration-color: var(--lnk-underline);
 		  padding: 0.05em 3px;
 		  margin: -0.05em -3px;
 		  border-radius: 3px;
-		  transition: color 0.15s ease, background-color 0.15s ease, text-decoration-color 0.15s ease;
+		  transition: color 0.15s ease, background-color 0.15s ease;
 		}
-		a.lnk:hover {
-		  color: var(--link-color-hover);
-		  text-decoration-color: currentColor;
-		  background-color: var(--lnk-hover-bg);
-		}
+		a.lnk:hover { background-color: var(--lnk-hover-bg); }
 		@media print {
-		  a.lnk { text-decoration-color: currentColor; background: none; padding: 0; margin: 0; }
+		  a.lnk { background: none; padding: 0; margin: 0; }
 		}
 		
 		code {
