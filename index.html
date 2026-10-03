@@ -1043,14 +1043,14 @@
 						<summary>📊 Open-Source Tools &amp; Notes<i class="fas fa-chevron-right chev"></i></summary>
 						<div class="collapse-body">
 							<ul class="link-grid">
-								<li><a href="https://github.com/Karcen/fMRI-GUI-BrainAnalyzer/" target="_blank" rel="noopener">Brain Analyzer V3.0</a></li>
-								<li><a href="https://github.com/Karcen/elder_ai_survey/" target="_blank" rel="noopener">ElderAI Survey Platform</a></li>
-								<li><a href="https://github.com/Karcen/ipcc_refs_toolkit" target="_blank" rel="noopener">IPCC References Toolkit</a></li>
-								<li><a href="https://github.com/karcen/SDU-Thesis-LaTeX" target="_blank" rel="noopener">SDU Thesis LaTeX Template (2026 Edition)</a></li>
-								<li><a href="https://karcen.github.io/tikz-atelier.github.io/" target="_blank" rel="noopener">TikZ Atelier</a></li>
-								<li><a href="https://karcen.github.io/is-this-paper-real.gitub.io/" target="_blank" rel="noopener">Is This Paper Real? — Citation authenticity checker</a></li>
-								<li><a href="https://karcen.github.io/bibtex-crossref-validator-online.github.io/" target="_blank" rel="noopener">BibTeX Reference Validator</a></li>
-								<li><a href="https://github.com/Karcen/Journal-of-Wedding-Latex-Template" target="_blank" rel="noopener">Wedding Journal LaTeX Template</a></li>
+								<li><a href="https://github.com/Karcen/fMRI-GUI-BrainAnalyzer/" target="_blank" rel="noopener" data-gh-id="1289803416">Brain Analyzer V3.0</a></li>
+								<li><a href="https://github.com/Karcen/elder_ai_survey/" target="_blank" rel="noopener" data-gh-id="1257855054">ElderAI Survey Platform</a></li>
+								<li><a href="https://github.com/Karcen/ipcc_refs_toolkit" target="_blank" rel="noopener" data-gh-id="1248177613">IPCC References Toolkit</a></li>
+								<li><a href="https://github.com/Karcen/sdu-undergrad-thesis-latex" target="_blank" rel="noopener" data-gh-id="1224220979">SDU Thesis LaTeX Template (2026 Edition)</a></li>
+								<li><a href="https://karcen.github.io/tikz-atelier.github.io/" target="_blank" rel="noopener" data-gh-id="1223583980" data-gh-pages>TikZ Atelier</a></li>
+								<li><a href="https://karcen.github.io/is-this-paper-real.gitub.io/" target="_blank" rel="noopener" data-gh-id="1223125766" data-gh-pages>Is This Paper Real? — Citation authenticity checker</a></li>
+								<li><a href="https://karcen.github.io/bibtex-crossref-validator-online.github.io/" target="_blank" rel="noopener" data-gh-id="1174036164" data-gh-pages>BibTeX Reference Validator</a></li>
+								<li><a href="https://github.com/Karcen/Journal-of-Love-LaTex-Template" target="_blank" rel="noopener" data-gh-id="944387887">Journal of Love LaTeX Template</a></li>
 							</ul>
 						</div>
 					</details>
@@ -1325,5 +1325,83 @@
 			<p>Scan with WeChat to follow<br>扫码关注公众号</p>
 		</div>
 	</div>
+	<!--
+	  GitHub link auto-resolver.
+	  Repository numeric IDs never change, not even when the repo or the account is
+	  renamed, so every project link above carries a stable data-gh-id. On load we
+	  read the owner's public repo list once and rewrite each tagged href to that
+	  repo's current URL. Add data-gh-pages to point at the GitHub Pages site
+	  instead of the repository page.
+	  If the API is unreachable the tagged links keep their static href, so nothing
+	  breaks; just refresh those by hand after a rename.
+	-->
+	<script>
+		(function () {
+		  var OWNER = 'Karcen';
+		  var API = 'https://api.github.com/users/' + OWNER + '/repos?per_page=100&type=owner&page=';
+		  var CACHE_KEY = 'gh-repo-map:v1';
+		  var CACHE_TTL = 12 * 60 * 60 * 1000; /* 12 h, well inside the 60 req/h anonymous limit */
+		  var links = document.querySelectorAll('a[data-gh-id]');
+		  if (!links.length) return;
+
+		  function pagesUrl(repo) {
+		    var login = ((repo.owner && repo.owner.login) || OWNER).toLowerCase();
+		    if (repo.name.toLowerCase() === login + '.github.io') {
+		      return 'https://' + login + '.github.io/';
+		    }
+		    return 'https://' + login + '.github.io/' + repo.name + '/';
+		  }
+
+		  function apply(map) {
+		    links.forEach(function (a) {
+		      var repo = map[a.getAttribute('data-gh-id')];
+		      if (!repo) return;
+		      var url = repo.html_url;
+		      if (a.hasAttribute('data-gh-pages')) {
+		        if (!repo.has_pages) return;
+		        url = pagesUrl(repo);
+		      }
+		      if (url && a.getAttribute('href') !== url) a.setAttribute('href', url);
+		    });
+		  }
+
+		  function readCache() {
+		    try {
+		      var c = JSON.parse(localStorage.getItem(CACHE_KEY) || 'null');
+		      return (c && Date.now() - c.t < CACHE_TTL) ? c.m : null;
+		    } catch (e) { return null; }
+		  }
+
+		  function writeCache(map) {
+		    try { localStorage.setItem(CACHE_KEY, JSON.stringify({ t: Date.now(), m: map })); } catch (e) {}
+		  }
+
+		  function fetchAll() {
+		    var map = {}, page = 1;
+		    function step() {
+		      return fetch(API + page, { headers: { Accept: 'application/vnd.github+json' } })
+		        .then(function (r) {
+		          if (!r.ok) throw new Error('GitHub API ' + r.status);
+		          return r.json();
+		        })
+		        .then(function (list) {
+		          if (!Array.isArray(list) || !list.length) return map;
+		          list.forEach(function (repo) { map[String(repo.id)] = repo; });
+		          if (list.length === 100 && page < 5) { page += 1; return step(); }
+		          return map;
+		        });
+		    }
+		    return step();
+		  }
+
+		  var cached = readCache();
+		  if (cached) { apply(cached); return; }
+		  fetchAll().then(function (map) {
+		    if (!map || !Object.keys(map).length) return;
+		    writeCache(map);
+		    apply(map);
+		  }).catch(function () { /* offline or rate-limited: keep the static hrefs */ });
+		})();
+	</script>
 </body>
 </html>
