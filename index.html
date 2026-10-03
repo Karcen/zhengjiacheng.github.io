@@ -25,6 +25,8 @@
 		  --code-bg: #EDEDEB;
 		  --code-text: #E65555;
 		  --accent: #224b8d;
+		  --lnk-underline: rgba(34, 75, 141, 0.38);
+		  --lnk-hover-bg: rgba(34, 75, 141, 0.09);
 		  --tag-bg: #f4f5f7;
 		  --highlight-bg: #fff3b0;
 		  --highlight-text: #4a3a00;
@@ -44,6 +46,8 @@
 		  --code-bg: #161b22;
 		  --code-text: #ff7b72;
 		  --accent: #58a6ff;
+		  --lnk-underline: rgba(88, 166, 255, 0.42);
+		  --lnk-hover-bg: rgba(88, 166, 255, 0.14);
 		  --tag-bg: #161b22;
 		  --highlight-bg: #3f3511;
 		  --highlight-text: #ffe8a3;
@@ -83,6 +87,32 @@
 		}
 		a:hover { color: var(--link-color-hover); text-decoration: underline; }
 		a:focus { outline: 2px dotted var(--accent); outline-offset: 2px; }
+
+		/*
+		 * Inline reference links (a.lnk) for the people and institutions named in
+		 * running text. A hard underline on 30-odd names turns the prose into a wall
+		 * of lines, so these get a thin tinted underline that firms up on hover, plus
+		 * a soft tinted chip. The negative margin cancels the padding, so the hover
+		 * highlight never shifts the surrounding text.
+		 */
+		a.lnk {
+		  text-decoration: underline;
+		  text-decoration-thickness: 0.06em;
+		  text-underline-offset: 0.16em;
+		  text-decoration-color: var(--lnk-underline);
+		  padding: 0.05em 3px;
+		  margin: -0.05em -3px;
+		  border-radius: 3px;
+		  transition: color 0.15s ease, background-color 0.15s ease, text-decoration-color 0.15s ease;
+		}
+		a.lnk:hover {
+		  color: var(--link-color-hover);
+		  text-decoration-color: currentColor;
+		  background-color: var(--lnk-hover-bg);
+		}
+		@media print {
+		  a.lnk { text-decoration-color: currentColor; background: none; padding: 0; margin: 0; }
+		}
 		
 		code {
 			background: rgba(143, 18, 55, 0.08);
@@ -578,7 +608,7 @@
 						Jiacheng (Karcen) Zheng
 					</h3>
 					<p class="author__bio">
-						MPhil Student in Applied Economics<br>Tianjin University
+						MPhil Student in Applied Economics<br><a class="lnk" href="https://www.tju.edu.cn/" target="_blank" rel="noopener">Tianjin University</a>
 						
 					</p>
 					<ul class="author__urls">
@@ -599,13 +629,13 @@
 				<section id="about-me">
 					<h1>👋 About</h1>
 					<p class=”lead”>
-						Hi, I’m <strong>Jiacheng “Karcen” Zheng</strong> (郑嘉诚). I’m an <code>MPhil student in Applied Economics</code> at the <strong>Ma Yinchu School of Economics, Tianjin University</strong> (2026–2029), where I apply <code>data science</code> and <code>machine learning</code> to economic research.
+						Hi, I’m <strong>Jiacheng “Karcen” Zheng</strong> (郑嘉诚). I’m an <code>MPhil student in Applied Economics</code> at the <strong><a class="lnk" href="http://mysoe.tju.edu.cn/" target="_blank" rel="noopener">Ma Yinchu School of Economics, Tianjin University</a></strong> (2026–2029), where I apply <code>data science</code> and <code>machine learning</code> to economic research.
 					</p>
 					<p>
-						I began my data science journey at <strong>Dalian University of Technology</strong> (2019–2021), where I studied <strong>Chemical Engineering</strong> (<code>GPA: 88/100</code>; <code>top 7.4%</code>) and built a foundation in <code>mathematical modeling</code> and <code>quantitative analysis</code>. I then completed a <strong>B.Eng. in Bioengineering from Shandong University’s Marine College</strong> (2022–2026; <code>GPA: 86.24/100</code>; <code>rank: 5/50</code>; <code>Outstanding Graduate</code>). During this time, I also explored <code>International Politics and International Economics and Trade</code> at the <strong>School of Northeast Asian Studies, Shandong University</strong> (2022–2023), which sparked my passion for economic research.
+						I began my data science journey at <strong><a class="lnk" href="https://www.dlut.edu.cn/" target="_blank" rel="noopener">Dalian University of Technology</a></strong> (2019–2021), where I studied <strong>Chemical Engineering</strong> (<code>GPA: 88/100</code>; <code>top 7.4%</code>) and built a foundation in <code>mathematical modeling</code> and <code>quantitative analysis</code>. I then completed a <strong>B.Eng. in Bioengineering from <a class="lnk" href="https://mc.wh.sdu.edu.cn/" target="_blank" rel="noopener">Shandong University’s Marine College</a></strong> (2022–2026; <code>GPA: 86.24/100</code>; <code>rank: 5/50</code>; <code>Outstanding Graduate</code>). During this time, I also explored <code>International Politics and International Economics and Trade</code> at the <strong><a class="lnk" href="https://esnea.wh.sdu.edu.cn/" target="_blank" rel="noopener">School of Northeast Asian Studies, Shandong University</a></strong> (2022–2023), which sparked my passion for economic research.
 					</p>
 					<p>
-						My research spans economics, climate science, and AI. As a research assistant at the <strong>Center for Regional and Country-Specific Data Analytics, Shandong University</strong> (2023–2025; PI: Professor Yuan Li), I applied machine learning and network analysis to <code>input–output economics</code> and <code>global value chains</code>. In summer 2024, I collaborated with <strong>Professor Zhifu Mi at University College London (UCL)</strong>, building citation-network databases for the <code>IPCC Sixth Assessment Report</code>. In early 2025, I contributed to <code>generative AI alignment</code> research at <strong>HKUST</strong> (2025), resulting in a paper accepted as a <code>Spotlight at NeurIPS 2025</code> 🎉—coauthored with researchers from Peking University.
+						My research spans economics, climate science, and AI. As a research assistant at the <strong><a class="lnk" href="https://www.wh.sdu.edu.cn/" target="_blank" rel="noopener">Center for Regional and Country-Specific Data Analytics, Shandong University</a></strong> (2023–2025; PI: Professor <a class="lnk" href="https://iis.wh.sdu.edu.cn/info/1179/1542.htm" target="_blank" rel="noopener">Yuan Li</a>), I applied machine learning and network analysis to <code>input–output economics</code> and <code>global value chains</code>. In summer 2024, I collaborated with <strong>Professor <a class="lnk" href="https://profiles.ucl.ac.uk/64212" target="_blank" rel="noopener">Zhifu Mi</a> at <a class="lnk" href="https://www.ucl.ac.uk/" target="_blank" rel="noopener">University College London (UCL)</a></strong>, building citation-network databases for the <code>IPCC Sixth Assessment Report</code>. In early 2025, I contributed to <code>generative AI alignment</code> research at <strong><a class="lnk" href="https://hkust.edu.hk/" target="_blank" rel="noopener">HKUST</a></strong> (2025), resulting in a paper accepted as a <code>Spotlight at <a class="lnk" href="https://neurips.cc/" target="_blank" rel="noopener">NeurIPS</a> 2025</code> 🎉—coauthored with researchers from <a class="lnk" href="https://www.pku.edu.cn/" target="_blank" rel="noopener">Peking University</a>.
 					</p>
 					<div class="cta-row">
 						<a href="mailto:karcenzheng@gmail.com"><i class="fas fa-envelope"></i> karcenzheng@gmail.com</a>
@@ -629,10 +659,10 @@
 					<h2>🎓 Education</h2>
 					<div class="entry">
 						<div class="entry-head">
-							<h3 class="entry-title"><img class="svg" src="https://www.tju.edu.cn/favicon.ico" alt="" onerror="this.style.display='none'"> Tianjin University</h3>
+							<h3 class="entry-title"><img class="svg" src="https://www.tju.edu.cn/favicon.ico" alt="" onerror="this.style.display='none'"> <a class="lnk" href="https://www.tju.edu.cn/" target="_blank" rel="noopener">Tianjin University</a></h3>
 							<span class="entry-date">Sep 2026 – Jun 2029 (Expected)</span>
 						</div>
-						<div class="entry-sub">MPhil in Applied Economics · Ma Yinchu School of Economics</div>
+						<div class="entry-sub">MPhil in Applied Economics · <a class="lnk" href="http://mysoe.tju.edu.cn/" target="_blank" rel="noopener">Ma Yinchu School of Economics</a></div>
 						<p>
 							Advisor: <a href="https://sites.google.com/view/shenshenyang" target="_blank" rel="noopener">Shenshen Yang</a>, Assistant Professor. Research areas: theoretical econometrics, causal inference, missing data, and public health policy.
 						</p>
@@ -648,12 +678,12 @@
 					</div>
 					<div class="entry">
 						<div class="entry-head">
-							<h3 class="entry-title"><img class="svg" src="https://www.sdu.edu.cn/favicon.ico" alt="" onerror="this.style.display='none'"> Shandong University </h3>
+							<h3 class="entry-title"><img class="svg" src="https://www.sdu.edu.cn/favicon.ico" alt="" onerror="this.style.display='none'"> <a class="lnk" href="https://www.sdu.edu.cn/" target="_blank" rel="noopener">Shandong University</a> </h3>
 							<span class="entry-date">Sep 2022 – Jun 2026</span>
 						</div>
-						<div class="entry-sub">B.Eng. in Bioengineering · Marine College</div>
+						<div class="entry-sub">B.Eng. in Bioengineering · <a class="lnk" href="https://mc.wh.sdu.edu.cn/" target="_blank" rel="noopener">Marine College</a></div>
 						<p>
-							GPA: 86.24/100 (ranked 5/50). Recipient of Shandong University’s <strong>Outstanding Graduate</strong> award. Pursued a dual-degree track in <em>International Politics and International Economics and Trade</em> at the School of Northeast Asian Studies, Shandong University (2022–2023).
+							GPA: 86.24/100 (ranked 5/50). Recipient of Shandong University’s <strong>Outstanding Graduate</strong> award. Pursued a dual-degree track in <em>International Politics and International Economics and Trade</em> at the <a class="lnk" href="https://esnea.wh.sdu.edu.cn/" target="_blank" rel="noopener">School of Northeast Asian Studies, Shandong University</a> (2022–2023).
 						</p>
 						<p>
 							<strong>Undergraduate thesis:</strong> <em>Is More Complexity Always Better? Hepatotoxicity Prediction of Marine Natural Products with in vivo Validation in <i>Danio rerio</i></em> — <code>ranked 1st in thesis defense group</code> 🏆
@@ -666,12 +696,12 @@
 					</div>
 					<div class="entry">
 						<div class="entry-head">
-							<h3 class="entry-title"><img class="svg" src="https://www.dlut.edu.cn/favicon.ico" alt="" onerror="this.style.display='none'"> Dalian University of Technology</h3>
+							<h3 class="entry-title"><img class="svg" src="https://www.dlut.edu.cn/favicon.ico" alt="" onerror="this.style.display='none'"> <a class="lnk" href="https://www.dlut.edu.cn/" target="_blank" rel="noopener">Dalian University of Technology</a></h3>
 							<span class="entry-date">Sep 2019 – Mar 2021</span>
 						</div>
-						<div class="entry-sub">B.Eng. in Chemical Engineering (coursework) · School of Chemistry</div>
+						<div class="entry-sub">B.Eng. in Chemical Engineering (coursework) · <a class="lnk" href="https://chem.dlut.edu.cn/" target="_blank" rel="noopener">School of Chemistry</a></div>
 						<p>
-							GPA: 88/100 (top 7.4%). Built a foundation in <strong>mathematical modeling</strong> and <strong>data science</strong> before transitioning to interdisciplinary research at Shandong University.
+							GPA: 88/100 (top 7.4%). Built a foundation in <strong>mathematical modeling</strong> and <strong>data science</strong> before transitioning to interdisciplinary research at <a class="lnk" href="https://www.sdu.edu.cn/" target="_blank" rel="noopener">Shandong University</a>.
 						</p>
 						<div class="tags">
 							<span class="tag primary">Chemical Engineering</span>
@@ -685,7 +715,7 @@
 					<div class="paper-box">
 						<div class="paper-box-image">
 							<div>
-								<div class="badge"> Biology 2026 · Article
+								<div class="badge"> <a class="lnk" href="https://www.mdpi.com/journal/biology" target="_blank" rel="noopener">Biology</a> 2026 · Article
 									
 								</div>
 								<img src="paper_img/biology-15-01150-ag.png" alt="TLR4 Axis and Non-Starch Polysaccharides" style="width: 100%; aspect-ratio: 6254/4367; object-fit: cover; display: block; border-radius: 4px;">
@@ -697,7 +727,7 @@
 							</div>
 							<div class="paper-authors"> Pengcheng You, Anye Chen, Qiancheng Feng, Junhong Hou, <strong style="color: #0066cc;">Jiacheng Zheng</strong>, and Hao Chen* </div>
 							<div class="paper-journal">
-								<i>Biology</i>, 2026, 15, 1150
+								<i><a class="lnk" href="https://www.mdpi.com/journal/biology" target="_blank" rel="noopener">Biology</a></i>, 2026, 15, 1150
 							</div>
 							<div class="paper-links">
 								<a href="https://doi.org/10.3390/biology15141150" target="_blank" rel="noopener noreferrer"> [Paper] </a>
@@ -707,7 +737,7 @@
 					<div class="paper-box">
 						<div class="paper-box-image">
 							<div>
-								<div class="badge"> NeurIPS 2025 · Spotlight
+								<div class="badge"> <a class="lnk" href="https://neurips.cc/" target="_blank" rel="noopener">NeurIPS</a> 2025 · Spotlight
 									
 								</div>
 								<img src="paper_img/neurips2025.png" alt="InterMT" style="width: 100%; aspect-ratio: 423/296; object-fit: cover; display: block; border-radius: 4px;">
@@ -719,7 +749,7 @@
 							</div>
 							<div class="paper-authors"> Boyuan Chen, Donghai Hong, Jiaming Ji, <strong style="color: #0066cc;">Jiacheng Zheng</strong>, Bowen Dong, Jiayi Zhou, Kaile Wang, Juntao Dai, Xuyao Wang, Wenqi Chen, Qirui Zheng, Wenxin Li, Sirui Han, Yike Guo, &amp; Yaodong Yang </div>
 							<div class="paper-journal">
-								<code>NeurIPS 2025</code> · <code>Spotlight</code>
+								<code><a class="lnk" href="https://neurips.cc/" target="_blank" rel="noopener">NeurIPS</a> 2025</code> · <code>Spotlight</code>
 							</div>
 							<div class="paper-links">
 								<a href="https://pku-intermt.github.io" target="_blank" rel="noopener noreferrer"> [Project Page] </a>
@@ -739,7 +769,7 @@
 							</div>
 							<div class="paper-authors"> Jamal Khan, <strong style="color: #0066cc;">Jiacheng Zheng</strong>, Maaz Ahmad, &amp; Zubair Alam Khan </div>
 							<div class="paper-journal">
-								<i>Journal of Chinese Economic and Business Studies</i>, <i>24</i>(2), 317–340 (2026)
+								<i><a class="lnk" href="https://www.tandfonline.com/journals/rcea20" target="_blank" rel="noopener">Journal of Chinese Economic and Business Studies</a></i>, <i>24</i>(2), 317–340 (2026)
 							</div>
 							<div class="paper-links">
 								<a href="https://doi.org/10.1080/14765284.2025.2538328" target="_blank" rel="noopener noreferrer"> [Paper] </a>
@@ -792,7 +822,7 @@
 							</div>
 							<div class="paper-authors"> Jamal Khan, Yuan Li, &amp; Qaiser Jamal Mahsud </div>
 							<div class="paper-journal">
-								<i>Structural Change and Economic Dynamics</i>, <i>70</i>, 33–44 (2024)
+								<i><a class="lnk" href="https://www.sciencedirect.com/journal/structural-change-and-economic-dynamics" target="_blank" rel="noopener">Structural Change and Economic Dynamics</a></i>, <i>70</i>, 33–44 (2024)
 							</div>
 							<p>
 								 Examines the financial sector's role in post-crisis industrial linkages and structural transformation in China. My contributions to <code>data analysis</code> and <code>visualization</code> are acknowledged in the paper. 
@@ -817,7 +847,7 @@
 							</div>
 							<div class="paper-authors"> Yuan Li &amp; Jamal Khan </div>
 							<div class="paper-journal">
-								<i>Peter Lang</i>
+								<i><a class="lnk" href="https://www.peterlang.com/" target="_blank" rel="noopener">Peter Lang</a></i>
 							</div>
 							<p>
 								Examines the Belt and Road Initiative’s effects on infrastructure, trade, employment, and global economic governance. My contribution is acknowledged in the volume. 
@@ -832,7 +862,7 @@
 					<h3 style="margin-top:1.5em;">📣 Conference Presentations</h3>
 					<div class="entry">
 						<div class="entry-head">
-							<h3 class="entry-title">31st International Input–Output Association Conference</h3>
+							<h3 class="entry-title">31st <a class="lnk" href="https://www.iioa.org/" target="_blank" rel="noopener">International Input–Output Association</a> Conference</h3>
 							<span class="entry-date">2025 · Malé</span>
 						</div>
 						<div class="entry-sub"><code>Accepted for oral presentation</code> — withdrawn for health reasons</div>
@@ -844,7 +874,7 @@
 					<div class="entry">
 						<div class="entry-head">
 							<h3 class="entry-title">10th International Workshop on RUSE in China</h3>
-							<span class="entry-date">2023 · Peking University</span>
+							<span class="entry-date">2023 · <a class="lnk" href="https://www.pku.edu.cn/" target="_blank" rel="noopener">Peking University</a></span>
 						</div>
 						<div class="entry-sub"><code>Oral presentation</code></div>
 						<p><em>Agglomeration Economies and Regional Inequality in Provincial China.</em></p>
@@ -872,7 +902,7 @@
 							<h3 class="entry-title">Volunteer · Academic Content &amp; Communication</h3>
 							<span class="entry-date">Apr 2026 – Present · Remote</span>
 						</div>
-						<div class="entry-sub"><em>Structural Change and Economic Dynamics</em> (SSCI Q1) · WeChat Official Account</div>
+						<div class="entry-sub"><em><a class="lnk" href="https://www.sciencedirect.com/journal/structural-change-and-economic-dynamics" target="_blank" rel="noopener">Structural Change and Economic Dynamics</a></em> (SSCI Q1) · WeChat Official Account</div>
 						<ul>
 							<li>
 								Contributed to academic content editing, translation, and research dissemination for the official WeChat platform of <em>SCED</em>, a top SSCI Q1 journal in economic dynamics.
@@ -887,7 +917,7 @@
 							<h3 class="entry-title">Teaching Assistant · Advanced Macroeconomics &#8544;</h3>
 							<span class="entry-date">Sep 2026 – Present · Remote</span>
 						</div>
-						<div class="entry-sub">Institute of Blue and Green Development, Shandong University</div>
+						<div class="entry-sub"><a class="lnk" href="https://aais.wh.sdu.edu.cn/yjtd/llfzyjy.htm" target="_blank" rel="noopener">Institute of Blue and Green Development, Shandong University</a></div>
 						<ul>
 							<li>
 								Assist with graduate-level Advanced Macroeconomics by preparing tutorial materials and problem sets, holding office hours, and assisting with grading and course administration.
@@ -896,10 +926,10 @@
 					</div>
 					<div class="entry">
 						<div class="entry-head">
-							<h3 class="entry-title">Research Assistant · Tianjin University</h3>
+							<h3 class="entry-title">Research Assistant · <a class="lnk" href="https://www.tju.edu.cn/" target="_blank" rel="noopener">Tianjin University</a></h3>
 							<span class="entry-date">Sep 2025 – Present · On-site</span>
 						</div>
-						<div class="entry-sub">Ma Yinchu School of Economics &amp; College of Management and Economics (CoME)</div>
+						<div class="entry-sub"><a class="lnk" href="http://mysoe.tju.edu.cn/" target="_blank" rel="noopener">Ma Yinchu School of Economics</a> &amp; <a class="lnk" href="http://come.tju.edu.cn/" target="_blank" rel="noopener">College of Management and Economics (CoME)</a></div>
 						<ul>
 							<li>
 								Conducting research in health economics and financial economics under two National Natural Science Foundation of China (NSFC) projects.
@@ -908,25 +938,25 @@
 					</div>
 					<div class="entry">
 						<div class="entry-head">
-							<h3 class="entry-title">Research Intern · The Hong Kong University of Science and Technology (HKUST)</h3>
+							<h3 class="entry-title">Research Intern · <a class="lnk" href="https://hkust.edu.hk/" target="_blank" rel="noopener">The Hong Kong University of Science and Technology (HKUST)</a></h3>
 							<span class="entry-date">Feb – May 2025 · Remote</span>
 						</div>
-						<div class="entry-sub">Big Data Institute of HKUST &amp; Hong Kong Generative AI Research and Development Center Limited (HKGAI)</div>
+						<div class="entry-sub"><a class="lnk" href="https://bdi.hkust.edu.hk/" target="_blank" rel="noopener">Big Data Institute of HKUST</a> &amp; <a class="lnk" href="https://www.hkgai.org/" target="_blank" rel="noopener">Hong Kong Generative AI Research and Development Center Limited (HKGAI)</a></div>
 						<ul>
 							<li>
 								Conducted research on data-driven preference alignment for multimodal, multi-turn large language models.
 							</li>
 							<li>
-								Collaborated with Jiaming Ji, Boyuan Chen, and other researchers at Peking University; resulting paper accepted as a <em>Spotlight at NeurIPS 2025</em> 🎉
+								Collaborated with <a class="lnk" href="https://jijiaming.netlify.app/" target="_blank" rel="noopener">Jiaming Ji</a>, <a class="lnk" href="https://cby-pku.github.io/" target="_blank" rel="noopener">Boyuan Chen</a>, and other researchers at <a class="lnk" href="https://www.pku.edu.cn/" target="_blank" rel="noopener">Peking University</a>; resulting paper accepted as a <em>Spotlight at <a class="lnk" href="https://neurips.cc/" target="_blank" rel="noopener">NeurIPS</a> 2025</em> 🎉
 							</li>
 						</ul>
 					</div>
 					<div class="entry">
 						<div class="entry-head">
-							<h3 class="entry-title">Research Assistant · University College London (UCL)</h3>
+							<h3 class="entry-title">Research Assistant · <a class="lnk" href="https://www.ucl.ac.uk/" target="_blank" rel="noopener">University College London (UCL)</a></h3>
 							<span class="entry-date">Jul – Aug 2024 · Remote</span>
 						</div>
-						<div class="entry-sub">The Bartlett School of Sustainable Construction · Principal Investigator: Professor Zhifu Mi</div>
+						<div class="entry-sub"><a class="lnk" href="https://www.ucl.ac.uk/bartlett/construction" target="_blank" rel="noopener">The Bartlett School of Sustainable Construction</a> · Principal Investigator: Professor <a class="lnk" href="https://profiles.ucl.ac.uk/64212" target="_blank" rel="noopener">Zhifu Mi</a></div>
 						<ul>
 							<li>
 								Developed citation-network databases and analytical pipelines for the <em>IPCC Sixth Assessment Report</em> (Working Group II).
@@ -935,10 +965,10 @@
 					</div>
 					<div class="entry">
 						<div class="entry-head">
-							<h3 class="entry-title">Research Assistant · Institute of International Studies, Shandong University</h3>
+							<h3 class="entry-title">Research Assistant · <a class="lnk" href="https://iis.wh.sdu.edu.cn/" target="_blank" rel="noopener">Institute of International Studies, Shandong University</a></h3>
 							<span class="entry-date">Mar 2023 – Mar 2025 · Weihai · On-site</span>
 						</div>
-						<div class="entry-sub">Center for Regional and Country-Specific Data Analytics · Principal Investigators: Professor Yuan Li and Dr. Jamal Khan (currently an associate professor)</div>
+						<div class="entry-sub"><a class="lnk" href="https://www.wh.sdu.edu.cn/" target="_blank" rel="noopener">Center for Regional and Country-Specific Data Analytics</a> · Principal Investigators: Professor <a class="lnk" href="https://iis.wh.sdu.edu.cn/info/1179/1542.htm" target="_blank" rel="noopener">Yuan Li</a> and Dr. Jamal Khan (currently an associate professor)</div>
 						<ul>
 							<li>
 								Built the center’s data infrastructure; led programming and data-visualization tasks; contributed to manuscript preparation.
@@ -966,21 +996,21 @@
 					<div class="award-row">
 						<div>
 							<strong>Outstanding Graduate Award</strong>
-							<p>Shandong University · 2026</p>
+							<p><a class="lnk" href="https://www.sdu.edu.cn/" target="_blank" rel="noopener">Shandong University</a> · 2026</p>
 						</div>
 						<span class="amt"></span>
 					</div>
 					<div class="award-row">
 						<div>
 							<strong>National Encouragement Scholarship</strong>
-							<p>Ministry of Education of the People’s Republic of China · 2025</p>
+							<p><a class="lnk" href="http://www.moe.gov.cn/" target="_blank" rel="noopener">Ministry of Education of the People’s Republic of China</a> · 2025</p>
 						</div>
 						<span class="amt">CNY 6,000 ≈ US$841</span>
 					</div>
 					<div class="award-row">
 						<div>
 							<strong>Merit Scholarship (Level III)</strong>
-							<p>Shandong University · 2025</p>
+							<p><a class="lnk" href="https://www.sdu.edu.cn/" target="_blank" rel="noopener">Shandong University</a> · 2025</p>
 						</div>
 						<span class="amt">CNY 1,000 ≈ US$139</span>
 					</div>
@@ -988,7 +1018,7 @@
 						<div>
 							<strong>IIOA Travel Grant</strong>
 							<p>
-								International Input–Output Association · 2025 (selected through the COMPASS program; funding was later withdrawn because of budget constraints)
+								<a class="lnk" href="https://www.iioa.org/" target="_blank" rel="noopener">International Input–Output Association</a> · 2025 (selected through the COMPASS program; funding was later withdrawn because of budget constraints)
 								
 							</p>
 						</div>
@@ -997,22 +1027,22 @@
 					<div class="award-row">
 						<div>
 							<strong>National Encouragement Scholarship</strong>
-							<p>Ministry of Education of the People’s Republic of China · 2023</p>
+							<p><a class="lnk" href="http://www.moe.gov.cn/" target="_blank" rel="noopener">Ministry of Education of the People’s Republic of China</a> · 2023</p>
 						</div>
 						<span class="amt">CNY 5,000 ≈ US$694</span>
 					</div>
 					<div class="award-row">
 						<div>
 							<strong>Merit Scholarship (Level III)</strong>
-							<p>Shandong University · 2023</p>
+							<p><a class="lnk" href="https://www.sdu.edu.cn/" target="_blank" rel="noopener">Shandong University</a> · 2023</p>
 						</div>
 						<span class="amt">CNY 1,000 ≈ US$139</span>
 					</div>
 					<div class="award-row">
 						<div>
-							<strong>Invited Delegate, PwC Open Day</strong>
+							<strong>Invited Delegate, <a class="lnk" href="https://www.pwccn.com/" target="_blank" rel="noopener">PwC</a> Open Day</strong>
 							<p>
-								PwC Jinan · 2023 (one of two fully funded delegates from Weihai, selected via the Golden Education Elite Business Challenge)
+								<a class="lnk" href="https://www.pwccn.com/" target="_blank" rel="noopener">PwC</a> Jinan · 2023 (one of two fully funded delegates from Weihai, selected via the Golden Education Elite Business Challenge)
 							</p>
 						</div>
 						<span class="amt">CNY 450 ≈ US$62</span>
@@ -1020,21 +1050,21 @@
 					<div class="award-row">
 						<div>
 							<strong>National Scholarship</strong>
-							<p>Ministry of Education of the People’s Republic of China · 2020</p>
+							<p><a class="lnk" href="http://www.moe.gov.cn/" target="_blank" rel="noopener">Ministry of Education of the People’s Republic of China</a> · 2020</p>
 						</div>
 						<span class="amt">CNY 8,000 ≈ US$1,111</span>
 					</div>
 					<div class="award-row">
 						<div>
 							<strong>Outstanding Student Scholarship (Level II)</strong>
-							<p>Dalian University of Technology · 2020</p>
+							<p><a class="lnk" href="https://www.dlut.edu.cn/" target="_blank" rel="noopener">Dalian University of Technology</a> · 2020</p>
 						</div>
 						<span class="amt">CNY 500 ≈ US$69</span>
 					</div>
 					<div class="award-row">
 						<div>
 							<strong>Outstanding Youth League Member &amp; Spiritual Civilization Scholarship</strong>
-							<p>Dalian University of Technology · 2020</p>
+							<p><a class="lnk" href="https://www.dlut.edu.cn/" target="_blank" rel="noopener">Dalian University of Technology</a> · 2020</p>
 						</div>
 						<span class="amt">CNY 400 ≈ US$56</span>
 					</div>
@@ -1085,7 +1115,7 @@
 						</div>
 						<div class="entry-sub">Team Leader</div>
 						<p>
-							Developed a digital platform to promote oral-health literacy and facilitate preliminary screening. The project won <strong>Second Prize</strong> in the Shandong University round.
+							Developed a digital platform to promote oral-health literacy and facilitate preliminary screening. The project won <strong>Second Prize</strong> in the <a class="lnk" href="https://www.sdu.edu.cn/" target="_blank" rel="noopener">Shandong University</a> round.
 							
 						</p>
 						<div class="paper-links">
@@ -1094,7 +1124,7 @@
 					</div>
 					<div class="entry">
 						<div class="entry-head">
-							<h3 class="entry-title">Teach For China (<i class="fa-brands fa-bilibili"></i> Bilibili) — Educational Outreach for Rural Students</h3>
+							<h3 class="entry-title"><a class="lnk" href="http://www.meilizhongguo.org/" target="_blank" rel="noopener">Teach For China</a> (<i class="fa-brands fa-bilibili"></i> <a class="lnk" href="https://www.bilibili.com/" target="_blank" rel="noopener">Bilibili</a>) — Educational Outreach for Rural Students</h3>
 							<span class="entry-date">2023</span>
 						</div>
 						<div class="entry-sub">Volunteer Teacher</div>
@@ -1157,46 +1187,46 @@
 							<h3 class="entry-title">Vice President</h3>
 							<span class="entry-date">2024 – 2025</span>
 						</div>
-						<div class="entry-sub">“Shanhai” Political Observation Club · Student organization affiliated with the School of Marxism, Shandong University</div>
+						<div class="entry-sub">“Shanhai” Political Observation Club · Student organization affiliated with the <a class="lnk" href="https://marx.sdu.edu.cn/" target="_blank" rel="noopener">School of Marxism, Shandong University</a></div>
 					</div>
 					<div class="entry">
 						<div class="entry-head">
 							<h3 class="entry-title">Director of External Relations</h3>
 							<span class="entry-date">2023 – 2024</span>
 						</div>
-						<div class="entry-sub">“Shanhai” Political Observation Club · Student organization affiliated with the School of Marxism, Shandong University</div>
+						<div class="entry-sub">“Shanhai” Political Observation Club · Student organization affiliated with the <a class="lnk" href="https://marx.sdu.edu.cn/" target="_blank" rel="noopener">School of Marxism, Shandong University</a></div>
 					</div>
 					<div class="entry">
 						<div class="entry-head">
 							<h3 class="entry-title">Secretary</h3>
 							<span class="entry-date">2022 – 2023</span>
 						</div>
-						<div class="entry-sub">Department of Student Rights and Mental Health · School of Northeast Asian Studies, Shandong University</div>
+						<div class="entry-sub">Department of Student Rights and Mental Health · <a class="lnk" href="https://esnea.wh.sdu.edu.cn/" target="_blank" rel="noopener">School of Northeast Asian Studies, Shandong University</a></div>
 					</div>
 					<div class="entry">
 						<div class="entry-head">
 							<h3 class="entry-title">Residence Hall Council Chair</h3>
 							<span class="entry-date">2019 – 2021</span>
 						</div>
-						<div class="entry-sub">Dalian University of Technology</div>
+						<div class="entry-sub"><a class="lnk" href="https://www.dlut.edu.cn/" target="_blank" rel="noopener">Dalian University of Technology</a></div>
 					</div>
 					<div class="entry">
 						<div class="entry-head">
 							<h3 class="entry-title">Deputy Director, New Media</h3>
 							<span class="entry-date">2019 – 2021</span>
 						</div>
-						<div class="entry-sub">“Yin Ji Guang Ying” New Media Studio · Dalian University of Technology</div>
+						<div class="entry-sub">“Yin Ji Guang Ying” New Media Studio · <a class="lnk" href="https://www.dlut.edu.cn/" target="_blank" rel="noopener">Dalian University of Technology</a></div>
 					</div>
 					<div class="entry">
 						<div class="entry-head">
 							<h3 class="entry-title">Deputy Director, Culture and Arts</h3>
 							<span class="entry-date">2019 – 2020</span>
 						</div>
-						<div class="entry-sub">Department of Culture and Arts · School of Chemistry, Dalian University of Technology</div>
+						<div class="entry-sub">Department of Culture and Arts · <a class="lnk" href="https://chem.dlut.edu.cn/" target="_blank" rel="noopener">School of Chemistry, Dalian University of Technology</a></div>
 					</div>
 					<h3 style="margin-top:1.5em;">Peer-Review Service</h3>
 					<div class="entry">
-						<p><strong><em>Ad Hoc</em> Reviewer</strong>, <em>Journal of Chinese Economic and Business Studies</em>, <em>Journal of Digital Economy</em>, <em>Finance Research Letters</em></p>
+						<p><strong><em>Ad Hoc</em> Reviewer</strong>, <em><a class="lnk" href="https://www.tandfonline.com/journals/rcea20" target="_blank" rel="noopener">Journal of Chinese Economic and Business Studies</a></em>, <em><a class="lnk" href="https://www.keaipublishing.com/en/journals/journal-of-digital-economy/" target="_blank" rel="noopener">Journal of Digital Economy</a></em>, <em><a class="lnk" href="https://www.sciencedirect.com/journal/finance-research-letters" target="_blank" rel="noopener">Finance Research Letters</a></em></p>
 					</div>
 					<h3 style="margin-top:1.5em;">Memberships</h3>
 					<div class="tags">
@@ -1205,7 +1235,7 @@
 							
 						</div>
 						<div>
-							<a href="https://iioa.org/" target="_blank" rel="noopener">International Input–Output Association (IIOA)</a> · 2025–2026
+							<a href="https://www.iioa.org/" target="_blank" rel="noopener">International Input–Output Association (IIOA)</a> · 2025–2026
 							
 						</div>
 						<div>
