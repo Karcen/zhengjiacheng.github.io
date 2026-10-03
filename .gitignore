@@ -2,3 +2,6 @@
 # GitHub Pages needs this one committed: it catches every dead URL still indexed
 # by search engines from the old /zhengjiacheng.github.io/ path.
 !404.html
+
+# macOS Finder metadata, never part of the site.
+.DS_Store
